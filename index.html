@@ -1,0 +1,1177 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>スペイン語B1 学習ノート</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400;1,6..72,600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* Layout: one reading column, sticky tab strip on top; Spanish set in serif italic, Japanese in gothic, key forms marked like a highlighter pen. */
+:root {
+  --paper: #f6f8f7;
+  --surface: #ffffff;
+  --ink: #17262b;
+  --ink-soft: #55676d;
+  --line: #d5dedc;
+  --teal: #0b6b6f;
+  --teal-soft: #e2efee;
+  --marker: #ffe27a;
+  --warn-bg: #fff4d6;
+  --font-jp: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+  --font-es: "Newsreader", "Iowan Old Style", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10191c; --surface: #18242a; --ink: #e6eeec; --ink-soft: #9db0b1;
+    --line: #2b3b41; --teal: #6fcfcb; --teal-soft: #1d3338; --marker: #6b5a12; --warn-bg: #3a3013;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10191c; --surface: #18242a; --ink: #e6eeec; --ink-soft: #9db0b1;
+  --line: #2b3b41; --teal: #6fcfcb; --teal-soft: #1d3338; --marker: #6b5a12; --warn-bg: #3a3013;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--font-jp); font-size: 16px; line-height: 1.85;
+  -webkit-text-size-adjust: 100%;
+}
+.tabs {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
+  padding: 10px 16px; background: var(--paper); border-bottom: 1px solid var(--line);
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tabs button {
+  flex: none; font: inherit; font-size: 14px; font-weight: 500; line-height: 1.2;
+  padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink-soft); cursor: pointer;
+}
+.tabs button[aria-selected="true"] { background: var(--teal); border-color: var(--teal); color: var(--paper); font-weight: 700; }
+.tabs button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+main { max-width: 44rem; margin: 0 auto; padding-inline: 16px; padding-block: 20px 64px; }
+.doc { min-width: 0; }
+h1 { font-size: 1.5rem; line-height: 1.35; margin: 0.4em 0 0.8em; text-wrap: balance; }
+h2 { font-size: 1.2rem; line-height: 1.4; margin: 2.2em 0 0.7em; padding-bottom: 0.3em; border-bottom: 2px solid var(--teal); text-wrap: balance; }
+h3 { font-size: 1.05rem; line-height: 1.45; margin: 1.8em 0 0.5em; color: var(--teal); text-wrap: balance; }
+p, ul, ol { margin: 0.7em 0; }
+ul, ol { padding-left: 1.4em; }
+li { margin: 0.3em 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2em 0; }
+a { color: var(--teal); }
+em { font-family: var(--font-es); font-style: italic; font-size: 1.1em; line-height: 1.5; }
+em strong { font-weight: 600; background: linear-gradient(transparent 55%, var(--marker) 55%); }
+strong { font-weight: 700; }
+td strong, li strong, p strong { background: linear-gradient(transparent 62%, var(--marker) 62%); }
+del { color: var(--ink-soft); }
+code { font-size: 0.88em; background: var(--teal-soft); padding: 0.1em 0.4em; border-radius: 4px; word-break: break-all; }
+pre { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow-x: auto; line-height: 1.6; }
+pre code { background: none; padding: 0; word-break: normal; white-space: pre-wrap; }
+blockquote { margin: 1em 0; padding: 10px 14px; background: var(--teal-soft); border-radius: 8px; }
+blockquote p { margin: 0.35em 0; }
+.table-wrap { overflow-x: auto; margin: 1em 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.93rem; line-height: 1.6; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 10px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); min-width: 5.5em; }
+th { background: var(--teal-soft); font-weight: 700; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+details { margin: 1.2em 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); padding: 0 14px; }
+summary { cursor: pointer; font-weight: 700; padding: 12px 0; color: var(--teal); }
+details[open] summary { border-bottom: 1px solid var(--line); }
+details h2 { display: none; }
+input[type="checkbox"] { width: 1.1em; height: 1.1em; accent-color: var(--teal); vertical-align: -0.15em; margin-right: 0.3em; }
+li:has(> input[type="checkbox"]) { list-style: none; margin-left: -1.2em; }
+.updated { color: var(--ink-soft); font-size: 0.85rem; margin-top: 3em; }
+</style>
+
+<nav class="tabs" role="tablist" aria-label="ノートの切りかえ"></nav>
+<main>
+  <article class="doc" id="doc"></article>
+  <p class="updated">最終更新：2026-10-15</p>
+</main>
+
+<script type="text/markdown" id="md-inicio" data-label="はじめに" data-file="README.md">
+# スペイン語B1 学習フォルダ
+
+EOI（公立語学学校）のB1の授業と、学年末の試験（2027年5〜6月）に向けた学習用フォルダです。
+
+## フォルダの中身
+
+| フォルダ | ファイル | 内容 |
+|---|---|---|
+| 学習計画 | [01_B1の文法とテーマ一覧.md](学習計画/01_B1の文法とテーマ一覧.md) | PCIC・CEFRをもとにしたB1の全体像 |
+| 学習計画 | [02_学習計画.md](学習計画/02_学習計画.md) | テーマの順番と1週間の過ごし方 |
+| 文法 | [01_線過去と点過去.md](文法/01_線過去と点過去.md) | 活用・使い分け・まちがえやすい点・練習問題 |
+| 会話表現 | [01_B1会話表現集.md](会話表現/01_B1会話表現集.md) | 場面ごとの表現と会話例 |
+| 復習ノート | [00_使い方.md](復習ノート/00_使い方.md) | 授業メモを貼ってノートにする方法 |
+| 復習ノート | [テンプレート.md](復習ノート/テンプレート.md) | ノートのひな形 |
+
+## まず始めること
+
+1. `会話表現` の「0. 授業で困ったとき」を覚える（次の授業から使える）
+2. `文法/01_線過去と点過去.md` のステップ1（点過去の活用）
+3. 授業のあと、`復習ノート/00_使い方.md` のメモをうめてチャットに貼る
+
+## ルール
+
+- 先生の説明とちがうときは、**先生の説明を優先**。
+- 「推測」「⚠」と書いてある部分は、先生に確認するのがおすすめ。
+
+</script>
+<script type="text/markdown" id="md-kako" data-label="線過去と点過去" data-file="文法/01_線過去と点過去.md">
+# 線過去（imperfecto）と点過去（indefinido）
+
+> 授業で先生の説明とちがうところがあったら、**先生の説明を優先**してください。
+> 「⚠」がついているところは、場面によって答えが変わることがある部分です。
+
+## もくじ
+
+1. ステップ1：点過去の活用
+2. ステップ2：線過去の活用
+3. ステップ3：使い分けの基本
+4. ステップ4：日本語話者がまちがえやすい点
+5. ステップ5：意味が変わる動詞
+6. 練習問題（答えと解説は最後）
+
+---
+
+## ステップ1：点過去（indefinido）の活用
+
+### 規則動詞
+
+| | hablar（話す） | comer（食べる） | vivir（住む） |
+|---|---|---|---|
+| yo | habl**é** | com**í** | viv**í** |
+| tú | habl**aste** | com**iste** | viv**iste** |
+| él / ella / usted | habl**ó** | com**ió** | viv**ió** |
+| nosotros | habl**amos** | com**imos** | viv**imos** |
+| vosotros | habl**asteis** | com**isteis** | viv**isteis** |
+| ellos / ustedes | habl**aron** | com**ieron** | viv**ieron** |
+
+- -er と -ir は**同じ語尾**です。
+- **アクセント記号が大事！** hablo（私は話す・現在）と habló（彼は話した・過去）はちがう意味です。
+
+### よく使う不規則動詞（これだけは覚える）
+
+| 原形 | yo | él / ella | ellos | 意味 |
+|---|---|---|---|---|
+| ser / ir | fui | fue | fueron | だった／行った（**同じ形！**） |
+| estar | estuve | estuvo | estuvieron | いた |
+| tener | tuve | tuvo | tuvieron | 持っていた |
+| hacer | hice | **hizo** | hicieron | した |
+| poder | pude | pudo | pudieron | できた |
+| poner | puse | puso | pusieron | 置いた |
+| saber | supe | supo | supieron | 知った |
+| querer | quise | quiso | quisieron | 〜しようとした |
+| venir | vine | vino | vinieron | 来た |
+| decir | dije | dijo | **dijeron** | 言った |
+| traer | traje | trajo | **trajeron** | 持ってきた |
+| dar | di | dio | dieron | あげた |
+| ver | vi | vio | vieron | 見た |
+
+- 不規則動詞の yo / él の形には**アクセント記号がつきません**（tuve, tuvo）。
+- decir・traer の ellos は **-eron**（× dijieron → ○ dijeron）。
+
+### 3人称だけ変わる動詞
+
+| 原形 | él / ella | ellos | ポイント |
+|---|---|---|---|
+| pedir（頼む） | p**i**dió | p**i**dieron | e → i |
+| sentir（感じる） | s**i**ntió | s**i**ntieron | e → i |
+| dormir（眠る） | d**u**rmió | d**u**rmieron | o → u |
+| leer（読む） | le**y**ó | le**y**eron | i → y |
+| oír（聞こえる） | o**y**ó | o**y**eron | i → y |
+
+### yo だけつづりが変わる動詞
+
+- llegar → lle**gué**　/　buscar → bus**qué**　/　empezar → empe**cé**
+  （発音を保つためにつづりが変わるだけです）
+
+---
+
+## ステップ2：線過去（imperfecto）の活用
+
+### 規則動詞
+
+| | hablar | comer | vivir |
+|---|---|---|---|
+| yo | habl**aba** | com**ía** | viv**ía** |
+| tú | habl**abas** | com**ías** | viv**ías** |
+| él / ella / usted | habl**aba** | com**ía** | viv**ía** |
+| nosotros | habl**ábamos** | com**íamos** | viv**íamos** |
+| vosotros | habl**abais** | com**íais** | viv**íais** |
+| ellos / ustedes | habl**aban** | com**ían** | viv**ían** |
+
+### 不規則動詞は3つだけ！
+
+| | ser（〜だった） | ir（行っていた） | ver（見ていた） |
+|---|---|---|---|
+| yo | era | iba | veía |
+| tú | eras | ibas | veías |
+| él / ella | era | iba | veía |
+| nosotros | éramos | íbamos | veíamos |
+| vosotros | erais | ibais | veíais |
+| ellos | eran | iban | veían |
+
+- **yo と él の形が同じ**です（yo vivía / él vivía）。わかりにくいときは主語をつけます。
+
+---
+
+## ステップ3：使い分けの基本
+
+### イメージ：映画のワンシーン
+
+- **線過去 ＝ 背景・舞台セット**（どんな状況だったか）
+- **点過去 ＝ ストーリーが進むできごと**（何が起きたか）
+
+> *Hacía sol y yo caminaba por el parque. De repente, **vi** a mi profesora.*
+> 晴れていて、私は公園を歩いていた。（← 背景＝線過去）
+> 突然、先生を見かけた。（← できごと＝点過去）
+
+### 使い分け表
+
+| 線過去（imperfecto） | 点過去（indefinido） |
+|---|---|
+| **背景・状況**<br>*Llovía mucho.*（雨がたくさん降っていた） | **起きたこと**<br>*Empezó a llover.*（雨が降り出した） |
+| **描写（人・物・場所）**<br>*Mi abuela era muy simpática.*（祖母はとても感じがよかった） | **始まりと終わりがあること**<br>*Viví en Osaka cinco años.*（大阪に5年住んだ） |
+| **昔の習慣（いつも〜していた）**<br>*De pequeña, iba a la playa todos los veranos.*（小さいころ、毎年夏は海に行っていた） | **1回のできごと**<br>*El verano pasado fui a la playa.*（去年の夏、海に行った） |
+| **時刻・年齢**<br>*Eran las diez. Tenía 8 años.*（10時だった。8歳だった） | **できごとの連続**<br>*Me levanté, desayuné y salí.*（起きて、朝ごはんを食べて、出かけた） |
+| **進行中の動作（〜している途中だった）**<br>*Mientras cocinaba, ...*（料理している間に…） | **途中に割りこんだこと**<br>*... sonó el teléfono.*（…電話が鳴った） |
+
+### 目印になる言葉（ヒントであって、絶対ではありません ⚠）
+
+- 線過去といっしょに使いやすい：*siempre*（いつも）、*todos los días*（毎日）、*normalmente*（ふつうは）、*antes*（以前は）、*de pequeño/a*（子どものころ）、*mientras*（〜の間）
+- 点過去といっしょに使いやすい：*ayer*（昨日）、*el año pasado*（去年）、*una vez*（一度）、*de repente*（突然）、*en 2020*（2020年に）、*durante dos años*（2年間）
+
+### よくある組み合わせ
+
+> **線過去 ＋ cuando ＋ 点過去**
+> *Dormía cuando llegaste.*（あなたが着いたとき、私は寝ていた）
+>
+> **Cuando ＋ 線過去（年齢など）, 点過去**
+> *Cuando tenía 15 años, fui a España por primera vez.*（15歳のとき、初めてスペインに行った）
+
+### おまけ：ていねいな線過去
+
+お店などで *Quería un café, por favor.*（コーヒーをお願いしたいのですが）のように、**ていねいに頼むとき**にも線過去を使います。これは「過去」の意味ではありません。
+
+---
+
+## ステップ4：日本語話者がまちがえやすい点
+
+### ① 「〜た」＝点過去、「〜ていた」＝線過去、ではない！
+
+日本語の形で決めると、よくまちがえます。
+
+| 日本語 | × まちがい | ○ 正しい | 理由 |
+|---|---|---|---|
+| 東京に10年**住んでいた** | ~~Vivía en Tokio diez años.~~ | *Viví en Tokio diez años.* | 「10年」と期間が区切られている → 点過去 |
+| 昨日は一日中家に**いた** | ~~Estaba en casa todo el día.~~ ⚠ | *Ayer estuve en casa todo el día.* | 「一日中」で区切られている → ふつうは点過去 |
+| 子どものころ、ピアノを**習った** | ~~Aprendí piano de pequeña.~~ ⚠ | *De pequeña aprendía piano.*（習っていた・習い事として） | 毎週の習慣として言うなら線過去 |
+
+⚠ 3つ目は「習って身につけた（1つの完了したこと）」と言いたいなら *Aprendí a tocar el piano de pequeña.* も言えます。**「何を伝えたいか」で決まる**のがポイントです。
+
+### ② 年齢と時刻は、ほぼいつも線過去
+
+- ○ *Cuando **tenía** 10 años...*　× ~~Cuando tuve 10 años...~~
+- ○ ***Eran** las tres.*　× ~~Fueron las tres.~~
+
+### ③ 「期間」がついたら点過去
+
+*durante dos horas*（2時間）、*tres años*（3年間）、*de 2015 a 2018*（2015年から2018年まで）のように**期間が区切られている**と、たとえ長くても点過去です。
+
+> *Estudié inglés durante seis años.*（6年間英語を勉強した）
+
+### ④ アクセント記号を忘れると意味が変わる
+
+| 形 | 意味 |
+|---|---|
+| hablo | 私は話す（現在） |
+| habló | 彼／彼女は話した（点過去） |
+| hable | 話しますように（接続法：あとで習います） |
+| hablé | 私は話した（点過去） |
+
+### ⑤ fue は2つの意味
+
+*fue* は ser（〜だった）と ir（行った）の両方の点過去です。前後の言葉で判断します。
+
+- *Fue muy divertido.*（とても楽しかった）← ser
+- *Fue a Madrid.*（マドリードに行った）← ir
+
+### ⑥ 「〜したことがある」「今日〜した」は現在完了のことが多い
+
+スペイン（本国）では、**今日・今週・今年・人生の経験**には現在完了（*he hablado*）をよく使います。
+
+- *Hoy **he comido** paella.*（今日パエリアを食べた）
+- *¿**Has estado** en Granada?*（グラナダに行ったことある？）
+
+これは次のテーマ（②現在完了と点過去）でくわしくやります。（中南米では点過去を使うことも多いです）
+
+---
+
+## ステップ5：意味が変わる動詞
+
+同じ動詞でも、線過去と点過去で意味が変わるものがあります。
+
+| 動詞 | 線過去 | 点過去 |
+|---|---|---|
+| conocer | *Conocía a Ana.*（アナを知っていた） | *Conocí a Ana en 2020.*（2020年にアナと**知り合った**） |
+| saber | *Sabía la verdad.*（本当のことを知っていた） | *Supe la verdad ayer.*（昨日本当のことを**知った**） |
+| querer | *Quería ir.*（行きたかった） | *Quise ir, pero...*（行こうと**した**けど…）／*No quise ir.*（行くのを**断った**） |
+| poder | *Podía nadar bien.*（上手に泳げた＝能力） | *Por fin pude abrir la puerta.*（やっとドアを開け**られた**＝実際にできた） |
+| tener que | *Tenía que trabajar.*（働かなければならなかった＝したかは不明） | *Tuve que trabajar.*（働かなければならなかった＝実際に働いた） |
+
+---
+
+## 練習問題
+
+### A. 活用（指示された形にしてください）
+
+1. tener（yo・点過去）→ ______
+2. hacer（ella・点過去）→ ______
+3. ir（nosotros・線過去）→ ______
+4. decir（ellos・点過去）→ ______
+5. ser（tú・線過去）→ ______
+6. pedir（él・点過去）→ ______
+
+### B. 線過去と点過去、どちらでしょう？（　）の動詞を正しい形にしてください
+
+1. Cuando era pequeña, (vivir, yo) ______ en Osaka.
+2. Ayer (ir, yo) ______ al cine con unos amigos.
+3. (Hacer) ______ sol y (hacer) ______ calor cuando salimos.
+4. Mientras (cocinar, yo) ______, (sonar) ______ el teléfono.
+5. (Vivir, yo) ______ en Madrid tres años, de 2015 a 2018.
+6. Todos los veranos (ir, nosotros) ______ a la playa.
+7. El verano pasado (ir, nosotros) ______ a la playa una vez.
+8. Ayer (conocer, yo) ______ a la novia de Juan. ¡Es muy simpática!
+9. (Ser) ______ las diez cuando (llegar, ellos) ______.
+10. Estábamos en el parque y, de repente, (empezar) ______ a llover.
+
+### C. まちがいを直してください
+
+1. Cuando tuve 10 años, fui a Kioto con mi familia.
+2. Antes fumé mucho, pero ahora no fumo.
+3. Ayer Juan hació la cena para todos.
+
+### D. 書いてみよう（自由に）
+
+1. 子どものころのことを3文で書いてください。（線過去を使う）
+2. 先週末にしたことを3文で書いてください。（点過去を使う）
+
+---
+
+## 答えと解説
+
+### A.
+
+1. **tuve**（不規則。アクセント記号なし）
+2. **hizo**（c ではなく z。× hació）
+3. **íbamos**（ir の線過去は不規則。í にアクセント記号）
+4. **dijeron**（× dijieron）
+5. **eras**（ser の線過去は不規則）
+6. **pidió**（3人称で e → i）
+
+### B.
+
+1. **vivía** … 「子どものころ」の状況・背景 → 線過去
+2. **fui** … 昨日の1回のできごと → 点過去
+3. **Hacía / hacía** … 天気は背景の描写 → 線過去
+4. **cocinaba / sonó** … 料理は途中だった（背景）、電話はそこに割りこんだできごと
+5. **Viví** … 「3年間」「2015〜2018年」と区切られている → 長くても点過去
+6. **íbamos** … 「毎年夏」の習慣 → 線過去
+7. **fuimos** … 「去年の夏」に「1回」 → 点過去
+8. **conocí** … 「初めて会った・知り合った」の意味 → 点過去（ステップ5）
+9. **Eran / llegaron** … 時刻は線過去、着いたのはできごと
+10. **empezó** … *de repente*（突然）で起きたこと → 点過去
+
+### C.
+
+1. Cuando **tenía** 10 años, fui a Kioto con mi familia.
+   → 年齢は線過去。fui（行った）は1回のできごとなので点過去のままでOK。
+2. Antes **fumaba** mucho, pero ahora no fumo.
+   → 「以前はよく吸っていた」は昔の習慣 → 線過去。
+3. Ayer Juan **hizo** la cena para todos.
+   → hacer の点過去の3人称は不規則で **hizo**。
+
+### D.（解答例）
+
+1. *Cuando era pequeña, vivía en un pueblo cerca del mar. Todos los días jugaba con mis amigos en la playa. Mi casa era pequeña, pero muy bonita.*
+   （小さいころ、海の近くの村に住んでいた。毎日、友だちと浜辺で遊んでいた。家は小さかったけど、とてもきれいだった。）
+2. *El sábado fui al mercado y compré fruta. Por la tarde vi una película con una amiga. El domingo descansé en casa.*
+   （土曜日は市場に行って果物を買った。午後は友だちと映画を見た。日曜日は家で休んだ。）
+   ⚠ スペインでは「今週末（まだ同じ週）」のことは現在完了で言う人も多いです。先生がどちらを使うか、聞いてみてください。
+
+</script>
+<script type="text/markdown" id="md-kaiwa" data-label="会話表現" data-file="会話表現/01_B1会話表現集.md">
+# B1でよく使う会話表現（場面ごと）
+
+> - 「(ES)」はスペインでよく使う、くだけた言い方です。中南米ではあまり使わないことがあります。
+> - 「＋接続法」と書いてある表現は、まだ習っていない形を使います。今は**かたまりで覚えるだけ**でOKです。
+> - 授業で先生が別の言い方を教えたら、そちらを優先してください。
+
+---
+
+## 0. 授業で困ったとき（まずはこれ！）
+
+先生がスペイン語だけで話すので、**この表を一番先に覚える**のがおすすめです。
+
+| スペイン語 | 日本語 |
+|---|---|
+| Perdona, no lo he entendido. | すみません、わかりませんでした。 |
+| ¿Puedes repetirlo, por favor? | もう一度言ってくれますか？ |
+| ¿Puedes hablar más despacio, por favor? | もう少しゆっくり話してくれますか？ |
+| ¿Qué significa «...»? | 「…」はどういう意味ですか？ |
+| ¿Cómo se dice «...» en español? | 「…」はスペイン語で何と言いますか？ |
+| ¿Cómo se escribe? | どうつづりますか？ |
+| ¿Puedes escribirlo en la pizarra? | 黒板に書いてくれますか？ |
+| ¿Qué tenemos que hacer? | 何をすればいいですか？ |
+| ¿Para cuándo es? | いつまでですか？（宿題など） |
+| ¿En qué página estamos? | 何ページですか？ |
+| ¿Está bien así? | これで合っていますか？ |
+
+※ EOIの先生には *tú* で話すことが多いですが、*usted* を使う先生もいます。迷ったら先生に合わせましょう。（*usted* なら *¿Puede repetirlo?*）
+
+---
+
+## 1. 聞き返す・確認する
+
+| スペイン語 | 日本語 |
+|---|---|
+| ¿Perdona? / ¿Cómo? | え？（もう一度） |
+| ¿Quieres decir que...? | 〜ということ？ |
+| A ver si lo he entendido: ... | わかったか確認させて。… |
+| ¿Te refieres a...? | 〜のこと？ |
+| No sé si me explico. | うまく説明できているかな。 |
+
+---
+
+## 2. 意見を言う
+
+| スペイン語 | 日本語 |
+|---|---|
+| Creo que... / Pienso que... | 〜と思う |
+| Me parece que... | 〜のように思う |
+| En mi opinión, ... / Para mí, ... | 私の意見では… |
+| Yo diría que... | どちらかというと〜かな（控えめ） |
+| No creo que ＋接続法 | 〜とは思わない（*No creo que sea fácil.* 簡単じゃないと思う） |
+| ¿Tú qué opinas? / ¿Y tú qué piensas? | あなたはどう思う？ |
+
+### 理由を言う
+
+| スペイン語 | 日本語 |
+|---|---|
+| ..., porque... | 〜だから |
+| Como..., ... | 〜なので、…（文の最初で） |
+| Por eso... | だから… |
+| Por un lado..., por otro lado... | 一方では…、もう一方では… |
+
+---
+
+## 3. 同意する・反対する
+
+### 同意
+
+| スペイン語 | 日本語 |
+|---|---|
+| Estoy de acuerdo (contigo). | （あなたに）賛成。 |
+| Tienes razón. | その通りだね。 |
+| ¡Claro! / ¡Por supuesto! | もちろん！ |
+| Yo también. / Yo tampoco. | 私も。／私も〜ない。 |
+| Es verdad. | 本当にそうだね。 |
+
+### 一部だけ同意
+
+| スペイン語 | 日本語 |
+|---|---|
+| Sí, pero... | うん、でも… |
+| Depende. | 場合によるね。 |
+| Tienes razón en parte, pero... | 一部はその通りだけど… |
+
+### 反対
+
+| スペイン語 | 日本語 |
+|---|---|
+| No estoy de acuerdo. | 賛成しない。 |
+| Yo no lo veo así. | 私はそうは思わない。 |
+| No sé... no estoy segura/o. | うーん、自信がないな。 |
+
+※ *segura*（女性が言う）／ *seguro*（男性が言う）
+
+---
+
+## 4. 過去の話をする
+
+### 話を始める
+
+| スペイン語 | 日本語 |
+|---|---|
+| ¿Sabes qué me pasó ayer? | 昨日何があったと思う？ |
+| Pues resulta que... | それがね、… |
+| Una vez, ... | あるとき… |
+| Cuando era pequeña/o, ... | 子どものころ… |
+| Hace dos años, ... | 2年前… |
+
+### 話を進める
+
+| スペイン語 | 日本語 |
+|---|---|
+| Primero... luego... después... | まず…それから…そのあと… |
+| De repente, ... | 突然… |
+| En ese momento, ... | そのとき… |
+| Al final, ... | 結局… |
+
+### 聞き手のあいづち
+
+| スペイン語 | 日本語 |
+|---|---|
+| ¿Y qué pasó? | それでどうなったの？ |
+| ¿En serio? / ¿De verdad? | 本当に？ |
+| ¡No me digas! | まさか！ |
+| ¡Qué bien! / ¡Qué pena! | よかったね！／残念だね！ |
+| ¡Qué fuerte! (ES) | すごい！／ひどい！（驚き） |
+
+---
+
+## 5. 考える時間をかせぐ
+
+すぐに言葉が出ないときに使えます。黙るより、これを言うほうが自然です。
+
+| スペイン語 | 日本語 |
+|---|---|
+| Pues... / Bueno... | えーと… |
+| A ver... | ええと、そうだな… |
+| Es que... | というのも… |
+| ¿Cómo se dice...? | なんて言うんだっけ… |
+| No me sale la palabra. | 言葉が出てこない。 |
+
+---
+
+## 6. 提案する・アドバイスする
+
+| スペイン語 | 日本語 |
+|---|---|
+| ¿Por qué no...? | 〜したら？／〜しない？ |
+| ¿Qué tal si...? | 〜するのはどう？ |
+| Podríamos... | 〜してもいいかもね |
+| Deberías... | 〜したほうがいいよ |
+| Yo que tú, ... | 私があなたなら… |
+
+---
+
+## 7. グループ活動で使う
+
+| スペイン語 | 日本語 |
+|---|---|
+| ¿Empiezo yo? | 私から始めようか？ |
+| Te toca. | あなたの番だよ。 |
+| ¿Quién empieza? | 誰から始める？ |
+| ¿Lo escribo yo? | 私が書こうか？ |
+| Creo que ya hemos terminado. | もう終わったと思う。 |
+
+---
+
+## 8. 線過去と点過去を使う会話の例
+
+### 会話例1：週末の話
+
+> **Marta:** ¿Qué tal el fin de semana?
+> 週末どうだった？
+>
+> **Yuki:** Muy bien. El sábado **fui** a Toledo con unos amigos.
+> よかったよ。土曜日、友だちとトレドに行ったの。【点過去：1回のできごと】
+>
+> **Marta:** ¡Qué bien! ¿Y qué tal el tiempo?
+> いいね！天気はどうだった？
+>
+> **Yuki:** **Hacía** mucho sol, pero **hacía** un poco de frío.
+> すごく晴れてたけど、ちょっと寒かった。【線過去：背景・天気】
+>
+> **Marta:** ¿Y qué **hicisteis**?
+> 何したの？
+>
+> **Yuki:** Primero **visitamos** la catedral y luego **comimos** en un restaurante típico. ¡**Estuvo** genial!
+> まず大聖堂を見て、それから伝統料理のレストランで食べた。最高だったよ！【点過去：できごとの連続】
+>
+> ⚠ スペインでは「今週末（同じ週）」のことを *He ido a Toledo* と現在完了で言う人も多いです。
+
+### 会話例2：子どものころの話
+
+> **Profesor:** Yuki, ¿cómo **eras** de pequeña?
+> ユキ、小さいころはどんな子だった？
+>
+> **Yuki:** Pues... **era** muy tímida. No **hablaba** mucho en clase.
+> えーと…とても恥ずかしがりだった。授業ではあまり話さなかった。【線過去：性格・習慣】
+>
+> **Profesor:** ¿Y qué te **gustaba** hacer?
+> 何をするのが好きだった？
+>
+> **Yuki:** Me **gustaba** mucho dibujar. Todos los días **dibujaba** después del colegio.
+> 絵を描くのが大好きだった。毎日、学校のあとに描いていた。【線過去：習慣】
+>
+> **Profesor:** ¿Y todavía dibujas?
+> 今も描いてる？
+>
+> **Yuki:** No, **dejé** de dibujar cuando **empecé** a trabajar.
+> ううん、働き始めたときにやめた。【点過去：変化が起きたとき】
+
+### 会話例3：ハプニングの話（背景＋できごと）
+
+> **Luis:** ¿Sabes qué me **pasó** ayer?
+> 昨日何があったと思う？
+>
+> **Yuki:** No, ¿qué?
+> ううん、何？
+>
+> **Luis:** **Estaba** en el metro y **leía** un libro. De repente, el metro **se paró** y **se apagaron** las luces.
+> 地下鉄で本を読んでたんだ。突然、地下鉄が止まって、電気が消えた。【線過去：背景／点過去：起きたこと】
+>
+> **Yuki:** ¡No me digas! ¿Y qué **hiciste**?
+> まさか！それでどうしたの？
+>
+> **Luis:** Nada. **Esperé** veinte minutos y al final **llegué** tarde a clase.
+> 何も。20分待って、結局授業に遅刻した。【点過去】
+>
+> ※ *Estaba leyendo un libro*（読んでいる途中だった）という言い方もよく使います。
+
+</script>
+<script type="text/markdown" id="md-plan" data-label="学習計画" data-file="学習計画/02_学習計画.md">
+# 学習計画（2026年10月 〜 2027年6月）
+
+## 前提
+
+- 授業：週2回・各2時間（会話中心）
+- 自習：**週2〜3時間**（1日20〜30分くらい）
+- 目標：学年末（2027年5〜6月）のB1試験
+- 活用（動詞の形）があやしいので、**最初は活用の復習から**始めます。
+
+> ⚠ 注意（推測をふくみます）
+> - EOIの試験の日にち・内容は、州（comunidad autónoma）によってちがいます。**日にちと形式は先生か学校に確認してください。**
+> - スペインのEOIのB1試験は、ふつう「読む」「聞く」「書く」「話す」「仲介（mediación）」に分かれています（推測：州によって形がちがう可能性があります）。
+> - 下の順番は、PCICの一覧をもとにした**提案**です。授業の順番とずれたら、**授業に合わせて入れかえてください**。
+
+---
+
+## 1週間の過ごし方（例）
+
+授業が週2回（例：月・水）の場合です。曜日は自由に変えてOKです。
+
+| いつ | 時間 | やること |
+|---|---|---|
+| 授業の日の夜 or 次の日 | 30分 × 2回 | **復習ノート**を作る（授業の内容を貼る → ノートと問題になる） |
+| 別の日 | 20分 | **文法の教材**を読む・練習問題をとく |
+| 別の日 | 20分 | **動詞の活用**を声に出して練習（今週の動詞5〜10個） |
+| 別の日 | 20分 | **会話表現**を3つ選んで、声に出して自分の文を作る |
+| 週末 | 20〜30分 | 1週間の復習（まちがえた問題だけやり直す） |
+
+合計：約2〜2.5時間
+
+**いちばん大事なのは「授業の復習ノート」です。** 授業がわからない → 復習でわかるようにする → 次の授業で少しわかる、のくり返しを目指します。
+
+---
+
+## テーマの順番（提案）
+
+| 期間 | テーマ | ねらい |
+|---|---|---|
+| **10月（4週）** | ① **線過去と点過去**（活用の復習もふくむ） | 過去の話ができる |
+| 11月前半（2週） | ② 現在完了と点過去のちがい | 「今日〜した」と「昨日〜した」を使い分ける |
+| 11月後半（2週） | ③ 過去完了＋話をつなぐ言葉（de repente, al final など） | 長めの思い出話ができる |
+| 12月前半（2週） | ④ 未来形（予定・推量） | 予定や「たぶん〜だろう」が言える |
+| 12月後半（2週・冬休み） | 復習週：①〜④ | 過去と未来の総まとめ |
+| 1月（2週） | ⑤ 過去未来（condicional）：ていねい・アドバイス | *¿Podrías...?* *Deberías...* |
+| 1月〜2月（3週） | ⑥ 命令形（肯定・否定）＋代名詞の組み合わせ | 指示・アドバイス・*se lo* |
+| 2月（3週） | ⑦ 接続法現在①：形と「願い」 | *Ojalá...* *Quiero que...* |
+| 3月前半（3週） | ⑧ 接続法現在②：評価・否定の意見 | *Es importante que...* *No creo que...* |
+| 3月後半（2週） | ⑨ 接続法現在③：目的・未来の「〜したら」 | *para que* / *cuando* + 接続法 |
+| 4月前半（2週） | ⑩ 間接話法 | 人の話を伝える |
+| 4月後半（2週） | ⑪ 関係詞・ser/estar・つなぐ言葉（aunque, así que） | 文を長くつなげる |
+| 5月〜試験（4週） | ⑫ 試験対策・総復習 | 過去問・模擬会話 |
+
+### この順番にした理由
+
+1. **線過去・点過去** → 会話の授業で「週末なにしたの？」「子どものころは？」は毎回のように出るから。
+2. **現在完了** → スペイン（とくにスペイン本国）では「今日・今週」のことを現在完了で言うことが多く、点過去とまちがえやすいから。
+3. **未来形・過去未来** → 予定やていねいなお願いは会話ですぐ使えるから。
+4. **接続法** → B1でいちばん新しく、量も多い。過去形が安定してから取り組むほうが楽だから。3回に分けています。
+5. **間接話法** → 時制（過去形など）がわかっていないと難しいので、後半に。
+
+---
+
+## 最初の4週間（線過去と点過去）のくわしい予定
+
+| 週 | やること | 教材の場所 |
+|---|---|---|
+| 1週目 | 点過去の活用（規則・不規則） | `文法/01_線過去と点過去.md` のステップ1 |
+| 2週目 | 線過去の活用＋基本の使い分け（背景とできごと） | ステップ2・3 |
+| 3週目 | 日本語話者のまちがえやすい点・意味が変わる動詞 | ステップ4・5 |
+| 4週目 | 練習問題＋自分の思い出を5文で話す | 練習問題、`会話表現/` の会話例 |
+
+**4週目のゴール：** 「子どものころの話」と「先週末にしたこと」を、それぞれ5文くらいで話せる。
+
+---
+
+## 進み具合のチェック表
+
+終わったら `[ ]` を `[x]` にしてください。
+
+- [ ] ① 線過去と点過去
+- [ ] ② 現在完了と点過去
+- [ ] ③ 過去完了＋つなぐ言葉
+- [ ] ④ 未来形
+- [ ] 復習週
+- [ ] ⑤ 過去未来
+- [ ] ⑥ 命令形＋代名詞
+- [ ] ⑦ 接続法①
+- [ ] ⑧ 接続法②
+- [ ] ⑨ 接続法③
+- [ ] ⑩ 間接話法
+- [ ] ⑪ 関係詞・ser/estar・つなぐ言葉
+- [ ] ⑫ 試験対策
+
+</script>
+<script type="text/markdown" id="md-ichiran" data-label="B1一覧" data-file="学習計画/01_B1の文法とテーマ一覧.md">
+# B1で学ぶ文法とテーマの一覧
+
+## この一覧の作り方（大事な注意）
+
+- 基準は **セルバンテス文化センターの Plan curricular（PCIC）** と **CEFR（ヨーロッパ言語共通参照枠）** です。
+- PCICは「B1」と「B2」を同じページにまとめています。サイトの文章を読み取ったとき、**どの項目がB1でどれがB2かの区切りが、はっきりしない部分がありました**。そのため「たぶんB1」の項目には **（推測）** と書いています。
+- 教科書「Gente al día」の中身は確認していないので、**教科書の順番や内容は一切書いていません**。
+- 授業で先生の説明とちがうときは、**先生の説明を優先**してください。
+- 参照ページ：https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/niveles/02_gramatica_inventario_b1-b2.htm
+
+---
+
+## 1. CEFRでいう「B1」とは
+
+CEFRでは、B1は「自立した言語使用者」の入り口です。ざっくり言うと次のことができるレベルです。
+
+- 仕事・学校・趣味など、**身近な話題**の要点がわかる。
+- 旅行先で起こる**たいていの場面**に対応できる。
+- 身近な話題について、**つながりのある簡単な文章**が書ける。
+- **経験・できごと・夢・希望**を説明できる。
+- **意見や計画の理由**を短く説明できる。
+
+→ つまり「過去の話ができる」「意見と理由が言える」「これからのことを話せる」がB1の中心です。
+
+---
+
+## 2. 文法の一覧（PCICをもとに整理）
+
+★ = 会話でとくによく使う・優先度が高いもの
+
+### 2-1. 動詞（過去）
+
+| 項目 | 内容 | 例 |
+|---|---|---|
+| ★線過去（pretérito imperfecto） | 背景・描写・習慣、ていねいな言い方 | *Iba por la calle y me encontré con él.*（道を歩いていたら彼に会った） |
+| ★点過去（pretérito indefinido） | 終わったできごと、不規則動詞（tuve, dije, puse など） | *Lo supe ayer.*（昨日それを知った） |
+| ★現在完了（pretérito perfecto）と点過去のちがい | 「今日・今まで」か「昨日・去年」か | *Nunca he estado allí.*（そこに行ったことがない） |
+| 過去完了（pluscuamperfecto） | 過去のある時点より前のこと | *Cuando llegamos, ya se había ido.*（着いたとき、彼はもう帰っていた） |
+
+### 2-2. 動詞（未来・仮定・ていねい）
+
+| 項目 | 内容 | 例 |
+|---|---|---|
+| ★未来形（futuro） | 不規則形、未来のこと、**推量** | *Serán las once.*（11時ごろだろう） |
+| ★過去未来（condicional） | ていねいなお願い、控えめな意見、アドバイス | *¿Podría hablar contigo?* / *Deberías descansar.* |
+| 条件文（現実的なもの） | si + 現在形 → 現在／未来／命令 | *Si vienes, te lo digo.*（来たら教えるよ） |
+
+### 2-3. 接続法（subjuntivo）と命令形
+
+| 項目 | 内容 | 例 |
+|---|---|---|
+| ★接続法現在：形 | 規則形・不規則形（sea, vaya, esté, dé など） | — |
+| ★願い | ojalá / quiero que + 接続法 | *Ojalá tengas suerte.*（うまくいくといいね） |
+| ★評価・感情 | es bueno que / me encanta que + 接続法 | *Es bueno que estudies.* |
+| ★否定の意見 | no creo que + 接続法 | *No creo que tengas razón.* |
+| 目的 | para que + 接続法 | *Te lo doy para que lo uses.* |
+| 未来の「〜したら」 | cuando / antes de que + 接続法 | *Cuando llegues, llámame.* |
+| 疑い | quizá + 接続法 | *Quizá vaya.* |
+| ★否定の命令 | no + 接続法と同じ形 | *No te vayas.*（行かないで） |
+| 肯定の命令＋代名詞 | 代名詞を後ろにつける | *Díselo.*（彼にそれを言って） |
+| 接続法過去 | 形と、一部の願いの表現 | **（推測）** B1では入門程度。本格的にはB2 |
+
+### 2-4. 間接話法（estilo indirecto）
+
+| 項目 | 例 |
+|---|---|
+| ★人の言ったことを伝える（現在） | *Dice que viene mañana.*（明日来るって） |
+| 過去に言ったことを伝える | *Dijo que tenía sueño.*（眠いと言っていた） |
+
+### 2-5. 代名詞・関係詞
+
+| 項目 | 例 |
+|---|---|
+| ★目的語代名詞の組み合わせ | *Te las di.* / *Se lo di.* / *Voy a decírselo.* |
+| se のいろいろな使い方 | 「お互いに」*Se quieren.*　「一般の人」*Se venden pisos.* |
+| ★関係詞 que / donde / el que / quien | *La película que vimos.*（私たちが見た映画） |
+
+### 2-6. よく使う動詞の組み合わせ（perífrasis）
+
+| 形 | 意味 | 例 |
+|---|---|---|
+| soler + 不定詞 | いつも〜する | *Suelo cenar tarde.* |
+| volver a + 不定詞 | また〜する | *Volví a llamarla.* |
+| dejar de + 不定詞 | 〜するのをやめる | *Dejé de fumar.* |
+| ponerse a + 不定詞 | 〜し始める | *Se puso a llorar.* |
+| estar a punto de + 不定詞 | もうすぐ〜する | *Estaba a punto de salir.* |
+| seguir + 現在分詞 | 〜し続ける | *Sigo estudiando.* |
+
+### 2-7. ser / estar と「なる」の動詞
+
+- ★ser と estar の基本的なちがい：*Es delgado.*（もともとやせている）／ *Está delgado.*（今やせている）
+- ser でイベントの場所：*La fiesta es en mi casa.*
+- 「〜になる」：ponerse（一時的）、quedarse、hacerse、volverse　*Se puso nervioso.*（緊張した）
+
+### 2-8. 文をつなぐ言葉
+
+| 種類 | 言葉 |
+|---|---|
+| ★時 | cuando, mientras, antes de, después de, hasta que, al + 不定詞 |
+| ★理由 | porque, como（文の最初に置く）, por + 不定詞 |
+| ★結果 | así que, o sea que, por eso |
+| ★逆接 | pero, sin embargo, aunque + 直説法 |
+| 比較 | igual de... que, más/menos... que |
+
+---
+
+## 3. テーマ（話題）の一覧
+
+PCICの「Nociones específicas（具体的な話題）」とCEFR B1の内容から、**会話の授業で出やすいもの**を選びました。どれがいつ授業に出るかは教科書や先生しだいなので、**順番は決めていません**。
+
+| テーマ | よく話す内容 | 使う文法の例 |
+|---|---|---|
+| 自分と家族・人間関係 | 性格、子どものころの話、友だち | 線過去、ser/estar |
+| 経験・思い出 | 旅行、人生のできごと、失敗談 | 点過去・線過去・現在完了 |
+| 食べ物 | 好きな料理、レシピ、レストラン | 命令形、se impersonal |
+| 住まい・町 | 家探し、近所、町の変化 | 線過去（昔は〜だった）、比較 |
+| 仕事・勉強 | 経歴、将来の計画、学校 | 点過去、未来形 |
+| 健康・体 | 体調、アドバイス | 過去未来（deberías）、命令形 |
+| 余暇・旅行 | 予定を立てる、旅行の話 | 未来形、点過去 |
+| 買い物・サービス | お店、苦情、お願い | 過去未来（ていねい） |
+| メディア・ニュース | ニュースを伝える、意見を言う | 間接話法、意見の表現 |
+| 環境・社会 | 問題と解決策、意見 | 接続法（es importante que） |
+| 文化・習慣 | 日本とスペインのちがい | 比較、soler |
+| 気持ち・願い | 希望、感情 | 接続法（ojalá, me alegra que） |
+
+---
+
+## 4. 「できること（機能）」の一覧
+
+B1の会話で求められる「すること」です。会話表現集（`会話表現/`フォルダ）とつながっています。
+
+- 過去の経験を話す・物語を語る
+- 意見を言う・理由を言う
+- 同意する・反対する
+- 聞き返す・確認する
+- アドバイスする・提案する
+- 願い・気持ちを伝える
+- 人の話を伝える
+- 計画・予定を話す
+
+</script>
+<script type="text/markdown" id="md-fukushu" data-label="復習ノート" data-file="復習ノート/00_使い方.md">
+# 復習ノート
+
+# 2026-10-14（水）｜現在完了「Mi vida hasta hoy」
+
+> **宿題（推測）**：プリントに「作文を書く」とあるので、宿題の可能性が高いです。締め切りと長さは先生に確認してください（7. の質問文を使えます）。
+
+## 1. 今日の授業のまとめ
+
+- テーマは **現在完了（pretérito perfecto）**：*he viajado*（旅行したことがある）、*he estudiado*（勉強した）など。
+- 課題は「**Mi vida hasta hoy**（今までの私の人生）」という短い作文。
+- 「人生の経験」「最近したこと」「今につながっていること」を、時を表す言葉（*nunca*, *hoy*, *este año* など）を使って書く。
+
+### プリントの日本語訳
+
+**「今までの私の人生」**
+次の点を入れて、短い作文を書きましょう。
+
+- 人生の**経験を3つ**（*he viajado*＝旅行したことがある、*he estudiado*＝勉強したことがある、*he conocido*＝知り合ったことがある…）
+- **最近したことを2つ**（*esta semana*＝今週、*este mes*＝今月、*hoy*＝今日…）
+- **今に結果が残っていること1つ**（*me he roto...*＝〜を骨折した、*he perdido...*＝〜をなくした、*he aprendido...*＝〜を覚えた…）
+- 授業で習った**時の表現を2つ以上**（*alguna vez*＝今までに一度でも、*nunca*＝一度も〜ない、*este año*＝今年、*hoy*＝今日、*hasta ahora*＝今まで、*últimamente*＝最近）
+
+**ヒント**：次の質問に答えてもいいです。
+
+| スペイン語 | 日本語 |
+|---|---|
+| ¿Qué has hecho este año? | 今年は何をした？ |
+| ¿Qué lugares has visitado? | どんな場所に行ったことがある？ |
+| ¿Qué actividades nuevas has aprendido? | どんな新しいことを覚えた？ |
+| ¿Qué experiencias has tenido en tu vida? | 人生でどんな経験をした？ |
+| ¿Qué has hecho hoy o esta semana? | 今日や今週は何をした？ |
+| ¿Qué ha cambiado en tu vida recientemente? | 最近、生活で何が変わった？ |
+
+## 2. 新しい単語・表現
+
+| スペイン語 | 日本語 | 例文 |
+|---|---|---|
+| el alumnado | 生徒たち（全員） | *El alumnado debe escribir una redacción.*（生徒は作文を書かなければならない） |
+| una redacción | 作文 | *He escrito una redacción.*（作文を書いた） |
+| tener en cuenta | 〜を考えに入れる | *Ten en cuenta estos puntos.*（これらの点を考えに入れて） |
+| reciente / recientemente | 最近の／最近 | *¿Qué ha cambiado recientemente?* |
+| una consecuencia | 結果 | — |
+| al menos | 少なくとも | *Usa al menos dos expresiones.*（少なくとも2つの表現を使って） |
+| una guía de apoyo | ヒント・手引き | — |
+| alguna vez | 今までに一度でも | *¿Has estado alguna vez en Japón?*（日本に行ったことある？） |
+| hasta ahora | 今まで | *Hasta ahora todo ha ido bien.*（今まで全部うまくいっている） |
+| últimamente | 最近 | *Últimamente he dormido poco.*（最近あまり寝ていない） |
+| romperse | （骨などを）折る、こわれる | *Me he roto el brazo.*（腕を骨折した） |
+
+## 3. 文法のポイント：現在完了（pretérito perfecto）
+
+### 形：haber ＋ 過去分詞
+
+| | haber | ＋ 過去分詞 |
+|---|---|---|
+| yo | **he** | viaj**ado** |
+| tú | **has** | com**ido** |
+| él / ella / usted | **ha** | viv**ido** |
+| nosotros | **hemos** | estudi**ado** |
+| vosotros | **habéis** | conoc**ido** |
+| ellos / ustedes | **han** | aprend**ido** |
+
+- 過去分詞の作り方：-ar → **-ado**、-er / -ir → **-ido**
+- 過去分詞は**形が変わりません**（女性でも複数でも *viajado* のまま）。
+
+### 不規則な過去分詞（よく出るもの）
+
+| 原形 | 過去分詞 | 原形 | 過去分詞 |
+|---|---|---|---|
+| hacer（する） | **hecho** | decir（言う） | **dicho** |
+| ver（見る） | **visto** | escribir（書く） | **escrito** |
+| poner（置く） | **puesto** | volver（戻る） | **vuelto** |
+| abrir（開ける） | **abierto** | romper（こわす） | **roto** |
+| morir（死ぬ） | **muerto** | descubrir（発見する） | **descubierto** |
+
+### いつ使う？（スペインの場合）
+
+1. **人生の経験**（いつかは言わない）
+   > *He viajado a Italia dos veces.*（イタリアに2回行ったことがある）
+   > *Nunca he comido pulpo.*（タコを食べたことが一度もない）
+2. **「今」をふくむ時間の中でしたこと**（*hoy, esta semana, este año*）
+   > *Hoy he hablado con mi profesora.*（今日、先生と話した）
+3. **今に結果が残っていること**
+   > *He perdido las llaves y no puedo entrar en casa.*（鍵をなくしたので、家に入れない）
+
+### 点過去とのちがい（ここが大事！）
+
+| 現在完了 | 点過去 |
+|---|---|
+| ***Hoy** he ido al médico.*（今日、病院に行った） | ***Ayer** fui al médico.*（昨日、病院に行った） |
+| ***Este año** he viajado mucho.*（今年はたくさん旅行した） | ***El año pasado** viajé mucho.*（去年はたくさん旅行した） |
+| *¿**Alguna vez** has estado en Japón?*（日本に行ったことある？） | *Estuve en Japón **en 2019**.*（2019年に日本に行った） |
+
+→ **「今」とつながっている時間なら現在完了、もう終わった時間なら点過去**。
+
+### 日本語話者が気をつけること
+
+- **he と動詞の間に何も入れない**：○ *No he comido.* × ~~He no comido.~~　○ *Nunca he estado.* × ~~He nunca estado.~~
+- **再帰動詞の me / te / se は he の前**：○ *Me he levantado tarde.*（遅く起きた）
+- 中南米では、現在完了のかわりに点過去を使うことが多いです。授業では先生（スペイン）の使い方に合わせましょう。
+
+## 4. 次の授業で使える表現
+
+1. *¿Alguna vez has estado en...?* — 〜に行ったことある？
+2. *Nunca he...* — 一度も〜したことがない。
+3. *¿Qué has hecho este fin de semana?* — 週末なにしたの？（⚠ 月曜日などに聞くとき。点過去を使う人もいます）
+
+## 5. 作文の例（参考）
+
+条件を全部入れた例です。**[ ] の部分を自分のことに変えて**使ってください。
+
+> **Mi vida hasta hoy**
+>
+> Me llamo [名前] y soy de Japón. En mi vida **he hecho** muchas cosas interesantes. **He viajado** por [varios países de Europa] y **he conocido** a personas de todo el mundo. También **he estudiado** [inglés] durante muchos años. **Nunca he estado** en [Sudamérica], pero me gustaría ir algún día.
+>
+> **Esta semana he empezado** a escribir un diario en español. **Hoy he hablado** con mi profesora después de clase.
+>
+> **Últimamente he aprendido** muchas palabras nuevas, así que ahora entiendo mejor a la gente en la calle.
+>
+> **Hasta ahora**, mi vida en España **ha sido** una gran aventura.
+
+日本語訳：
+私の名前は[名前]で、日本出身です。今までにおもしろいことをたくさんしてきました。[ヨーロッパのいくつかの国]を旅行したことがあり、世界中の人と知り合いました。また、[英語]を長年勉強しました。[南米]には一度も行ったことがありませんが、いつか行ってみたいです。
+今週、スペイン語で日記を書き始めました。今日は授業のあと先生と話しました。
+最近たくさんの新しい単語を覚えたので、今は町の人の話が前よりわかります。
+今までのところ、スペインでの生活は大冒険です。
+
+**チェック**：経験3つ（*he viajado, he conocido, he estudiado*）／最近のこと2つ（*esta semana, hoy*）／今に結果が残っていること1つ（*he aprendido → ahora entiendo*）／時の表現（*nunca, esta semana, hoy, últimamente, hasta ahora*）
+
+## 6. 練習問題
+
+1. 過去分詞にしてください：① hacer ② ver ③ escribir ④ volver ⑤ romper
+2. Este año (yo, viajar) ______ a Portugal.
+3. ¿(Tú, estar) ______ alguna vez en Japón?
+4. Nosotros nunca (ver) ______ esa película.
+5. Esta mañana (yo, levantarse) ______ muy tarde.
+6. 現在完了か点過去か：① Ayer (yo, ir) ______ al médico. ② Hoy (yo, ir) ______ al médico.
+7. まちがいを直してください：*He no terminado la redacción.*
+
+## 答えと解説
+
+1. ① **hecho** ② **visto** ③ **escrito** ④ **vuelto** ⑤ **roto**（全部不規則。そのまま覚えましょう）
+2. **he viajado** … *este año*（今年）は「今」をふくむ時間なので現在完了
+3. **Has estado** … *alguna vez*（今までに一度でも）は経験をたずねる表現
+4. **hemos visto** … *nunca* は he の前に置く（*Nosotros nunca hemos visto*）。*No hemos visto nunca* も正しいです
+5. **me he levantado** … 再帰の *me* は *he* の前に置く。*esta mañana*（今朝）は今日の中なので現在完了
+6. ① **fui**（*ayer* はもう終わった時間 → 点過去） ② **he ido**（*hoy* は今をふくむ → 現在完了）
+7. ***No he terminado** la redacción.* … *no* は *he* の前。he と過去分詞の間には何も入れません
+
+## 7. 先生に聞くとよいこと
+
+- 作文の締め切りはいつですか？
+  - *¿Para cuándo es la redacción?*
+- 何語くらい書けばいいですか？
+  - *¿Cuántas palabras tiene que tener?*
+- 手書きで出しますか？メールで出しますか？
+  - *¿La entregamos a mano o por correo electrónico?*
+- 「今週末」のことは、現在完了と点過去のどちらを使えばいいですか？
+  - *Para hablar del fin de semana, ¿usamos el pretérito perfecto o el indefinido?*
+
+## 8. 自信がない部分（推測）
+
+- **宿題かどうか**は、プリントからはわかりません。「作文を書く」課題なので、宿題か授業中の課題だと思われます。
+- 授業で先生が話した内容（口頭の説明）は、プリントにないのでわかりません。このノートは**プリントだけ**をもとにしています。
+- 「週末のこと」に現在完了と点過去のどちらを使うかは、人や地域によってちがいます。先生の使い方を優先してください。
+
+
+---
+
+# 授業の復習ノートの使い方
+
+## 流れ
+
+1. 授業のあと、下の「**貼りつけ用メモ**」をコピーして、わかる部分だけうめる。
+2. チャットに貼って「**復習ノートにして**」と送る。
+3. Claude が「**ノートの形式**」でファイルを作り、このフォルダに保存する。
+   - ファイル名：`2026-10-08_線過去と点過去.md` のように「日付_テーマ」
+
+**全部うめなくて大丈夫です。** 黒板の写真の文字、聞こえた単語だけ、プリントの一部だけでもOKです。
+
+---
+
+## 貼りつけ用メモ（これをコピーして使う）
+
+```
+【日付】
+【今日のテーマ（わかれば）】
+【黒板に書いてあったこと】
+
+【プリント・教科書のページ（わかれば）】
+
+【聞こえたけど意味がわからなかった言葉】
+
+【先生が何度も言っていた言葉】
+
+【宿題（わかれば）】
+
+【わからなかったこと・聞きたいこと】
+
+```
+
+---
+
+## ノートの形式（Claude が作るもの）
+
+```
+# 日付｜テーマ
+
+## 1. 今日の授業のまとめ（日本語で3行）
+## 2. 新しい単語・表現（表：スペイン語／日本語／例文）
+## 3. 文法のポイント（やさしい日本語で説明＋例文）
+## 4. 次の授業で使える表現（3つ）
+## 5. 練習問題（5問）
+## 6. 答えと解説
+## 7. 先生に聞くとよいこと（スペイン語の質問文つき）
+## 8. 自信がない部分（推測した部分）
+```
+
+### 形式のルール
+
+- 説明は日本語、例文はスペイン語（日本語訳つき）。
+- メモから**読み取れなかった部分は「推測」と書く**。
+- 「8. 自信がない部分」には、Claude の説明が先生とちがうかもしれない点を書く。→ 次の授業で先生に確認してください。
+- 宿題が書いてあれば、ノートの一番上に「宿題」としてのせる。
+
+テンプレートは [テンプレート.md](テンプレート.md) にあります。
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  var sources = Array.prototype.slice.call(document.querySelectorAll('script[type="text/markdown"]'));
+  var nav = document.querySelector('.tabs');
+  var doc = document.getElementById('doc');
+  var KEY = 'b1-tab';
+
+  function render(id) {
+    var src = document.getElementById('md-' + id) || sources[0];
+    id = src.id.slice(3);
+    var md = src.textContent;
+    doc.innerHTML = window.marked ? marked.parse(md) : '<pre></pre>';
+    if (!window.marked) doc.firstChild.textContent = md;
+
+    // wide tables scroll inside their own box
+    doc.querySelectorAll('table').forEach(function (t) {
+      var w = document.createElement('div'); w.className = 'table-wrap';
+      t.parentNode.insertBefore(w, t); w.appendChild(t);
+    });
+    // answers stay folded until tapped
+    doc.querySelectorAll('h2').forEach(function (h) {
+      if (h.textContent.indexOf('答えと解説') === -1) return;
+      var d = document.createElement('details'), s = document.createElement('summary');
+      s.textContent = h.textContent + '（タップで開く）';
+      h.parentNode.insertBefore(d, h); d.appendChild(s);
+      var n = h;
+      while (n && !(n !== h && (n.tagName === 'H2' || n.tagName === 'H1'))) { var next = n.nextSibling; d.appendChild(n); n = next; }
+    });
+    // links between notes switch tabs
+    doc.querySelectorAll('a[href]').forEach(function (a) {
+      var href = decodeURIComponent(a.getAttribute('href'));
+      if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener'; return; }
+      var hit = sources.filter(function (s) { return href.indexOf(s.dataset.file) !== -1; })[0];
+      a.addEventListener('click', function (e) { e.preventDefault(); if (hit) show(hit.id.slice(3)); });
+      if (!hit) a.removeAttribute('href');
+    });
+    doc.querySelectorAll('input[type="checkbox"]').forEach(function (c, i) {
+      c.disabled = false; c.id = 'chk-' + id + '-' + i;
+      try { c.checked = localStorage.getItem(c.id) === '1'; } catch (e) {}
+      c.addEventListener('change', function () { try { localStorage.setItem(c.id, c.checked ? '1' : '0'); } catch (e) {} });
+    });
+    nav.querySelectorAll('button').forEach(function (b) {
+      var on = b.dataset.id === id;
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      if (on && b.scrollIntoView) b.scrollIntoView({ block: 'nearest', inline: 'center' });
+    });
+    return id;
+  }
+  function show(id) {
+    id = render(id);
+    window.scrollTo(0, 0);
+    try { localStorage.setItem(KEY, id); } catch (e) {}
+    try { history.replaceState(null, '', '#' + id); } catch (e) {}
+  }
+
+  sources.forEach(function (s) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.id = s.id.slice(3); b.textContent = s.dataset.label;
+    b.addEventListener('click', function () { show(b.dataset.id); });
+    nav.appendChild(b);
+  });
+  var start = location.hash.slice(1);
+  if (!start) { try { start = localStorage.getItem(KEY); } catch (e) {} }
+  render(start || '');
+})();
+</script>
+
+</body>
+</html>
