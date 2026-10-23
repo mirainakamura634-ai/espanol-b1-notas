@@ -86,6 +86,25 @@ details h2 { display: none; }
 input[type="checkbox"] { width: 1.1em; height: 1.1em; accent-color: var(--teal); vertical-align: -0.15em; margin-right: 0.3em; }
 li:has(> input[type="checkbox"]) { list-style: none; margin-left: -1.2em; }
 .updated { color: var(--ink-soft); font-size: 0.85rem; margin-top: 3em; }
+.list-note { color: var(--ink-soft); }
+.note-list { list-style: none; padding: 0; margin: 1em 0; display: grid; gap: 8px; }
+.note-list li { margin: 0; }
+.note-item {
+  width: 100%; display: flex; flex-direction: column; gap: 2px; text-align: left;
+  font: inherit; padding: 12px 14px; border-radius: 10px; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line); color: var(--ink);
+}
+.note-item:hover { border-color: var(--teal); }
+.note-date { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.note-title { font-weight: 700; line-height: 1.5; }
+.chip { font-size: 0.75rem; line-height: 1.6; padding: 0 8px; border-radius: 999px; background: var(--teal); color: var(--paper); font-weight: 700; }
+.note-bar { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.note-bar.bottom { margin-top: 2.5em; padding-top: 1em; border-top: 1px solid var(--line); }
+.link-btn {
+  font: inherit; font-size: 0.9rem; line-height: 1.3; padding: 8px 14px; border-radius: 999px; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line); color: var(--teal); max-width: 100%;
+}
+.note-item:focus-visible, .link-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 </style>
 
 <nav class="tabs" role="tablist" aria-label="ノートの切りかえ"></nav>
@@ -1066,10 +1085,506 @@ B1の会話で求められる「すること」です。会話表現集（`会�
 - 計画・予定を話す
 
 </script>
-<script type="text/markdown" id="md-fukushu" data-label="復習ノート" data-file="復習ノート/00_使い方.md">
-# 復習ノート
+<script type="text/markdown" id="md-fukushu" data-label="復習ノート" data-list="1" data-file="復習ノート/">
 
-# 2026-10-23｜宿題：練習帳（Cuaderno de ejercicios）0課 5〜13
+</script>
+<script type="text/markdown" id="md-n20261014-0" data-note="1" data-date="2026-10-14（水）" data-title="現在完了「Mi vida hasta hoy」" data-file="復習ノート/2026-10-14_現在完了「Mi vida hasta hoy」.md">
+# 2026-10-14（水）｜現在完了「Mi vida hasta hoy」
+
+> **宿題（推測）**：プリントに「作文を書く」とあるので、宿題の可能性が高いです。締め切りと長さは先生に確認してください（7. の質問文を使えます）。
+
+## 1. 今日の授業のまとめ
+
+- テーマは **現在完了（pretérito perfecto）**：*he viajado*（旅行したことがある）、*he estudiado*（勉強した）など。
+- 課題は「**Mi vida hasta hoy**（今までの私の人生）」という短い作文。
+- 「人生の経験」「最近したこと」「今につながっていること」を、時を表す言葉（*nunca*, *hoy*, *este año* など）を使って書く。
+
+### プリントの日本語訳
+
+**「今までの私の人生」**
+次の点を入れて、短い作文を書きましょう。
+
+- 人生の**経験を3つ**（*he viajado*＝旅行したことがある、*he estudiado*＝勉強したことがある、*he conocido*＝知り合ったことがある…）
+- **最近したことを2つ**（*esta semana*＝今週、*este mes*＝今月、*hoy*＝今日…）
+- **今に結果が残っていること1つ**（*me he roto...*＝〜を骨折した、*he perdido...*＝〜をなくした、*he aprendido...*＝〜を覚えた…）
+- 授業で習った**時の表現を2つ以上**（*alguna vez*＝今までに一度でも、*nunca*＝一度も〜ない、*este año*＝今年、*hoy*＝今日、*hasta ahora*＝今まで、*últimamente*＝最近）
+
+**ヒント**：次の質問に答えてもいいです。
+
+| スペイン語 | 日本語 |
+|---|---|
+| ¿Qué has hecho este año? | 今年は何をした？ |
+| ¿Qué lugares has visitado? | どんな場所に行ったことがある？ |
+| ¿Qué actividades nuevas has aprendido? | どんな新しいことを覚えた？ |
+| ¿Qué experiencias has tenido en tu vida? | 人生でどんな経験をした？ |
+| ¿Qué has hecho hoy o esta semana? | 今日や今週は何をした？ |
+| ¿Qué ha cambiado en tu vida recientemente? | 最近、生活で何が変わった？ |
+
+## 2. 新しい単語・表現
+
+| スペイン語 | 日本語 | 例文 |
+|---|---|---|
+| el alumnado | 生徒たち（全員） | *El alumnado debe escribir una redacción.*（生徒は作文を書かなければならない） |
+| una redacción | 作文 | *He escrito una redacción.*（作文を書いた） |
+| tener en cuenta | 〜を考えに入れる | *Ten en cuenta estos puntos.*（これらの点を考えに入れて） |
+| reciente / recientemente | 最近の／最近 | *¿Qué ha cambiado recientemente?* |
+| una consecuencia | 結果 | — |
+| al menos | 少なくとも | *Usa al menos dos expresiones.*（少なくとも2つの表現を使って） |
+| una guía de apoyo | ヒント・手引き | — |
+| alguna vez | 今までに一度でも | *¿Has estado alguna vez en Japón?*（日本に行ったことある？） |
+| hasta ahora | 今まで | *Hasta ahora todo ha ido bien.*（今まで全部うまくいっている） |
+| últimamente | 最近 | *Últimamente he dormido poco.*（最近あまり寝ていない） |
+| romperse | （骨などを）折る、こわれる | *Me he roto el brazo.*（腕を骨折した） |
+
+## 3. 文法のポイント：現在完了（pretérito perfecto）
+
+### 形：haber ＋ 過去分詞
+
+| | haber | ＋ 過去分詞 |
+|---|---|---|
+| yo | **he** | viaj**ado** |
+| tú | **has** | com**ido** |
+| él / ella / usted | **ha** | viv**ido** |
+| nosotros | **hemos** | estudi**ado** |
+| vosotros | **habéis** | conoc**ido** |
+| ellos / ustedes | **han** | aprend**ido** |
+
+- 過去分詞の作り方：-ar → **-ado**、-er / -ir → **-ido**
+- 過去分詞は**形が変わりません**（女性でも複数でも *viajado* のまま）。
+
+### 不規則な過去分詞（よく出るもの）
+
+| 原形 | 過去分詞 | 原形 | 過去分詞 |
+|---|---|---|---|
+| hacer（する） | **hecho** | decir（言う） | **dicho** |
+| ver（見る） | **visto** | escribir（書く） | **escrito** |
+| poner（置く） | **puesto** | volver（戻る） | **vuelto** |
+| abrir（開ける） | **abierto** | romper（こわす） | **roto** |
+| morir（死ぬ） | **muerto** | descubrir（発見する） | **descubierto** |
+
+### いつ使う？（スペインの場合）
+
+1. **人生の経験**（いつかは言わない）
+   > *He viajado a Italia dos veces.*（イタリアに2回行ったことがある）
+   > *Nunca he comido pulpo.*（タコを食べたことが一度もない）
+2. **「今」をふくむ時間の中でしたこと**（*hoy, esta semana, este año*）
+   > *Hoy he hablado con mi profesora.*（今日、先生と話した）
+3. **今に結果が残っていること**
+   > *He perdido las llaves y no puedo entrar en casa.*（鍵をなくしたので、家に入れない）
+
+### 点過去とのちがい（ここが大事！）
+
+| 現在完了 | 点過去 |
+|---|---|
+| ***Hoy** he ido al médico.*（今日、病院に行った） | ***Ayer** fui al médico.*（昨日、病院に行った） |
+| ***Este año** he viajado mucho.*（今年はたくさん旅行した） | ***El año pasado** viajé mucho.*（去年はたくさん旅行した） |
+| *¿**Alguna vez** has estado en Japón?*（日本に行ったことある？） | *Estuve en Japón **en 2019**.*（2019年に日本に行った） |
+
+→ **「今」とつながっている時間なら現在完了、もう終わった時間なら点過去**。
+
+> **大事なルール：経験を話すとき**
+> - **「いつ」を言わない → 現在完了**：*He estudiado alemán.*（ドイツ語を勉強したことがある）
+> - **「いつ」を言いたい → 点過去**：*Estudié alemán cuando era estudiante.*（学生のとき、ドイツ語を勉強した）
+>
+> くわしくは「文法：02_現在完了と点過去」を見てください。
+
+### 日本語話者が気をつけること
+
+- **he と動詞の間に何も入れない**：○ *No he comido.* × ~~He no comido.~~　○ *Nunca he estado.* × ~~He nunca estado.~~
+- **再帰動詞の me / te / se は he の前**：○ *Me he levantado tarde.*（遅く起きた）
+- 中南米では、現在完了のかわりに点過去を使うことが多いです。授業では先生（スペイン）の使い方に合わせましょう。
+
+## 4. 次の授業で使える表現
+
+1. *¿Alguna vez has estado en...?* — 〜に行ったことある？
+2. *Nunca he...* — 一度も〜したことがない。
+3. *¿Qué has hecho este fin de semana?* — 週末なにしたの？（⚠ 月曜日などに聞くとき。点過去を使う人もいます）
+
+## 5. 作文の例（参考）
+
+条件を全部入れた例です。**[ ] の部分を自分のことに変えて**使ってください。
+
+> **Mi vida hasta hoy**
+>
+> Me llamo [名前] y soy de Japón. En mi vida **he hecho** muchas cosas interesantes. **He viajado** por [varios países de Europa] y **he conocido** a personas de todo el mundo. También **he estudiado** [inglés] durante muchos años. **Nunca he estado** en [Sudamérica], pero me gustaría ir algún día.
+>
+> **Esta semana he empezado** a escribir un diario en español. **Hoy he hablado** con mi profesora después de clase.
+>
+> **Últimamente he aprendido** muchas palabras nuevas, así que ahora entiendo mejor a la gente en la calle.
+>
+> **Hasta ahora**, mi vida en España **ha sido** una gran aventura.
+
+日本語訳：
+私の名前は[名前]で、日本出身です。今までにおもしろいことをたくさんしてきました。[ヨーロッパのいくつかの国]を旅行したことがあり、世界中の人と知り合いました。また、[英語]を長年勉強しました。[南米]には一度も行ったことがありませんが、いつか行ってみたいです。
+今週、スペイン語で日記を書き始めました。今日は授業のあと先生と話しました。
+最近たくさんの新しい単語を覚えたので、今は町の人の話が前よりわかります。
+今までのところ、スペインでの生活は大冒険です。
+
+**チェック**：経験3つ（*he viajado, he conocido, he estudiado*）／最近のこと2つ（*esta semana, hoy*）／今に結果が残っていること1つ（*he aprendido → ahora entiendo*）／時の表現（*nunca, esta semana, hoy, últimamente, hasta ahora*）
+
+## 6. 練習問題
+
+1. 過去分詞にしてください：① hacer ② ver ③ escribir ④ volver ⑤ romper
+2. Este año (yo, viajar) ______ a Portugal.
+3. ¿(Tú, estar) ______ alguna vez en Japón?
+4. Nosotros nunca (ver) ______ esa película.
+5. Esta mañana (yo, levantarse) ______ muy tarde.
+6. 現在完了か点過去か：① Ayer (yo, ir) ______ al médico. ② Hoy (yo, ir) ______ al médico.
+7. まちがいを直してください：*He no terminado la redacción.*
+
+## 答えと解説
+
+1. ① **hecho** ② **visto** ③ **escrito** ④ **vuelto** ⑤ **roto**（全部不規則。そのまま覚えましょう）
+2. **he viajado** … *este año*（今年）は「今」をふくむ時間なので現在完了
+3. **Has estado** … *alguna vez*（今までに一度でも）は経験をたずねる表現
+4. **hemos visto** … *nunca* は he の前に置く（*Nosotros nunca hemos visto*）。*No hemos visto nunca* も正しいです
+5. **me he levantado** … 再帰の *me* は *he* の前に置く。*esta mañana*（今朝）は今日の中なので現在完了
+6. ① **fui**（*ayer* はもう終わった時間 → 点過去） ② **he ido**（*hoy* は今をふくむ → 現在完了）
+7. ***No he terminado** la redacción.* … *no* は *he* の前。he と過去分詞の間には何も入れません
+
+## 7. 先生に聞くとよいこと
+
+- 作文の締め切りはいつですか？
+  - *¿Para cuándo es la redacción?*
+- 何語くらい書けばいいですか？
+  - *¿Cuántas palabras tiene que tener?*
+- 手書きで出しますか？メールで出しますか？
+  - *¿La entregamos a mano o por correo electrónico?*
+- 「今週末」のことは、現在完了と点過去のどちらを使えばいいですか？
+  - *Para hablar del fin de semana, ¿usamos el pretérito perfecto o el indefinido?*
+
+## 8. 自信がない部分（推測）
+
+- **宿題かどうか**は、プリントからはわかりません。「作文を書く」課題なので、宿題か授業中の課題だと思われます。
+- 授業で先生が話した内容（口頭の説明）は、プリントにないのでわかりません。このノートは**プリントだけ**をもとにしています。
+- 「週末のこと」に現在完了と点過去のどちらを使うかは、人や地域によってちがいます。先生の使い方を優先してください。
+
+</script>
+<script type="text/markdown" id="md-n20261019-1" data-note="1" data-date="2026-10-19（月）" data-title="0課「Gente en clase」" data-file="復習ノート/2026-10-19_0課「Gente en clase」.md">
+# 2026-10-19（月）｜0課「Gente en clase」
+
+> **宿題（推測）**：教科書のページに「CUADERNO DE EJERCICIOS（練習帳）」の番号が書いてあります。**pp. 11-12 ejs. 3-4／pp. 13-14 ejs. 5-9／pp. 14-15 ejs. 10-13**。宿題かどうかは先生に確認してください。答えは、10月18日に届いた「練習帳0課の答え」のPDFで確認できます。
+
+## 1. 今日の授業のまとめ
+
+- 教科書「Gente al día 2」の**0課「Gente en clase」**（教科書 p.14〜17）を、コピーで勉強した。
+- この課のゴールは、クラスの人と知り合いになって、**スペイン語を学ぶための好きなテーマや活動のリスト**を作ること。
+- 習う表現は5つ：**me parece(n)＋形容詞**（〜だと思う）、**me cuesta(n)**（〜が苦手）、**現在分詞**（〜しながら）、**me interesa(n)**（〜に興味がある）、**por / porque / para**（理由と目的）。それから、語学のレベルの言い方。
+
+### ページごとの内容
+
+| ページ | 活動 | 何をする？ |
+|---|---|---|
+| p.14 | 表紙 | 写真の人について話す（どんな仕事？どんな生活？） |
+| p.15 | 1. Un test | 好きな場所・本・料理・季節などの質問に答えて、ペアでくらべる |
+| p.16 | 2. ¿Por qué y para qué el español? | スペイン語を学ぶ**理由**・**興味**・**将来の使い道**を選んで話す |
+| p.16 | 3. Mis experiencias con el español | 語学の経験を聞く／何が難しいかを表にする |
+| p.17 | 4. 学び方・コツ | どの勉強法が役に立つか話す／毎日できるコツを読む |
+| p.17 | 5. En este curso nos gustaría... | この授業でやりたいことをグループでリストにする |
+
+## 2. 新しい単語・表現
+
+### p.15「Un test」の単語
+
+| スペイン語 | 日本語 |
+|---|---|
+| el autor / la autora | 作者 |
+| una manía | くせ、こだわり |
+| una cualidad | 長所 |
+| admirar | 尊敬する、すごいと思う |
+| un defecto | 短所 |
+| odiar | 大きらい |
+| el saber estar | ふるまいがきちんとしていること |
+| la generosidad | 気前のよさ、寛大さ |
+| la avaricia | 欲ばり |
+| la vanidad | 見栄っぱり |
+| preocupar | 心配させる（*Me preocupa...* ＝〜が心配） |
+| el racismo | 人種差別 |
+| una estación del año | 季節 |
+| fregar los platos | 皿を洗う |
+| planchar | アイロンをかける |
+| una prenda de vestir | 服（1着） |
+| un jersey de cuello redondo | 丸首のセーター |
+| un mono | つなぎ（服） |
+| marrón | 茶色 |
+
+### p.16〜17 の単語
+
+| スペイン語 | 日本語 | 例文 |
+|---|---|---|
+| el aprendizaje | 学習 | *el aprendizaje del español*（スペイン語の学習） |
+| coincidir | 意見が同じになる | *Coincidimos en dos puntos.*（2つの点で同じだった） |
+| la actualidad | 時事、今のニュース | — |
+| cotidiano/a ＝ diario/a | 日常の | *la vida cotidiana*（日常生活） |
+| identificarse con | 〜に共感する | *Me identifico con Borja.*（ボルハに共感する） |
+| la dificultad | 難しさ | — |
+| recordar | 覚えておく、思い出す | *Me cuesta recordar el vocabulario.* |
+| echar un vistazo | ざっと見る | *Echa un vistazo a estos trucos.* |
+| un truco | コツ | — |
+| diariamente | 毎日 | — |
+| atreverse a ＋不定詞 | 思い切って〜する | *Me atrevo a hablar.*（思い切って話す） |
+| sacar partido a | 〜をうまく活用する | *Sácale partido a internet.* |
+| asociar | 結びつける | — |
+| un dictado | 書き取り | — |
+| traducir | 翻訳する | — |
+
+### ことわざ・決まった言い方
+
+- ***Tengo la palabra en la punta de la lengua.***
+  言葉が舌の先まで出かかっている（＝思い出せそうで思い出せない）
+
+## 3. 文法のポイント
+
+### ① me interesa / me cuesta / me parece ―「gustar と同じ形」の動詞
+
+*gustar* と同じで、**好き・苦手・興味の「対象」が主語**になります。対象が1つなら単数、複数なら複数にします。
+
+| 動詞 | 1つ・動詞の原形 | 複数 |
+|---|---|---|
+| interesar（興味がある） | *Me interesa **la música**.* | *Me interesan **las culturas hispanas**.* |
+| costar（苦手、難しい） | *Me cuesta **hablar**.* / *Me cuesta **la pronunciación**.* | *Me cuestan **los verbos**.* |
+| parecer（〜だと思う） | *Me parece **útil** ver series.* | *Me parecen **aburridos** los ejercicios.* |
+
+- 動詞の原形（*hablar* など）がくるときは、いつも**単数**です。
+- *me parece(n)* のあとの形容詞は、**対象に合わせて変化**します（*aburridos* は *los ejercicios* に合わせた形）。
+
+### ② 現在分詞（gerundio）＝「〜しながら」「〜することで」
+
+| 原形 | 作り方 | 現在分詞 |
+|---|---|---|
+| hablar | -ar → **-ando** | habl**ando** |
+| aprender | -er → **-iendo** | aprend**iendo** |
+| escribir | -ir → **-iendo** | escrib**iendo** |
+| leer / ir | 不規則 | **leyendo** / **yendo** |
+| decir / dormir | 不規則 | **diciendo** / **durmiendo** |
+
+> *Aprendo español **escuchando** música.*（音楽を聞きながらスペイン語を学ぶ）
+> *Se aprende a hablar **hablando**.*（話すことは、話すことで身につく）
+
+⚠ **ノートの直し**：「aprendido＝学びながら」とメモしてありましたが、「学びながら」は ***aprendiendo*** です。*aprendido* は過去分詞で、*he aprendido*（学んだ）のように使います。
+
+### ③ por / porque / para ― 理由と目的
+
+| 質問 | 答え方 | 例 |
+|---|---|---|
+| **¿Por qué?**（なぜ？） | **porque ＋ 文** | *Porque tengo amigos españoles.* |
+| | **por ＋ 名詞** | *Por mi trabajo.* |
+| **¿Para qué?**（何のために？） | **para ＋ 動詞の原形** | *Para viajar.* |
+| | **para ＋ 名詞** | *Para mis estudios.* |
+
+→ ノートのメモ（porque＋文、por＋名詞、para＋動詞・名詞）は正しいです！
+
+### ④ 語学のレベルを言う
+
+> *Hablo inglés **bastante bien**.*（英語をかなり上手に話す）
+> *Entiendo el alemán, pero **me cuesta** hablar.*（ドイツ語はわかるけど、話すのは苦手）
+> *Mi nivel de español es **intermedio**.*（スペイン語は中級です）
+
+## 4. 次の授業で使える表現
+
+授業の活動で、そのまま使えるように [ ] の部分を自分のことに変えてください。
+
+1. **理由**：*Estudio español porque **vivo en España** y para **hablar con la gente**.*
+   （スペインに住んでいるので、人と話すためにスペイン語を勉強しています）
+2. **苦手**：*Me cuesta mucho **entender cuando alguien habla rápido**.*
+   （人が速く話すと、理解するのがとても難しいです）
+3. **学び方**：*Aprendo español **escribiendo frases y corrigiéndolas con la IA**.*
+   （文を書いて、AIで直しながらスペイン語を学んでいます）
+
+## 5. 練習問題
+
+1. 正しいほうを選んでください：Me (cuesta / cuestan) los verbos irregulares.
+2. 正しいほうを選んでください：Me (interesa / interesan) el cine español.
+3. 現在分詞にしてください：① leer ② aprender ③ ir
+4. （　）に porque / por / para を入れてください：Estudio español (　) viajar por Sudamérica.
+5. （　）に porque / por / para を入れてください：Estudio español (　) mi trabajo.
+6. まちがいを直してください：*Me parece aburrido los ejercicios de gramática.*
+
+## 答えと解説
+
+1. **cuestan** … *los verbos*（複数）が主語なので複数形
+2. **interesa** … *el cine*（1つ）が主語なので単数形
+3. ① **leyendo** ② **aprendiendo** ③ **yendo**（3つとも、よく出る形です）
+4. **para** … 「旅行するため」＝目的。後ろが動詞の原形
+5. **por** … 「仕事のため（理由）」＝後ろが名詞。*porque* なら、後ろに文が必要です
+6. *Me **parecen aburridos** los ejercicios de gramática.* … *los ejercicios* が複数なので、*parecer* も形容詞も複数形にします
+
+## 6. ノートのつづりの直し
+
+| メモ | 正しいつづり | 意味 |
+|---|---|---|
+| Existante | **existente** | 存在する、既存の |
+| murcielago | **murciélago** | コウモリ |
+| palabura | **palabra** | 言葉 |
+| lenqua | **lengua** | 舌、言語 |
+| aprendido（〜しながら） | **aprendiendo** | 学びながら |
+
+## 7. 先生に聞くとよいこと
+
+- 練習帳のページ（pp. 11-15）は宿題ですか？
+  - *¿Los ejercicios del cuaderno de las páginas 11 a 15 son deberes?*
+- 練習帳は買う必要がありますか？
+  - *¿Tenemos que comprar el cuaderno de ejercicios?*
+- 動画「Repasamos A1 y A2」はどこで見られますか？
+  - *¿Dónde podemos ver el vídeo "Repasamos A1 y A2"?*
+
+## 8. 自信がない部分（推測）
+
+- 宿題の範囲は、教科書に書いてある練習帳の番号から考えた**推測**です。
+- 授業でどの活動を実際にやったかは、写真の書きこみから考えました。先生が口で説明した内容は入っていません。
+- *el saber estar* は辞書どおりに訳すのが難しい言葉です。「場面にふさわしいふるまいができること」という意味です。
+
+</script>
+<script type="text/markdown" id="md-n20261020-2" data-note="1" data-date="2026-10-20（火）" data-title="宿題：練習帳（Cuaderno de ejercicios）0課 1〜4" data-file="復習ノート/2026-10-20_宿題「練習帳0課 1〜4」.md">
+# 2026-10-20（火）｜宿題：練習帳（Cuaderno de ejercicios）0課 1〜4
+
+> **宿題**：練習帳 0課「Gente en clase」の **1〜4番**（p.10〜12）
+> 答え合わせ：「練習帳0課の答え」のPDF（`gente al dia 2 cuaderno de ejercicios soluciones-1-2.pdf`）
+
+## やり方の全体像
+
+| 番号 | タイトル | 何をする？ | 答えはある？ |
+|---|---|---|---|
+| 1 | Primeras palabras（最初の言葉） | 12個の表現を、写真1〜8と結びつける | あり（例として） |
+| 2 | Mis palabras（私の言葉） | この課で役に立ちそうな言葉を、自分で書く | 自由 |
+| 3 | Estudiantes de español（スペイン語を学ぶ人たち） | 音声01を聞いて、3人の理由・興味・目的を書く | あり |
+| 4 | Perfil, deseos y necesidades（自分のこと・希望・必要なこと） | 3つの文章を読み、自分と同じところに線を引いて、自分の文章を書く | 自由 |
+
+---
+
+## 1. Primeras palabras
+
+**指示文の意味**：勉強やスペイン語の授業で役に立つ表現です。知っていますか？ 写真と結びつけましょう。
+
+### 単語の意味
+
+| スペイン語 | 日本語 | スペイン語 | 日本語 |
+|---|---|---|---|
+| hacer gestos | ジェスチャーをする | reglas | 規則、ルール |
+| buscar palabras | 言葉を探す | conversación | 会話 |
+| saludar | あいさつする | en voz alta | 声に出して |
+| despedirse | 別れのあいさつをする | significado | 意味 |
+| traducir | 翻訳する | perfeccionar | 上達させる、みがく |
+| escuchar | 聞く | consultar el diccionario | 辞書を引く |
+
+**コツ**：1つの表現に、写真が2つ以上あてはまることもあります（たとえば「ジェスチャー」は何枚かの写真に出ています）。
+
+### 答え（PDFより）
+
+| 表現 | 写真 | 表現 | 写真 |
+|---|---|---|---|
+| hacer gestos | 1, 3, 6 | reglas | 4 |
+| buscar palabras | 2, 8 | conversación | 5, 6 |
+| saludar | 1 | en voz alta | 7 |
+| despedirse | 1 | significado | 2 |
+| traducir | 8 | perfeccionar | 2, 4, 8 |
+| escuchar | 5 | consultar el diccionario | 2, 8 |
+
+PDFでは「Sugerencias（答えの例）」になっているので、理由が言えれば、ちがう番号でも大丈夫です。
+
+---
+
+## 2. Mis palabras
+
+**指示文の意味**：この課に役立ちそうなスペイン語の言葉を、ほかに知っていますか？ 書きましょう。
+
+**自由に書く問題**です。書く言葉の例です（PDFにのっている例もふくみます）。
+
+| スペイン語 | 日本語 |
+|---|---|
+| pronunciar bien / mal | 発音が上手／下手 |
+| hablar con fluidez | すらすら話す |
+| hacer un intercambio lingüístico | 言語交換をする |
+| repetir | くり返す |
+| apuntar | メモする |
+| equivocarse | まちがえる |
+| corregir | 直す |
+| deletrear | つづりを言う |
+| el vocabulario / la gramática | 語彙／文法 |
+
+授業で使った *me cuesta*、*me interesa*、*tener una palabra en la punta de la lengua* なども入れられます。
+
+---
+
+## 3. Estudiantes de español（音声01）
+
+**指示文の意味**：3人の学生が、スペイン語を学ぶ理由を話します。聞いて、書きましょう。
+
+### 3つの質問の意味と、答え方の形
+
+3人について話すので、動詞は**3人称（彼・彼女）**になります。
+
+| 質問 | 意味 | 答え方の形 |
+|---|---|---|
+| ¿Por qué el español? | なぜスペイン語？ | ***Porque*** ＋ 文（*Porque **le** interesa...*） |
+| ¿Qué le interesa? | 何に興味がある？ | ***Le interesa*** ＋ 1つ／***Le interesan*** ＋ 複数 |
+| ¿Para qué? | 何のため？ | ***Para*** ＋ 動詞の原形（*Para viajar.*） |
+
+### やり方
+
+1. 音声01を聞きます。音声は CAMPUS の「AUDIOS」か、教科書についている音声にあります（推測）。
+2. 聞き取れた単語だけでも、メモします。
+3. もう一度聞いて、文にします。
+4. PDFで答え合わせをします。むずかしければ、CAMPUS の「TRANSCRIPCIONES AUDIOS CUADERNO（練習帳の音声の書き起こし）」を見ながら聞くのもおすすめです。
+
+---
+
+## 4. Perfil, deseos y necesidades
+
+**指示文の意味**：3人のスペイン語学習者が書いた文章を読んで、**自分と同じところすべてに線**を引きましょう。それから、自分のプロフィール・希望・必要なことについて、同じような文章を書きましょう。
+
+### 3つの文章のあらすじ
+
+| 書いた人 | どんな文章？ | 内容 |
+|---|---|---|
+| Klaus | 語学学校へのていねいなメール | 文法はできるけど、**話す練習**が必要。仕事で会議に出たり、論文を読んだりする。コースの情報がほしい |
+| Sandra | 語学学校へのていねいなメール | 1年勉強したけど、まだ初心者。**文法と翻訳**の多いコースがいい。勉強のために書く力も必要 |
+| John | 言語交換の相手をさがす広告 | 学校で文法はたくさん勉強したけど、**ネイティブの話がわからない**し、発音も苦手。来年、中南米を旅行したい |
+
+### 線を引くところ（あなたの場合の例・推測）
+
+授業がわからなくて困っていることから考えると、次のような文が「同じ」かもしれません。
+
+- 「話す練習がたくさん必要」（Klaus）
+- 「ネイティブの話を理解するのがとても大変」（John）
+- 「会話に参加するのが大変」（John）
+
+### ていねいなメールで使う表現
+
+| スペイン語 | 日本語 |
+|---|---|
+| Muy señores míos: | 拝啓（会社や学校あて） |
+| Me dirijo a ustedes para ＋ 原形 | 〜のためにご連絡しています |
+| Me dirijo a ustedes porque ＋ 文 | 〜なのでご連絡しています |
+| Les agradecería que me enviaran... | 〜を送っていただけるとありがたいです |
+| Un cordial saludo, / Atentamente, | 敬具 |
+
+### 自分の文章の型（[ ] を自分のことに変える）
+
+> Me llamo [名前] y soy [japonesa / japonés]. Vivo en [España] desde hace [〇年].
+> Estudio español en la EOI. Mi nivel es B1, pero **me cuesta mucho entender** a la gente cuando habla rápido.
+> **Necesito** practicar más la conversación, **porque** quiero hablar con mis vecinos y amigos.
+> **Me interesa** [la cultura española / la cocina / el cine...].
+> **He estudiado** alemán en la universidad y **he viajado** a Italia.
+> Quiero mejorar mi español **para** [trabajar / viajar / entender las noticias...].
+
+日本語訳：
+私の名前は[名前]で、日本人です。[〇年]前から[スペイン]に住んでいます。
+EOIでスペイン語を勉強しています。レベルはB1ですが、人が速く話すと、理解するのがとても難しいです。
+近所の人や友だちと話したいので、もっと会話の練習が必要です。
+[スペインの文化／料理／映画]に興味があります。
+大学でドイツ語を勉強したことがあり、イタリアに行ったことがあります。
+[仕事／旅行／ニュースを理解する]ために、スペイン語を上達させたいです。
+
+*japonesa* は女性、*japonés* は男性が自分のことを言うときの形です。
+
+**ポイント**：この型には、0課の表現（*me cuesta, me interesa, porque, para*）と、この前習った現在完了（*he estudiado, he viajado*）が入っています。
+
+**書いたら送ってください。チェックします！**
+
+</script>
+<script type="text/markdown" id="md-n20261023-3" data-note="1" data-date="2026-10-23（金）" data-title="宿題：練習帳（Cuaderno de ejercicios）0課 5〜13" data-file="復習ノート/2026-10-23_宿題「練習帳0課 5〜13」.md">
+# 2026-10-23（金）｜宿題：練習帳（Cuaderno de ejercicios）0課 5〜13
 
 > **宿題**：練習帳 0課の **5〜13番**（p.13〜15）。4番（p.12）の作文もまだなら、いっしょに。
 > 答え合わせ：「練習帳0課の答え」のPDF（`gente al dia 2 cuaderno de ejercicios soluciones-1-2.pdf`）
@@ -1256,507 +1771,8 @@ B1の会話で求められる「すること」です。会話表現集（`会�
 - [ ] 9番：授業のふりかえり（*Lo más... ha sido...*）
 - [ ] 11番・13番：思いうかぶ言葉
 
-
----
-
-# 2026-10-20｜宿題：練習帳（Cuaderno de ejercicios）0課 1〜4
-
-> **宿題**：練習帳 0課「Gente en clase」の **1〜4番**（p.10〜12）
-> 答え合わせ：「練習帳0課の答え」のPDF（`gente al dia 2 cuaderno de ejercicios soluciones-1-2.pdf`）
-
-## やり方の全体像
-
-| 番号 | タイトル | 何をする？ | 答えはある？ |
-|---|---|---|---|
-| 1 | Primeras palabras（最初の言葉） | 12個の表現を、写真1〜8と結びつける | あり（例として） |
-| 2 | Mis palabras（私の言葉） | この課で役に立ちそうな言葉を、自分で書く | 自由 |
-| 3 | Estudiantes de español（スペイン語を学ぶ人たち） | 音声01を聞いて、3人の理由・興味・目的を書く | あり |
-| 4 | Perfil, deseos y necesidades（自分のこと・希望・必要なこと） | 3つの文章を読み、自分と同じところに線を引いて、自分の文章を書く | 自由 |
-
----
-
-## 1. Primeras palabras
-
-**指示文の意味**：勉強やスペイン語の授業で役に立つ表現です。知っていますか？ 写真と結びつけましょう。
-
-### 単語の意味
-
-| スペイン語 | 日本語 | スペイン語 | 日本語 |
-|---|---|---|---|
-| hacer gestos | ジェスチャーをする | reglas | 規則、ルール |
-| buscar palabras | 言葉を探す | conversación | 会話 |
-| saludar | あいさつする | en voz alta | 声に出して |
-| despedirse | 別れのあいさつをする | significado | 意味 |
-| traducir | 翻訳する | perfeccionar | 上達させる、みがく |
-| escuchar | 聞く | consultar el diccionario | 辞書を引く |
-
-**コツ**：1つの表現に、写真が2つ以上あてはまることもあります（たとえば「ジェスチャー」は何枚かの写真に出ています）。
-
-### 答え（PDFより）
-
-| 表現 | 写真 | 表現 | 写真 |
-|---|---|---|---|
-| hacer gestos | 1, 3, 6 | reglas | 4 |
-| buscar palabras | 2, 8 | conversación | 5, 6 |
-| saludar | 1 | en voz alta | 7 |
-| despedirse | 1 | significado | 2 |
-| traducir | 8 | perfeccionar | 2, 4, 8 |
-| escuchar | 5 | consultar el diccionario | 2, 8 |
-
-PDFでは「Sugerencias（答えの例）」になっているので、理由が言えれば、ちがう番号でも大丈夫です。
-
----
-
-## 2. Mis palabras
-
-**指示文の意味**：この課に役立ちそうなスペイン語の言葉を、ほかに知っていますか？ 書きましょう。
-
-**自由に書く問題**です。書く言葉の例です（PDFにのっている例もふくみます）。
-
-| スペイン語 | 日本語 |
-|---|---|
-| pronunciar bien / mal | 発音が上手／下手 |
-| hablar con fluidez | すらすら話す |
-| hacer un intercambio lingüístico | 言語交換をする |
-| repetir | くり返す |
-| apuntar | メモする |
-| equivocarse | まちがえる |
-| corregir | 直す |
-| deletrear | つづりを言う |
-| el vocabulario / la gramática | 語彙／文法 |
-
-授業で使った *me cuesta*、*me interesa*、*tener una palabra en la punta de la lengua* なども入れられます。
-
----
-
-## 3. Estudiantes de español（音声01）
-
-**指示文の意味**：3人の学生が、スペイン語を学ぶ理由を話します。聞いて、書きましょう。
-
-### 3つの質問の意味と、答え方の形
-
-3人について話すので、動詞は**3人称（彼・彼女）**になります。
-
-| 質問 | 意味 | 答え方の形 |
-|---|---|---|
-| ¿Por qué el español? | なぜスペイン語？ | ***Porque*** ＋ 文（*Porque **le** interesa...*） |
-| ¿Qué le interesa? | 何に興味がある？ | ***Le interesa*** ＋ 1つ／***Le interesan*** ＋ 複数 |
-| ¿Para qué? | 何のため？ | ***Para*** ＋ 動詞の原形（*Para viajar.*） |
-
-### やり方
-
-1. 音声01を聞きます。音声は CAMPUS の「AUDIOS」か、教科書についている音声にあります（推測）。
-2. 聞き取れた単語だけでも、メモします。
-3. もう一度聞いて、文にします。
-4. PDFで答え合わせをします。むずかしければ、CAMPUS の「TRANSCRIPCIONES AUDIOS CUADERNO（練習帳の音声の書き起こし）」を見ながら聞くのもおすすめです。
-
----
-
-## 4. Perfil, deseos y necesidades
-
-**指示文の意味**：3人のスペイン語学習者が書いた文章を読んで、**自分と同じところすべてに線**を引きましょう。それから、自分のプロフィール・希望・必要なことについて、同じような文章を書きましょう。
-
-### 3つの文章のあらすじ
-
-| 書いた人 | どんな文章？ | 内容 |
-|---|---|---|
-| Klaus | 語学学校へのていねいなメール | 文法はできるけど、**話す練習**が必要。仕事で会議に出たり、論文を読んだりする。コースの情報がほしい |
-| Sandra | 語学学校へのていねいなメール | 1年勉強したけど、まだ初心者。**文法と翻訳**の多いコースがいい。勉強のために書く力も必要 |
-| John | 言語交換の相手をさがす広告 | 学校で文法はたくさん勉強したけど、**ネイティブの話がわからない**し、発音も苦手。来年、中南米を旅行したい |
-
-### 線を引くところ（あなたの場合の例・推測）
-
-授業がわからなくて困っていることから考えると、次のような文が「同じ」かもしれません。
-
-- 「話す練習がたくさん必要」（Klaus）
-- 「ネイティブの話を理解するのがとても大変」（John）
-- 「会話に参加するのが大変」（John）
-
-### ていねいなメールで使う表現
-
-| スペイン語 | 日本語 |
-|---|---|
-| Muy señores míos: | 拝啓（会社や学校あて） |
-| Me dirijo a ustedes para ＋ 原形 | 〜のためにご連絡しています |
-| Me dirijo a ustedes porque ＋ 文 | 〜なのでご連絡しています |
-| Les agradecería que me enviaran... | 〜を送っていただけるとありがたいです |
-| Un cordial saludo, / Atentamente, | 敬具 |
-
-### 自分の文章の型（[ ] を自分のことに変える）
-
-> Me llamo [名前] y soy [japonesa / japonés]. Vivo en [España] desde hace [〇年].
-> Estudio español en la EOI. Mi nivel es B1, pero **me cuesta mucho entender** a la gente cuando habla rápido.
-> **Necesito** practicar más la conversación, **porque** quiero hablar con mis vecinos y amigos.
-> **Me interesa** [la cultura española / la cocina / el cine...].
-> **He estudiado** alemán en la universidad y **he viajado** a Italia.
-> Quiero mejorar mi español **para** [trabajar / viajar / entender las noticias...].
-
-日本語訳：
-私の名前は[名前]で、日本人です。[〇年]前から[スペイン]に住んでいます。
-EOIでスペイン語を勉強しています。レベルはB1ですが、人が速く話すと、理解するのがとても難しいです。
-近所の人や友だちと話したいので、もっと会話の練習が必要です。
-[スペインの文化／料理／映画]に興味があります。
-大学でドイツ語を勉強したことがあり、イタリアに行ったことがあります。
-[仕事／旅行／ニュースを理解する]ために、スペイン語を上達させたいです。
-
-*japonesa* は女性、*japonés* は男性が自分のことを言うときの形です。
-
-**ポイント**：この型には、0課の表現（*me cuesta, me interesa, porque, para*）と、この前習った現在完了（*he estudiado, he viajado*）が入っています。
-
-**書いたら送ってください。チェックします！**
-
-
----
-
-# 2026-10-19（月）｜0課「Gente en clase」
-
-> **宿題（推測）**：教科書のページに「CUADERNO DE EJERCICIOS（練習帳）」の番号が書いてあります。**pp. 11-12 ejs. 3-4／pp. 13-14 ejs. 5-9／pp. 14-15 ejs. 10-13**。宿題かどうかは先生に確認してください。答えは、10月18日に届いた「練習帳0課の答え」のPDFで確認できます。
-
-## 1. 今日の授業のまとめ
-
-- 教科書「Gente al día 2」の**0課「Gente en clase」**（教科書 p.14〜17）を、コピーで勉強した。
-- この課のゴールは、クラスの人と知り合いになって、**スペイン語を学ぶための好きなテーマや活動のリスト**を作ること。
-- 習う表現は5つ：**me parece(n)＋形容詞**（〜だと思う）、**me cuesta(n)**（〜が苦手）、**現在分詞**（〜しながら）、**me interesa(n)**（〜に興味がある）、**por / porque / para**（理由と目的）。それから、語学のレベルの言い方。
-
-### ページごとの内容
-
-| ページ | 活動 | 何をする？ |
-|---|---|---|
-| p.14 | 表紙 | 写真の人について話す（どんな仕事？どんな生活？） |
-| p.15 | 1. Un test | 好きな場所・本・料理・季節などの質問に答えて、ペアでくらべる |
-| p.16 | 2. ¿Por qué y para qué el español? | スペイン語を学ぶ**理由**・**興味**・**将来の使い道**を選んで話す |
-| p.16 | 3. Mis experiencias con el español | 語学の経験を聞く／何が難しいかを表にする |
-| p.17 | 4. 学び方・コツ | どの勉強法が役に立つか話す／毎日できるコツを読む |
-| p.17 | 5. En este curso nos gustaría... | この授業でやりたいことをグループでリストにする |
-
-## 2. 新しい単語・表現
-
-### p.15「Un test」の単語
-
-| スペイン語 | 日本語 |
-|---|---|
-| el autor / la autora | 作者 |
-| una manía | くせ、こだわり |
-| una cualidad | 長所 |
-| admirar | 尊敬する、すごいと思う |
-| un defecto | 短所 |
-| odiar | 大きらい |
-| el saber estar | ふるまいがきちんとしていること |
-| la generosidad | 気前のよさ、寛大さ |
-| la avaricia | 欲ばり |
-| la vanidad | 見栄っぱり |
-| preocupar | 心配させる（*Me preocupa...* ＝〜が心配） |
-| el racismo | 人種差別 |
-| una estación del año | 季節 |
-| fregar los platos | 皿を洗う |
-| planchar | アイロンをかける |
-| una prenda de vestir | 服（1着） |
-| un jersey de cuello redondo | 丸首のセーター |
-| un mono | つなぎ（服） |
-| marrón | 茶色 |
-
-### p.16〜17 の単語
-
-| スペイン語 | 日本語 | 例文 |
-|---|---|---|
-| el aprendizaje | 学習 | *el aprendizaje del español*（スペイン語の学習） |
-| coincidir | 意見が同じになる | *Coincidimos en dos puntos.*（2つの点で同じだった） |
-| la actualidad | 時事、今のニュース | — |
-| cotidiano/a ＝ diario/a | 日常の | *la vida cotidiana*（日常生活） |
-| identificarse con | 〜に共感する | *Me identifico con Borja.*（ボルハに共感する） |
-| la dificultad | 難しさ | — |
-| recordar | 覚えておく、思い出す | *Me cuesta recordar el vocabulario.* |
-| echar un vistazo | ざっと見る | *Echa un vistazo a estos trucos.* |
-| un truco | コツ | — |
-| diariamente | 毎日 | — |
-| atreverse a ＋不定詞 | 思い切って〜する | *Me atrevo a hablar.*（思い切って話す） |
-| sacar partido a | 〜をうまく活用する | *Sácale partido a internet.* |
-| asociar | 結びつける | — |
-| un dictado | 書き取り | — |
-| traducir | 翻訳する | — |
-
-### ことわざ・決まった言い方
-
-- ***Tengo la palabra en la punta de la lengua.***
-  言葉が舌の先まで出かかっている（＝思い出せそうで思い出せない）
-
-## 3. 文法のポイント
-
-### ① me interesa / me cuesta / me parece ―「gustar と同じ形」の動詞
-
-*gustar* と同じで、**好き・苦手・興味の「対象」が主語**になります。対象が1つなら単数、複数なら複数にします。
-
-| 動詞 | 1つ・動詞の原形 | 複数 |
-|---|---|---|
-| interesar（興味がある） | *Me interesa **la música**.* | *Me interesan **las culturas hispanas**.* |
-| costar（苦手、難しい） | *Me cuesta **hablar**.* / *Me cuesta **la pronunciación**.* | *Me cuestan **los verbos**.* |
-| parecer（〜だと思う） | *Me parece **útil** ver series.* | *Me parecen **aburridos** los ejercicios.* |
-
-- 動詞の原形（*hablar* など）がくるときは、いつも**単数**です。
-- *me parece(n)* のあとの形容詞は、**対象に合わせて変化**します（*aburridos* は *los ejercicios* に合わせた形）。
-
-### ② 現在分詞（gerundio）＝「〜しながら」「〜することで」
-
-| 原形 | 作り方 | 現在分詞 |
-|---|---|---|
-| hablar | -ar → **-ando** | habl**ando** |
-| aprender | -er → **-iendo** | aprend**iendo** |
-| escribir | -ir → **-iendo** | escrib**iendo** |
-| leer / ir | 不規則 | **leyendo** / **yendo** |
-| decir / dormir | 不規則 | **diciendo** / **durmiendo** |
-
-> *Aprendo español **escuchando** música.*（音楽を聞きながらスペイン語を学ぶ）
-> *Se aprende a hablar **hablando**.*（話すことは、話すことで身につく）
-
-⚠ **ノートの直し**：「aprendido＝学びながら」とメモしてありましたが、「学びながら」は ***aprendiendo*** です。*aprendido* は過去分詞で、*he aprendido*（学んだ）のように使います。
-
-### ③ por / porque / para ― 理由と目的
-
-| 質問 | 答え方 | 例 |
-|---|---|---|
-| **¿Por qué?**（なぜ？） | **porque ＋ 文** | *Porque tengo amigos españoles.* |
-| | **por ＋ 名詞** | *Por mi trabajo.* |
-| **¿Para qué?**（何のために？） | **para ＋ 動詞の原形** | *Para viajar.* |
-| | **para ＋ 名詞** | *Para mis estudios.* |
-
-→ ノートのメモ（porque＋文、por＋名詞、para＋動詞・名詞）は正しいです！
-
-### ④ 語学のレベルを言う
-
-> *Hablo inglés **bastante bien**.*（英語をかなり上手に話す）
-> *Entiendo el alemán, pero **me cuesta** hablar.*（ドイツ語はわかるけど、話すのは苦手）
-> *Mi nivel de español es **intermedio**.*（スペイン語は中級です）
-
-## 4. 次の授業で使える表現
-
-授業の活動で、そのまま使えるように [ ] の部分を自分のことに変えてください。
-
-1. **理由**：*Estudio español porque **vivo en España** y para **hablar con la gente**.*
-   （スペインに住んでいるので、人と話すためにスペイン語を勉強しています）
-2. **苦手**：*Me cuesta mucho **entender cuando alguien habla rápido**.*
-   （人が速く話すと、理解するのがとても難しいです）
-3. **学び方**：*Aprendo español **escribiendo frases y corrigiéndolas con la IA**.*
-   （文を書いて、AIで直しながらスペイン語を学んでいます）
-
-## 5. 練習問題
-
-1. 正しいほうを選んでください：Me (cuesta / cuestan) los verbos irregulares.
-2. 正しいほうを選んでください：Me (interesa / interesan) el cine español.
-3. 現在分詞にしてください：① leer ② aprender ③ ir
-4. （　）に porque / por / para を入れてください：Estudio español (　) viajar por Sudamérica.
-5. （　）に porque / por / para を入れてください：Estudio español (　) mi trabajo.
-6. まちがいを直してください：*Me parece aburrido los ejercicios de gramática.*
-
-## 答えと解説
-
-1. **cuestan** … *los verbos*（複数）が主語なので複数形
-2. **interesa** … *el cine*（1つ）が主語なので単数形
-3. ① **leyendo** ② **aprendiendo** ③ **yendo**（3つとも、よく出る形です）
-4. **para** … 「旅行するため」＝目的。後ろが動詞の原形
-5. **por** … 「仕事のため（理由）」＝後ろが名詞。*porque* なら、後ろに文が必要です
-6. *Me **parecen aburridos** los ejercicios de gramática.* … *los ejercicios* が複数なので、*parecer* も形容詞も複数形にします
-
-## 6. ノートのつづりの直し
-
-| メモ | 正しいつづり | 意味 |
-|---|---|---|
-| Existante | **existente** | 存在する、既存の |
-| murcielago | **murciélago** | コウモリ |
-| palabura | **palabra** | 言葉 |
-| lenqua | **lengua** | 舌、言語 |
-| aprendido（〜しながら） | **aprendiendo** | 学びながら |
-
-## 7. 先生に聞くとよいこと
-
-- 練習帳のページ（pp. 11-15）は宿題ですか？
-  - *¿Los ejercicios del cuaderno de las páginas 11 a 15 son deberes?*
-- 練習帳は買う必要がありますか？
-  - *¿Tenemos que comprar el cuaderno de ejercicios?*
-- 動画「Repasamos A1 y A2」はどこで見られますか？
-  - *¿Dónde podemos ver el vídeo "Repasamos A1 y A2"?*
-
-## 8. 自信がない部分（推測）
-
-- 宿題の範囲は、教科書に書いてある練習帳の番号から考えた**推測**です。
-- 授業でどの活動を実際にやったかは、写真の書きこみから考えました。先生が口で説明した内容は入っていません。
-- *el saber estar* は辞書どおりに訳すのが難しい言葉です。「場面にふさわしいふるまいができること」という意味です。
-
-
----
-
-# 2026-10-14（水）｜現在完了「Mi vida hasta hoy」
-
-> **宿題（推測）**：プリントに「作文を書く」とあるので、宿題の可能性が高いです。締め切りと長さは先生に確認してください（7. の質問文を使えます）。
-
-## 1. 今日の授業のまとめ
-
-- テーマは **現在完了（pretérito perfecto）**：*he viajado*（旅行したことがある）、*he estudiado*（勉強した）など。
-- 課題は「**Mi vida hasta hoy**（今までの私の人生）」という短い作文。
-- 「人生の経験」「最近したこと」「今につながっていること」を、時を表す言葉（*nunca*, *hoy*, *este año* など）を使って書く。
-
-### プリントの日本語訳
-
-**「今までの私の人生」**
-次の点を入れて、短い作文を書きましょう。
-
-- 人生の**経験を3つ**（*he viajado*＝旅行したことがある、*he estudiado*＝勉強したことがある、*he conocido*＝知り合ったことがある…）
-- **最近したことを2つ**（*esta semana*＝今週、*este mes*＝今月、*hoy*＝今日…）
-- **今に結果が残っていること1つ**（*me he roto...*＝〜を骨折した、*he perdido...*＝〜をなくした、*he aprendido...*＝〜を覚えた…）
-- 授業で習った**時の表現を2つ以上**（*alguna vez*＝今までに一度でも、*nunca*＝一度も〜ない、*este año*＝今年、*hoy*＝今日、*hasta ahora*＝今まで、*últimamente*＝最近）
-
-**ヒント**：次の質問に答えてもいいです。
-
-| スペイン語 | 日本語 |
-|---|---|
-| ¿Qué has hecho este año? | 今年は何をした？ |
-| ¿Qué lugares has visitado? | どんな場所に行ったことがある？ |
-| ¿Qué actividades nuevas has aprendido? | どんな新しいことを覚えた？ |
-| ¿Qué experiencias has tenido en tu vida? | 人生でどんな経験をした？ |
-| ¿Qué has hecho hoy o esta semana? | 今日や今週は何をした？ |
-| ¿Qué ha cambiado en tu vida recientemente? | 最近、生活で何が変わった？ |
-
-## 2. 新しい単語・表現
-
-| スペイン語 | 日本語 | 例文 |
-|---|---|---|
-| el alumnado | 生徒たち（全員） | *El alumnado debe escribir una redacción.*（生徒は作文を書かなければならない） |
-| una redacción | 作文 | *He escrito una redacción.*（作文を書いた） |
-| tener en cuenta | 〜を考えに入れる | *Ten en cuenta estos puntos.*（これらの点を考えに入れて） |
-| reciente / recientemente | 最近の／最近 | *¿Qué ha cambiado recientemente?* |
-| una consecuencia | 結果 | — |
-| al menos | 少なくとも | *Usa al menos dos expresiones.*（少なくとも2つの表現を使って） |
-| una guía de apoyo | ヒント・手引き | — |
-| alguna vez | 今までに一度でも | *¿Has estado alguna vez en Japón?*（日本に行ったことある？） |
-| hasta ahora | 今まで | *Hasta ahora todo ha ido bien.*（今まで全部うまくいっている） |
-| últimamente | 最近 | *Últimamente he dormido poco.*（最近あまり寝ていない） |
-| romperse | （骨などを）折る、こわれる | *Me he roto el brazo.*（腕を骨折した） |
-
-## 3. 文法のポイント：現在完了（pretérito perfecto）
-
-### 形：haber ＋ 過去分詞
-
-| | haber | ＋ 過去分詞 |
-|---|---|---|
-| yo | **he** | viaj**ado** |
-| tú | **has** | com**ido** |
-| él / ella / usted | **ha** | viv**ido** |
-| nosotros | **hemos** | estudi**ado** |
-| vosotros | **habéis** | conoc**ido** |
-| ellos / ustedes | **han** | aprend**ido** |
-
-- 過去分詞の作り方：-ar → **-ado**、-er / -ir → **-ido**
-- 過去分詞は**形が変わりません**（女性でも複数でも *viajado* のまま）。
-
-### 不規則な過去分詞（よく出るもの）
-
-| 原形 | 過去分詞 | 原形 | 過去分詞 |
-|---|---|---|---|
-| hacer（する） | **hecho** | decir（言う） | **dicho** |
-| ver（見る） | **visto** | escribir（書く） | **escrito** |
-| poner（置く） | **puesto** | volver（戻る） | **vuelto** |
-| abrir（開ける） | **abierto** | romper（こわす） | **roto** |
-| morir（死ぬ） | **muerto** | descubrir（発見する） | **descubierto** |
-
-### いつ使う？（スペインの場合）
-
-1. **人生の経験**（いつかは言わない）
-   > *He viajado a Italia dos veces.*（イタリアに2回行ったことがある）
-   > *Nunca he comido pulpo.*（タコを食べたことが一度もない）
-2. **「今」をふくむ時間の中でしたこと**（*hoy, esta semana, este año*）
-   > *Hoy he hablado con mi profesora.*（今日、先生と話した）
-3. **今に結果が残っていること**
-   > *He perdido las llaves y no puedo entrar en casa.*（鍵をなくしたので、家に入れない）
-
-### 点過去とのちがい（ここが大事！）
-
-| 現在完了 | 点過去 |
-|---|---|
-| ***Hoy** he ido al médico.*（今日、病院に行った） | ***Ayer** fui al médico.*（昨日、病院に行った） |
-| ***Este año** he viajado mucho.*（今年はたくさん旅行した） | ***El año pasado** viajé mucho.*（去年はたくさん旅行した） |
-| *¿**Alguna vez** has estado en Japón?*（日本に行ったことある？） | *Estuve en Japón **en 2019**.*（2019年に日本に行った） |
-
-→ **「今」とつながっている時間なら現在完了、もう終わった時間なら点過去**。
-
-> **大事なルール：経験を話すとき**
-> - **「いつ」を言わない → 現在完了**：*He estudiado alemán.*（ドイツ語を勉強したことがある）
-> - **「いつ」を言いたい → 点過去**：*Estudié alemán cuando era estudiante.*（学生のとき、ドイツ語を勉強した）
->
-> くわしくは「文法：02_現在完了と点過去」を見てください。
-
-### 日本語話者が気をつけること
-
-- **he と動詞の間に何も入れない**：○ *No he comido.* × ~~He no comido.~~　○ *Nunca he estado.* × ~~He nunca estado.~~
-- **再帰動詞の me / te / se は he の前**：○ *Me he levantado tarde.*（遅く起きた）
-- 中南米では、現在完了のかわりに点過去を使うことが多いです。授業では先生（スペイン）の使い方に合わせましょう。
-
-## 4. 次の授業で使える表現
-
-1. *¿Alguna vez has estado en...?* — 〜に行ったことある？
-2. *Nunca he...* — 一度も〜したことがない。
-3. *¿Qué has hecho este fin de semana?* — 週末なにしたの？（⚠ 月曜日などに聞くとき。点過去を使う人もいます）
-
-## 5. 作文の例（参考）
-
-条件を全部入れた例です。**[ ] の部分を自分のことに変えて**使ってください。
-
-> **Mi vida hasta hoy**
->
-> Me llamo [名前] y soy de Japón. En mi vida **he hecho** muchas cosas interesantes. **He viajado** por [varios países de Europa] y **he conocido** a personas de todo el mundo. También **he estudiado** [inglés] durante muchos años. **Nunca he estado** en [Sudamérica], pero me gustaría ir algún día.
->
-> **Esta semana he empezado** a escribir un diario en español. **Hoy he hablado** con mi profesora después de clase.
->
-> **Últimamente he aprendido** muchas palabras nuevas, así que ahora entiendo mejor a la gente en la calle.
->
-> **Hasta ahora**, mi vida en España **ha sido** una gran aventura.
-
-日本語訳：
-私の名前は[名前]で、日本出身です。今までにおもしろいことをたくさんしてきました。[ヨーロッパのいくつかの国]を旅行したことがあり、世界中の人と知り合いました。また、[英語]を長年勉強しました。[南米]には一度も行ったことがありませんが、いつか行ってみたいです。
-今週、スペイン語で日記を書き始めました。今日は授業のあと先生と話しました。
-最近たくさんの新しい単語を覚えたので、今は町の人の話が前よりわかります。
-今までのところ、スペインでの生活は大冒険です。
-
-**チェック**：経験3つ（*he viajado, he conocido, he estudiado*）／最近のこと2つ（*esta semana, hoy*）／今に結果が残っていること1つ（*he aprendido → ahora entiendo*）／時の表現（*nunca, esta semana, hoy, últimamente, hasta ahora*）
-
-## 6. 練習問題
-
-1. 過去分詞にしてください：① hacer ② ver ③ escribir ④ volver ⑤ romper
-2. Este año (yo, viajar) ______ a Portugal.
-3. ¿(Tú, estar) ______ alguna vez en Japón?
-4. Nosotros nunca (ver) ______ esa película.
-5. Esta mañana (yo, levantarse) ______ muy tarde.
-6. 現在完了か点過去か：① Ayer (yo, ir) ______ al médico. ② Hoy (yo, ir) ______ al médico.
-7. まちがいを直してください：*He no terminado la redacción.*
-
-## 答えと解説
-
-1. ① **hecho** ② **visto** ③ **escrito** ④ **vuelto** ⑤ **roto**（全部不規則。そのまま覚えましょう）
-2. **he viajado** … *este año*（今年）は「今」をふくむ時間なので現在完了
-3. **Has estado** … *alguna vez*（今までに一度でも）は経験をたずねる表現
-4. **hemos visto** … *nunca* は he の前に置く（*Nosotros nunca hemos visto*）。*No hemos visto nunca* も正しいです
-5. **me he levantado** … 再帰の *me* は *he* の前に置く。*esta mañana*（今朝）は今日の中なので現在完了
-6. ① **fui**（*ayer* はもう終わった時間 → 点過去） ② **he ido**（*hoy* は今をふくむ → 現在完了）
-7. ***No he terminado** la redacción.* … *no* は *he* の前。he と過去分詞の間には何も入れません
-
-## 7. 先生に聞くとよいこと
-
-- 作文の締め切りはいつですか？
-  - *¿Para cuándo es la redacción?*
-- 何語くらい書けばいいですか？
-  - *¿Cuántas palabras tiene que tener?*
-- 手書きで出しますか？メールで出しますか？
-  - *¿La entregamos a mano o por correo electrónico?*
-- 「今週末」のことは、現在完了と点過去のどちらを使えばいいですか？
-  - *Para hablar del fin de semana, ¿usamos el pretérito perfecto o el indefinido?*
-
-## 8. 自信がない部分（推測）
-
-- **宿題かどうか**は、プリントからはわかりません。「作文を書く」課題なので、宿題か授業中の課題だと思われます。
-- 授業で先生が話した内容（口頭の説明）は、プリントにないのでわかりません。このノートは**プリントだけ**をもとにしています。
-- 「週末のこと」に現在完了と点過去のどちらを使うかは、人や地域によってちがいます。先生の使い方を優先してください。
-
-
----
-
+</script>
+<script type="text/markdown" id="md-howto" data-note="1" data-date="使い方" data-title="復習ノートの作り方" data-file="復習ノート/00_使い方.md">
 # 授業の復習ノートの使い方
 
 ## 流れ
@@ -1821,13 +1837,68 @@ EOIでスペイン語を勉強しています。レベルはB1ですが、人が
 <script>
 (function () {
   var sources = Array.prototype.slice.call(document.querySelectorAll('script[type="text/markdown"]'));
+  var tabSources = sources.filter(function (s) { return !s.dataset.note; });
+  var notes = sources.filter(function (s) { return s.dataset.note; });
   var nav = document.querySelector('.tabs');
   var doc = document.getElementById('doc');
   var KEY = 'b1-tab';
 
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function noteButton(s, chip) {
+    var b = el('button', 'note-item'); b.type = 'button';
+    var d = el('span', 'note-date', s.dataset.date);
+    if (chip) d.appendChild(el('span', 'chip', chip));
+    b.appendChild(d); b.appendChild(el('span', 'note-title', s.dataset.title));
+    b.addEventListener('click', function () { show(s.id.slice(3)); });
+    return b;
+  }
+  // 復習ノートの一覧（古い順）。いちばん新しいノートに「最新」をつける
+  function renderList() {
+    doc.innerHTML = '';
+    doc.appendChild(el('h1', null, '復習ノート'));
+    doc.appendChild(el('p', 'list-note', '授業ごとのノートです。日付の古い順に並んでいます。タップすると開きます。'));
+    var dated = notes.filter(function (s) { return s.id !== 'md-howto'; });
+    var ol = el('ol', 'note-list');
+    dated.forEach(function (s, i) {
+      var li = el('li'); li.appendChild(noteButton(s, i === dated.length - 1 ? '最新' : null)); ol.appendChild(li);
+    });
+    if (!dated.length) doc.appendChild(el('p', 'list-note', 'まだノートはありません。授業のメモや写真を送ると、ここに増えていきます。'));
+    else doc.appendChild(ol);
+    var howto = document.getElementById('md-howto');
+    if (howto) {
+      doc.appendChild(el('h2', null, 'ノートの作り方'));
+      var ul = el('ul', 'note-list'), li = el('li');
+      li.appendChild(noteButton(howto)); ul.appendChild(li); doc.appendChild(ul);
+    }
+  }
+  // ノートの上に「一覧にもどる」、下に「前／次のノート」
+  function noteBars(src) {
+    var top = el('div', 'note-bar');
+    var back = el('button', 'link-btn', '← ノート一覧にもどる'); back.type = 'button';
+    back.addEventListener('click', function () { show('fukushu'); });
+    top.appendChild(back);
+    doc.insertBefore(top, doc.firstChild);
+    var i = notes.indexOf(src), bottom = el('div', 'note-bar bottom');
+    [[notes[i - 1], '← '], [notes[i + 1], '']].forEach(function (p, k) {
+      var s = p[0];
+      if (!s) { bottom.appendChild(el('span')); return; }
+      var b = el('button', 'link-btn', k === 0 ? '← ' + s.dataset.date : s.dataset.date + ' →'); b.type = 'button';
+      b.addEventListener('click', function () { show(s.id.slice(3)); });
+      bottom.appendChild(b);
+    });
+    doc.appendChild(bottom);
+  }
+
   function render(id) {
-    var src = document.getElementById('md-' + id) || sources[0];
+    var src = document.getElementById('md-' + id) || tabSources[0];
     id = src.id.slice(3);
+    var tabId = src.dataset.note ? 'fukushu' : id;
+    if (src.dataset.list) { renderList(); markTab(tabId); return id; }
     var md = src.textContent;
     doc.innerHTML = window.marked ? marked.parse(md) : '<pre></pre>';
     if (!window.marked) doc.firstChild.textContent = md;
@@ -1859,12 +1930,16 @@ EOIでスペイン語を勉強しています。レベルはB1ですが、人が
       try { c.checked = localStorage.getItem(c.id) === '1'; } catch (e) {}
       c.addEventListener('change', function () { try { localStorage.setItem(c.id, c.checked ? '1' : '0'); } catch (e) {} });
     });
+    if (src.dataset.note) noteBars(src);
+    markTab(tabId);
+    return id;
+  }
+  function markTab(tabId) {
     nav.querySelectorAll('button').forEach(function (b) {
-      var on = b.dataset.id === id;
+      var on = b.dataset.id === tabId;
       b.setAttribute('aria-selected', on ? 'true' : 'false');
       if (on && b.scrollIntoView) b.scrollIntoView({ block: 'nearest', inline: 'center' });
     });
-    return id;
   }
   function show(id) {
     id = render(id);
@@ -1873,7 +1948,7 @@ EOIでスペイン語を勉強しています。レベルはB1ですが、人が
     try { history.replaceState(null, '', '#' + id); } catch (e) {}
   }
 
-  sources.forEach(function (s) {
+  tabSources.forEach(function (s) {
     var b = document.createElement('button');
     b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.id = s.id.slice(3); b.textContent = s.dataset.label;
     b.addEventListener('click', function () { show(b.dataset.id); });
