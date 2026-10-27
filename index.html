@@ -74,6 +74,9 @@ pre { background: var(--surface); border: 1px solid var(--line); border-radius: 
 pre code { background: none; padding: 0; word-break: normal; white-space: pre-wrap; }
 blockquote { margin: 1em 0; padding: 10px 14px; background: var(--teal-soft); border-radius: 8px; }
 blockquote p { margin: 0.35em 0; }
+blockquote.key { background: var(--warn-bg); border: 2px solid var(--marker); padding: 12px 16px; }
+.chip.key { background: var(--marker); color: var(--ink); }
+h2.key { border-bottom-color: var(--marker); border-bottom-width: 4px; }
 .table-wrap { overflow-x: auto; margin: 1em 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
 table { border-collapse: collapse; width: 100%; font-size: 0.93rem; line-height: 1.6; font-variant-numeric: tabular-nums; }
 th, td { padding: 8px 10px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); min-width: 5.5em; }
@@ -444,7 +447,7 @@ EOI（公立語学学校）のB1の授業と、学年末の試験（2027年5〜6
 
 ---
 
-## 1. いちばん大事なルール
+## 1. ⭐ いちばん大事なルール
 
 > **経験を話すとき**
 > - **「いつ」を言わない → 現在完了**
@@ -1182,7 +1185,7 @@ B1の会話で求められる「すること」です。会話表現集（`会�
 
 → **「今」とつながっている時間なら現在完了、もう終わった時間なら点過去**。
 
-> **大事なルール：経験を話すとき**
+> ⭐ **大事なルール：経験を話すとき**
 > - **「いつ」を言わない → 現在完了**：*He estudiado alemán.*（ドイツ語を勉強したことがある）
 > - **「いつ」を言いたい → 点過去**：*Estudié alemán cuando era estudiante.*（学生のとき、ドイツ語を勉強した）
 >
@@ -1783,14 +1786,34 @@ EOIでスペイン語を勉強しています。レベルはB1ですが、人が
 - スペインの口語の表現をいくつか習った（*zorro*, *Nos van a dar las uvas*, *mala leche* など）。
 - **1課「Gente que se conoce」（人を知る）**が始まり、プリント（Ficha de trabajo 3・5・6）をもらった。動画の Claudia について答えるものと、「もし〜だったら？」を **過去未来（condicional）**で答えるもの。
 
-## 2. 質問への答え：「Sin ir a clase, estudiando en casa」に estar は要らない？
+## 2. ⭐ とても大事：estar ＋ 現在分詞 と 現在分詞だけ のちがい
 
-**要りません。** *estar* があるかないかで、意味が変わります。
+> ⭐ **ここは何度も見返すところ！**
+> - **estar ＋ 現在分詞** ＝ **今〜しているところ**（進行形）
+> - **現在分詞だけ** ＝ **〜しながら、〜することで**（やり方）
+>
+> *estar* があるかないかで、**意味が変わります**。
+
+**きっかけになった質問**：「*Sin ir a clase, estudiando en casa*」に *estar* は要らない？
+→ **要りません。**「どうやって覚えたの？」への答えで、**やり方**を言っているからです。
 
 | 形 | 意味 | 例 |
 |---|---|---|
 | **estar ＋ 現在分詞** | 今〜しているところ（進行形） | *Estoy estudiando en casa.*（今、家で勉強しているところ） |
 | **現在分詞だけ** | 〜しながら、〜することで（やり方） | *Aprendí japonés estudiando en casa.*（家で勉強して日本語を覚えた） |
+
+**同じ動詞でくらべると**
+
+| 文 | 意味 |
+|---|---|
+| *Estoy **escuchando** música.* | 今、音楽を聞いているところ |
+| *Aprendo español **escuchando** música.* | 音楽を聞きながら（聞くことで）スペイン語を学んでいる |
+| *Estaba **leyendo** cuando llamaste.* | 電話をくれたとき、本を読んでいた |
+| *Mejoré mi español **leyendo** novelas.* | 小説を読んで、スペイン語が上達した |
+
+**見分け方のコツ**
+- 「**今（そのとき）何をしている？**」に答える → ***estar*** をつける
+- 「**どうやって？**」に答える → 現在分詞だけ
 
 ## 2-2. 黒板に書いてあったこと
 
@@ -2143,6 +2166,7 @@ EOIでスペイン語を勉強しています。レベルはB1ですが、人が
     var b = el('button', 'note-item'); b.type = 'button';
     var d = el('span', 'note-date', s.dataset.date);
     if (chip) d.appendChild(el('span', 'chip', chip));
+    if (s.textContent.indexOf('⭐') !== -1) d.appendChild(el('span', 'chip key', '⭐ 大事'));
     b.appendChild(d); b.appendChild(el('span', 'note-title', s.dataset.title));
     b.addEventListener('click', function () { show(s.id.slice(3)); });
     return b;
@@ -2193,6 +2217,11 @@ EOIでスペイン語を勉強しています。レベルはB1ですが、人が
     doc.innerHTML = window.marked ? marked.parse(md) : '<pre></pre>';
     if (!window.marked) doc.firstChild.textContent = md;
 
+    // ⭐ で始まる見出しと引用は「大事なところ」として目立たせる
+    doc.querySelectorAll('h2, blockquote').forEach(function (e) {
+      var t = e.textContent.trim();
+      if (e.tagName === 'H2' ? t.indexOf('⭐') !== -1 : t.indexOf('⭐') === 0) e.classList.add('key');
+    });
     // wide tables scroll inside their own box
     doc.querySelectorAll('table').forEach(function (t) {
       var w = document.createElement('div'); w.className = 'table-wrap';
