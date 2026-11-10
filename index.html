@@ -3638,6 +3638,9 @@ B. 恋人・仕事・友だちで、いちばん大事な長所と、いちば�
     if (src.dataset.note) {
       var eb = el('div', 'eyebrow');
       eb.appendChild(btn('', '復習ノート', function () { show('fukushu'); }));
+      // 日付は見出しの上に小さく出して、見出しはタイトルだけにする
+      var h1 = doc.querySelector('h1');
+      if (h1 && src.dataset.title !== src.dataset.date) { h1.textContent = src.dataset.title; eb.appendChild(el('span', null, '› ' + src.dataset.date)); }
       chips(src, eb, src === dated[dated.length - 1]);
       doc.insertBefore(eb, doc.firstChild);
       var i = notes.indexOf(src), bar = el('div', 'note-bar');
