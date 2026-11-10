@@ -7,115 +7,248 @@
 </head>
 <body>
 <title>スペイン語B1 学習ノート</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400;1,6..72,600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
 <style>
-/* Layout: one reading column, sticky tab strip on top; Spanish set in serif italic, Japanese in gothic, key forms marked like a highlighter pen. */
+/* Layout: 3-column docs page (DESIGN.md = Mintlify): left = all notes, center = reading column, right = contents of this page. Spanish is set in green so it stands apart from the Japanese explanation. */
 :root {
-  --paper: #f6f8f7;
-  --surface: #ffffff;
-  --ink: #17262b;
-  --ink-soft: #55676d;
-  --line: #d5dedc;
-  --teal: #0b6b6f;
-  --teal-soft: #e2efee;
-  --marker: #ffe27a;
-  --warn-bg: #fff4d6;
-  --font-jp: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
-  --font-es: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --canvas: #ffffff;
+  --surface: #f7f7f7;
+  --hairline: #e5e5e5;
+  --ink: #0a0a0a;
+  --text: #2a2a2c;
+  --steel: #5a5a5c;
+  --stone: #888888;
+  --green: #00b48a;
+  --es: #08755b;
+  --es-mark: #d5f6ec;
+  --warn: #c37d0d;
+  --warn-bg: #fdf4e1;
+  --shadow: rgba(10, 10, 10, 0.12);
+  --font: "Inter", "Noto Sans JP", "Yu Gothic UI", "Hiragino Sans", "Meiryo", sans-serif;
+  --mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --bar: 56px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #10191c; --surface: #18242a; --ink: #e6eeec; --ink-soft: #9db0b1;
-    --line: #2b3b41; --teal: #6fcfcb; --teal-soft: #1d3338; --marker: #6b5a12; --warn-bg: #3a3013;
+    --canvas: #0d0e0e; --surface: #1a1b1c; --hairline: #2b2c2e; --ink: #ffffff; --text: #dcdcde;
+    --steel: #b0b0b3; --stone: #8a8a8d; --green: #00d4a4; --es: #7cebcb; --es-mark: #12453a;
+    --warn: #e5a53a; --warn-bg: #33270f; --shadow: rgba(0, 0, 0, 0.5);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #10191c; --surface: #18242a; --ink: #e6eeec; --ink-soft: #9db0b1;
-  --line: #2b3b41; --teal: #6fcfcb; --teal-soft: #1d3338; --marker: #6b5a12; --warn-bg: #3a3013;
+  --canvas: #0d0e0e; --surface: #1a1b1c; --hairline: #2b2c2e; --ink: #ffffff; --text: #dcdcde;
+  --steel: #b0b0b3; --stone: #8a8a8d; --green: #00d4a4; --es: #7cebcb; --es-mark: #12453a;
+  --warn: #e5a53a; --warn-bg: #33270f; --shadow: rgba(0, 0, 0, 0.5);
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body {
-  background: var(--paper); color: var(--ink);
-  font-family: var(--font-jp); font-size: 16px; line-height: 1.85;
+  background: var(--canvas); color: var(--text);
+  font-family: var(--font); font-size: 16px; line-height: 1.8;
   -webkit-text-size-adjust: 100%;
 }
-.tabs {
-  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
-  display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none;
-  padding: 10px 16px; background: var(--paper); border-bottom: 1px solid var(--line);
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--canvas); }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+
+/* ---- top bar ---- */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: var(--canvas); border-bottom: 1px solid var(--hairline);
 }
-.tabs::-webkit-scrollbar { display: none; }
-.tabs button {
-  flex: none; font: inherit; font-size: 14px; font-weight: 500; line-height: 1.2;
-  padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line);
-  background: var(--surface); color: var(--ink-soft); cursor: pointer;
+.bar-in {
+  max-width: 1360px; margin: 0 auto; height: var(--bar);
+  display: flex; align-items: center; gap: 16px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-.tabs button[aria-selected="true"] { background: var(--teal); border-color: var(--teal); color: var(--paper); font-weight: 700; }
-.tabs button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-main { max-width: 44rem; margin: 0 auto; padding-inline: 16px; padding-block: 20px 64px; }
-.doc { min-width: 0; }
-h1 { font-size: 1.5rem; line-height: 1.35; margin: 0.4em 0 0.8em; text-wrap: balance; }
-h2 { font-size: 1.2rem; line-height: 1.4; margin: 2.2em 0 0.7em; padding-bottom: 0.3em; border-bottom: 2px solid var(--teal); text-wrap: balance; }
-h3 { font-size: 1.05rem; line-height: 1.45; margin: 1.8em 0 0.5em; color: var(--teal); text-wrap: balance; }
-p, ul, ol { margin: 0.7em 0; }
+.brand { font-weight: 700; color: var(--ink); font-size: 15px; white-space: nowrap; display: flex; align-items: center; gap: 8px; background: none; border: 0; padding: 0; cursor: pointer; }
+.brand::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--green); }
+.menu-btn { display: none; background: none; border: 1px solid var(--hairline); border-radius: 8px; padding: 6px 10px; font-size: 14px; cursor: pointer; }
+.search { flex: 1; max-width: 460px; margin-left: auto; position: relative; }
+.search input {
+  width: 100%; height: 36px; padding: 0 64px 0 14px; font-size: 14px;
+  background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px;
+}
+.search input::placeholder { color: var(--stone); }
+.search kbd {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 11px; color: var(--steel);
+  border: 1px solid var(--hairline); border-radius: 4px; padding: 1px 6px; background: var(--canvas); pointer-events: none;
+}
+
+/* ---- 3 columns ---- */
+.shell {
+  max-width: 1360px; margin: 0 auto;
+  display: grid; grid-template-columns: 272px minmax(0, 1fr) 232px; gap: 0 40px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.side, .toc {
+  position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--bar));
+  align-self: start; max-height: calc(100vh - var(--bar)); overflow-y: auto;
+  padding-block: 24px 40px; scrollbar-width: thin;
+}
+.side { border-right: 1px solid var(--hairline); padding-right: 16px; }
+.nav-group { display: flex; flex-direction: column; gap: 2px; margin-bottom: 22px; }
+.nav-label { font-size: 12px; font-weight: 700; color: var(--ink); letter-spacing: 0.04em; padding: 0 10px 6px; }
+.nav-item {
+  display: flex; flex-direction: column; gap: 0; text-align: left; width: 100%;
+  background: none; border: 0; border-radius: 6px; padding: 6px 10px; cursor: pointer;
+  font-size: 14px; line-height: 1.5; color: var(--steel);
+}
+.nav-item:hover { background: var(--surface); color: var(--ink); }
+.nav-item[aria-current="true"] { background: var(--surface); color: var(--ink); font-weight: 600; }
+.nav-item[aria-current="true"] .nav-main::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green); margin-right: 7px; vertical-align: 2px; }
+.nav-sub { font-size: 12px; color: var(--stone); font-weight: 400; font-variant-numeric: tabular-nums; }
+
+main { min-width: 0; padding-block: 28px 80px; }
+.doc { min-width: 0; max-width: 46rem; }
+.toc-title { font-size: 12px; font-weight: 700; color: var(--ink); letter-spacing: 0.04em; margin: 0 0 8px; }
+.toc-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
+.toc-list button {
+  display: block; width: 100%; text-align: left; background: none; border: 0; cursor: pointer;
+  font-size: 13px; line-height: 1.5; color: var(--steel); padding: 4px 0 4px 12px; border-left: 2px solid var(--hairline);
+}
+.toc-list button.sub { padding-left: 24px; font-size: 12.5px; }
+.toc-list button:hover { color: var(--ink); }
+.toc-list button.on { color: var(--ink); font-weight: 600; border-left-color: var(--green); }
+.toc-inline { display: none; }
+
+/* ---- reading column ---- */
+.eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--es); font-weight: 600; margin-bottom: 6px; }
+.eyebrow button { background: none; border: 0; padding: 0; cursor: pointer; color: inherit; font-weight: inherit; }
+.eyebrow button:hover { text-decoration: underline; }
+h1, h2, h3, h4 { color: var(--ink); text-wrap: balance; font-weight: 700; }
+h1 { font-size: 1.75rem; line-height: 1.35; letter-spacing: -0.01em; margin: 0 0 0.6em; }
+h2 { font-size: 1.3rem; line-height: 1.45; margin: 0; }
+h3 { font-size: 1.08rem; line-height: 1.5; margin: 2em 0 0.5em; }
+h4 { font-size: 1rem; margin: 1.6em 0 0.4em; }
+h2, h3 { scroll-margin-top: calc(var(--bar) + 20px); }
+p, ul, ol { margin: 0.75em 0; }
 ul, ol { padding-left: 1.4em; }
 li { margin: 0.3em 0; }
-hr { border: 0; border-top: 1px solid var(--line); margin: 2em 0; }
-a { color: var(--teal); }
-em { font-family: var(--font-es); font-style: italic; font-size: 1.1em; line-height: 1.5; }
-em strong { font-weight: 600; background: linear-gradient(transparent 55%, var(--marker) 55%); }
-strong { font-weight: 700; }
-td strong, li strong, p strong { background: linear-gradient(transparent 62%, var(--marker) 62%); }
-del { color: var(--ink-soft); }
-code { font-size: 0.88em; background: var(--teal-soft); padding: 0.1em 0.4em; border-radius: 4px; word-break: break-all; }
-pre { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow-x: auto; line-height: 1.6; }
-pre code { background: none; padding: 0; word-break: normal; white-space: pre-wrap; }
-blockquote { margin: 1em 0; padding: 10px 14px; background: var(--teal-soft); border-radius: 8px; }
-blockquote p { margin: 0.35em 0; }
-blockquote.key { background: var(--warn-bg); border: 2px solid var(--marker); padding: 12px 16px; }
-.chip.key { background: var(--marker); color: var(--ink); }
-h2.key { border-bottom-color: var(--marker); border-bottom-width: 4px; }
-.doc img { display: block; max-width: 100%; height: auto; margin: 1em 0 0.3em; border: 1px solid var(--line); border-radius: 8px; cursor: zoom-in; }
-.table-wrap { overflow-x: auto; margin: 1em 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
-table { border-collapse: collapse; width: 100%; font-size: 0.93rem; line-height: 1.6; font-variant-numeric: tabular-nums; }
-th, td { padding: 8px 10px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); min-width: 5.5em; }
-th { background: var(--teal-soft); font-weight: 700; white-space: nowrap; }
+li::marker { color: var(--stone); }
+hr { border: 0; border-top: 1px solid var(--hairline); margin: 2em 0; }
+a { color: var(--es); text-underline-offset: 3px; }
+em { font-style: normal; color: var(--es); font-weight: 500; }
+strong { font-weight: 700; color: var(--ink); }
+em strong, strong em { color: var(--es); font-weight: 700; background: var(--es-mark); border-radius: 3px; padding: 0 2px; }
+del { color: var(--stone); }
+code { font-family: var(--mono); font-size: 0.86em; background: var(--surface); border: 1px solid var(--hairline); padding: 0.05em 0.4em; border-radius: 4px; word-break: break-all; }
+pre { background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px; overflow-x: auto; line-height: 1.6; }
+pre code { background: none; border: 0; padding: 0; word-break: normal; white-space: pre-wrap; }
+blockquote { margin: 1em 0; padding: 12px 16px; background: var(--surface); border: 1px solid var(--hairline); border-radius: 12px; }
+blockquote p { margin: 0.3em 0; }
+blockquote.key { background: var(--warn-bg); border-color: var(--warn); }
+h2.key { color: var(--warn); }
+
+/* sections: each "## heading" can be folded */
+.sec { border-top: 1px solid var(--hairline); padding: 22px 0 10px; }
+.sec-h { display: flex; align-items: baseline; gap: 10px; cursor: pointer; }
+.sec-h::before { content: "▾"; font-size: 0.8em; color: var(--stone); flex: none; width: 1em; transition: transform 0.15s; }
+.sec.closed .sec-h::before { transform: rotate(-90deg); }
+.sec.closed .sec-body { display: none; }
+.sec.closed { padding-bottom: 22px; }
+.sec-body > :first-child { margin-top: 0.9em; }
+.tools { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 18px; }
+.pill {
+  font-size: 13px; line-height: 1.3; padding: 7px 14px; border-radius: 9999px; cursor: pointer;
+  background: var(--canvas); border: 1px solid var(--hairline); color: var(--ink);
+}
+.pill:hover { background: var(--surface); }
+
+.table-wrap { overflow-x: auto; margin: 1em 0; border: 1px solid var(--hairline); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.94rem; line-height: 1.65; font-variant-numeric: tabular-nums; }
+th, td { padding: 9px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--hairline); min-width: 5.5em; }
+th { background: var(--surface); color: var(--steel); font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
 tr:last-child td { border-bottom: 0; }
-details { margin: 1.2em 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); padding: 0 14px; }
-summary { cursor: pointer; font-weight: 700; padding: 12px 0; color: var(--teal); }
-details[open] summary { border-bottom: 1px solid var(--line); }
+tbody tr:hover td { background: var(--surface); }
+details { margin: 1.2em 0; border: 1px solid var(--hairline); border-radius: 12px; padding: 0 16px; }
+summary { cursor: pointer; font-weight: 600; padding: 12px 0; color: var(--ink); }
+details[open] > summary { border-bottom: 1px solid var(--hairline); }
 details h2 { display: none; }
-input[type="checkbox"] { width: 1.1em; height: 1.1em; accent-color: var(--teal); vertical-align: -0.15em; margin-right: 0.3em; }
+input[type="checkbox"] { width: 1.1em; height: 1.1em; accent-color: var(--green); vertical-align: -0.15em; margin-right: 0.3em; }
 li:has(> input[type="checkbox"]) { list-style: none; margin-left: -1.2em; }
-.updated { color: var(--ink-soft); font-size: 0.85rem; margin-top: 3em; }
-.list-note { color: var(--ink-soft); }
-.note-list { list-style: none; padding: 0; margin: 1em 0; display: grid; gap: 8px; }
-.note-list li { margin: 0; }
-.note-item {
-  width: 100%; display: flex; flex-direction: column; gap: 2px; text-align: left;
-  font: inherit; padding: 12px 14px; border-radius: 10px; cursor: pointer;
-  background: var(--surface); border: 1px solid var(--line); color: var(--ink);
+
+/* photos */
+.doc img { display: block; max-width: 100%; height: auto; border: 1px solid var(--hairline); border-radius: 8px; cursor: zoom-in; }
+.sec-body:has(img) { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.sec-body:has(img) > p { margin: 0; }
+.sec-body:has(img) > p:not(:has(img)) { grid-column: 1 / -1; margin-top: 0.9em; }
+p:has(img) em { display: block; font-size: 12.5px; color: var(--steel); font-weight: 400; margin-top: 6px; line-height: 1.5; }
+.lightbox { position: fixed; inset: 0; z-index: 40; background: rgba(0, 0, 0, 0.88); display: flex; align-items: center; justify-content: center; padding: 16px; cursor: zoom-out; overflow: auto; }
+.lightbox img { max-width: 100%; max-height: 100%; border-radius: 8px; }
+.lightbox.zoom { align-items: flex-start; justify-content: flex-start; }
+.lightbox.zoom img { max-width: none; max-height: none; }
+
+/* note list, search results, vocabulary */
+.lead { color: var(--steel); margin-top: 0; }
+.cards { list-style: none; padding: 0; margin: 1.2em 0; display: flex; flex-direction: column; }
+.card {
+  width: 100%; display: flex; flex-direction: column; gap: 2px; text-align: left; cursor: pointer;
+  background: none; border: 0; border-top: 1px solid var(--hairline); padding: 14px 8px; border-radius: 0;
 }
-.note-item:hover { border-color: var(--teal); }
-.note-date { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.note-title { font-weight: 700; line-height: 1.5; }
-.chip { font-size: 0.75rem; line-height: 1.6; padding: 0 8px; border-radius: 999px; background: var(--teal); color: var(--paper); font-weight: 700; }
-.note-bar { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
-.note-bar.bottom { margin-top: 2.5em; padding-top: 1em; border-top: 1px solid var(--line); }
-.link-btn {
-  font: inherit; font-size: 0.9rem; line-height: 1.3; padding: 8px 14px; border-radius: 999px; cursor: pointer;
-  background: var(--surface); border: 1px solid var(--line); color: var(--teal); max-width: 100%;
+.card:hover { background: var(--surface); }
+.card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--steel); font-variant-numeric: tabular-nums; }
+.card-title { font-weight: 600; color: var(--ink); line-height: 1.5; }
+.card-snip { font-size: 14px; color: var(--steel); line-height: 1.6; }
+mark { background: var(--es-mark); color: var(--ink); border-radius: 3px; padding: 0 1px; }
+.chip { font-size: 11.5px; line-height: 1.7; padding: 0 8px; border-radius: 9999px; border: 1px solid var(--hairline); color: var(--steel); font-weight: 600; }
+.chip.new { background: var(--ink); border-color: var(--ink); color: var(--canvas); }
+.chip.key { border-color: var(--warn); color: var(--warn); }
+.field { width: 100%; max-width: 26rem; height: 40px; padding: 0 14px; background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; }
+.src-btn { background: none; border: 0; padding: 0; cursor: pointer; color: var(--es); font-size: 12.5px; white-space: nowrap; }
+.src-btn:hover { text-decoration: underline; }
+.note-bar { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 3em; padding-top: 1.2em; border-top: 1px solid var(--hairline); }
+.note-bar .pill { max-width: 100%; text-align: left; }
+.updated { color: var(--stone); font-size: 13px; margin-top: 3em; }
+.backdrop { display: none; }
+
+@media (max-width: 1180px) {
+  .shell { grid-template-columns: 256px minmax(0, 1fr); gap: 0 32px; }
+  .toc { display: none; }
+  .toc-inline { display: block; margin: 0 0 1.4em; }
+  .toc-inline .toc-list { padding: 8px 0 12px; }
 }
-.note-item:focus-visible, .link-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+@media (max-width: 820px) {
+  .shell { grid-template-columns: minmax(0, 1fr); }
+  .menu-btn { display: block; }
+  .brand span { display: none; }
+  .search kbd { display: none; }
+  .search input { padding-right: 14px; }
+  .side {
+    position: fixed; z-index: 25; top: calc(env(safe-area-inset-top, 0px) + var(--bar)); bottom: 0; left: 0;
+    width: min(300px, 86vw); max-height: none; background: var(--canvas);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    transform: translateX(-102%); transition: transform 0.2s;
+  }
+  .nav-open .side { transform: none; box-shadow: 8px 0 24px var(--shadow); }
+  .nav-open .backdrop { display: block; position: fixed; inset: 0; z-index: 22; background: var(--shadow); }
+  h1 { font-size: 1.45rem; }
+}
+@media (prefers-reduced-motion: reduce) { .side, .sec-h::before { transition: none; } }
 </style>
 
-<nav class="tabs" role="tablist" aria-label="ノートの切りかえ"></nav>
-<main>
-  <article class="doc" id="doc"></article>
-  <p class="updated">最終更新：2026-11-10</p>
-</main>
+<header class="bar">
+  <div class="bar-in">
+    <button class="menu-btn" id="menu-btn" type="button" aria-label="ノートの一覧を開く">☰ 一覧</button>
+    <button class="brand" id="brand" type="button"><span>スペイン語B1 学習ノート</span></button>
+    <div class="search">
+      <input id="q" type="search" placeholder="ノートをさがす（例：podría、過去未来）" autocomplete="off" aria-label="ノートをさがす">
+      <kbd>Ctrl K</kbd>
+    </div>
+  </div>
+</header>
+<div class="backdrop" id="backdrop"></div>
+<div class="shell">
+  <nav class="side" id="side" aria-label="ノートの一覧"></nav>
+  <main>
+    <article class="doc" id="doc"></article>
+    <p class="updated">最終更新：2026-11-10</p>
+  </main>
+  <aside class="toc" id="toc" aria-label="このページの目次"></aside>
+</div>
 
 <script type="text/markdown" id="md-inicio" data-label="はじめに" data-file="README.md">
 # スペイン語B1 学習フォルダ
@@ -3304,11 +3437,18 @@ B. 恋人・仕事・友だちで、いちばん大事な長所と、いちば�
 <script>
 (function () {
   var sources = Array.prototype.slice.call(document.querySelectorAll('script[type="text/markdown"]'));
-  var tabSources = sources.filter(function (s) { return !s.dataset.note; });
+  var pages = sources.filter(function (s) { return !s.dataset.note && !s.dataset.list; });
   var notes = sources.filter(function (s) { return s.dataset.note; });
-  var nav = document.querySelector('.tabs');
+  var dated = notes.filter(function (s) { return s.id !== 'md-howto'; });
+  var howto = document.getElementById('md-howto');
+  var readable = pages.concat(notes);
+  var side = document.getElementById('side');
   var doc = document.getElementById('doc');
+  var toc = document.getElementById('toc');
+  var q = document.getElementById('q');
   var KEY = 'b1-tab';
+  var current = '';
+  var tocItems = [];
 
   function el(tag, cls, text) {
     var e = document.createElement(tag);
@@ -3316,74 +3456,120 @@ B. 恋人・仕事・友だちで、いちばん大事な長所と、いちば�
     if (text != null) e.textContent = text;
     return e;
   }
-  function noteButton(s, chip) {
-    var b = el('button', 'note-item'); b.type = 'button';
-    var d = el('span', 'note-date', s.dataset.date);
-    if (chip) d.appendChild(el('span', 'chip', chip));
-    if (s.textContent.indexOf('⭐') !== -1) d.appendChild(el('span', 'chip key', '⭐ 大事'));
-    if (s.dataset.photos) d.appendChild(el('span', 'chip', '📷 ' + s.dataset.photos));
-    b.appendChild(d); b.appendChild(el('span', 'note-title', s.dataset.title));
-    b.addEventListener('click', function () { show(s.id.slice(3)); });
+  function btn(cls, text, fn) {
+    var b = el('button', cls, text); b.type = 'button';
+    b.addEventListener('click', fn);
     return b;
   }
-  // 復習ノートの一覧（古い順）。いちばん新しいノートに「最新」をつける
-  function renderList() {
-    doc.innerHTML = '';
-    doc.appendChild(el('h1', null, '復習ノート'));
-    doc.appendChild(el('p', 'list-note', '授業ごとのノートです。日付の古い順に並んでいます。タップすると開きます。'));
-    var dated = notes.filter(function (s) { return s.id !== 'md-howto'; });
-    var ol = el('ol', 'note-list');
-    dated.forEach(function (s, i) {
-      var li = el('li'); li.appendChild(noteButton(s, i === dated.length - 1 ? '最新' : null)); ol.appendChild(li);
-    });
-    if (!dated.length) doc.appendChild(el('p', 'list-note', 'まだノートはありません。授業のメモや写真を送ると、ここに増えていきます。'));
-    else doc.appendChild(ol);
-    var howto = document.getElementById('md-howto');
-    if (howto) {
-      doc.appendChild(el('h2', null, 'ノートの作り方'));
-      var ul = el('ul', 'note-list'), li = el('li');
-      li.appendChild(noteButton(howto)); ul.appendChild(li); doc.appendChild(ul);
+  function sid(s) { return s.id.slice(3); }
+  function nameOf(s) { return s.dataset.note ? s.dataset.title : s.dataset.label; }
+  // アクセント記号と大文字・小文字を区別しないで比べる（podria で podría が見つかる）
+  function fold(str) {
+    var out = '';
+    for (var i = 0; i < str.length; i++) {
+      var c = str[i].normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+      out += c.length === 1 ? c : str[i];
     }
+    return out;
   }
-  // ノートの上に「一覧にもどる」、下に「前／次のノート」
-  function noteBars(src) {
-    var top = el('div', 'note-bar');
-    var back = el('button', 'link-btn', '← ノート一覧にもどる'); back.type = 'button';
-    back.addEventListener('click', function () { show('fukushu'); });
-    top.appendChild(back);
-    doc.insertBefore(top, doc.firstChild);
-    var i = notes.indexOf(src), bottom = el('div', 'note-bar bottom');
-    [[notes[i - 1], '← '], [notes[i + 1], '']].forEach(function (p, k) {
-      var s = p[0];
-      if (!s) { bottom.appendChild(el('span')); return; }
-      var b = el('button', 'link-btn', k === 0 ? '← ' + s.dataset.date : s.dataset.date + ' →'); b.type = 'button';
-      b.addEventListener('click', function () { show(s.id.slice(3)); });
-      bottom.appendChild(b);
+  function plain(line) {
+    return line.replace(/!\[[^\]]*\]\([^)]*\)/g, '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+      .replace(/<br\s*\/?>/g, ' ').replace(/^\s*(#{1,6}|>|[-*+]|\d+\.)\s+/, '')
+      .replace(/\|?\s*:?-{3,}:?\s*(\||$)/g, ' ').replace(/[*`|]/g, ' ').replace(/\s+/g, ' ').trim();
+  }
+
+  /* ---------- left: list of everything ---------- */
+  function navItem(id, main, sub) {
+    var b = btn('nav-item', null, function () { show(id); closeNav(); });
+    b.dataset.id = id;
+    if (sub) b.appendChild(el('span', 'nav-sub', sub));
+    b.appendChild(el('span', 'nav-main', main));
+    return b;
+  }
+  function navGroup(label, items) {
+    if (!items.length) return;
+    var g = el('div', 'nav-group');
+    g.appendChild(el('div', 'nav-label', label));
+    items.forEach(function (i) { g.appendChild(i); });
+    side.appendChild(g);
+  }
+  var guideIds = ['inicio', 'plan', 'ichiran'];
+  navGroup('はじめに', pages.filter(function (s) { return guideIds.indexOf(sid(s)) !== -1; })
+    .map(function (s) { return navItem(sid(s), s.dataset.label); }));
+  navGroup('文法・会話', pages.filter(function (s) { return guideIds.indexOf(sid(s)) === -1; })
+    .map(function (s) { return navItem(sid(s), s.dataset.label); }));
+  navGroup('さがす', [navItem('tango', '単語帳'), navItem('fukushu', 'ノート一覧')]);
+  navGroup('復習ノート（新しい順）', dated.slice().reverse().map(function (s) { return navItem(sid(s), s.dataset.title, s.dataset.date); }));
+  if (howto) navGroup('使い方', [navItem('howto', howto.dataset.title)]);
+
+  function markNav(id) {
+    side.querySelectorAll('.nav-item').forEach(function (b) {
+      var on = b.dataset.id === id;
+      if (on) { b.setAttribute('aria-current', 'true'); if (b.scrollIntoView) b.scrollIntoView({ block: 'nearest' }); }
+      else b.removeAttribute('aria-current');
     });
-    doc.appendChild(bottom);
   }
+  function closeNav() { document.body.classList.remove('nav-open'); }
+  document.getElementById('menu-btn').addEventListener('click', function () { document.body.classList.toggle('nav-open'); });
+  document.getElementById('backdrop').addEventListener('click', closeNav);
+  document.getElementById('brand').addEventListener('click', function () { show(sid(pages[0])); });
 
-  function render(id) {
-    var src = document.getElementById('md-' + id) || tabSources[0];
-    id = src.id.slice(3);
-    var tabId = src.dataset.note ? 'fukushu' : id;
-    if (src.dataset.list) { renderList(); markTab(tabId); return id; }
-    var md = src.textContent;
-    doc.innerHTML = window.marked ? marked.parse(md) : '<pre></pre>';
-    if (!window.marked) doc.firstChild.textContent = md;
+  /* ---------- right: contents of this page ---------- */
+  function openSec(h) {
+    var sec = h.closest ? h.closest('.sec') : null;
+    if (sec && sec.classList.contains('closed')) toggleSec(sec, true);
+  }
+  function jump(h) {
+    openSec(h);
+    h.scrollIntoView({ behavior: 'auto', block: 'start' });
+  }
+  function buildToc() {
+    toc.innerHTML = ''; tocItems = [];
+    var heads = Array.prototype.filter.call(doc.querySelectorAll('h2, h3'), function (h) { return !h.closest('details'); });
+    if (heads.length < 2) return;
+    var inline = el('details', 'toc-inline');
+    inline.appendChild(el('summary', null, 'このページの目次'));
+    [toc, inline].forEach(function (box, k) {
+      if (k === 0) box.appendChild(el('p', 'toc-title', 'このページの目次'));
+      var ul = el('ul', 'toc-list');
+      heads.forEach(function (h) {
+        var li = el('li');
+        var b = btn(h.tagName === 'H3' ? 'sub' : '', h.textContent.replace(/（タップで開く）$/, ''), function () { jump(h); });
+        li.appendChild(b); ul.appendChild(li);
+        if (k === 0) tocItems.push({ h: h, b: b });
+      });
+      box.appendChild(ul);
+    });
+    var h1 = doc.querySelector('h1');
+    if (h1 && h1.nextSibling) doc.insertBefore(inline, h1.nextSibling); else doc.insertBefore(inline, doc.firstChild);
+  }
+  var ticking = false;
+  function spy() {
+    ticking = false;
+    var on = null;
+    tocItems.forEach(function (t) { if (t.h.offsetParent !== null && t.h.getBoundingClientRect().top < 140) on = t; });
+    tocItems.forEach(function (t) { t.b.classList.toggle('on', t === on); });
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
 
-    // ⭐ で始まる見出しと引用は「大事なところ」として目立たせる
-    doc.querySelectorAll('h2, blockquote').forEach(function (e) {
+  /* ---------- center: one note ---------- */
+  function toggleSec(sec, open) {
+    var closed = open === undefined ? !sec.classList.contains('closed') : !open;
+    sec.classList.toggle('closed', closed);
+    sec.querySelector('.sec-h').setAttribute('aria-expanded', closed ? 'false' : 'true');
+  }
+  function decorate(root, id) {
+    // ⭐ で始まる見出しと引用は「大事なところ」
+    root.querySelectorAll('h2, blockquote').forEach(function (e) {
       var t = e.textContent.trim();
       if (e.tagName === 'H2' ? t.indexOf('⭐') !== -1 : t.indexOf('⭐') === 0) e.classList.add('key');
     });
-    // wide tables scroll inside their own box
-    doc.querySelectorAll('table').forEach(function (t) {
-      var w = document.createElement('div'); w.className = 'table-wrap';
+    root.querySelectorAll('table').forEach(function (t) {
+      var w = el('div', 'table-wrap');
       t.parentNode.insertBefore(w, t); w.appendChild(t);
     });
-    // answers stay folded until tapped
-    doc.querySelectorAll('h2').forEach(function (h) {
+    // 答えはタップするまでかくす
+    root.querySelectorAll('h2').forEach(function (h) {
       if (h.textContent.indexOf('答えと解説') === -1) return;
       var d = document.createElement('details'), s = document.createElement('summary');
       s.textContent = h.textContent + '（タップで開く）';
@@ -3391,51 +3577,251 @@ B. 恋人・仕事・友だちで、いちばん大事な長所と、いちば�
       var n = h;
       while (n && !(n !== h && (n.tagName === 'H2' || n.tagName === 'H1'))) { var next = n.nextSibling; d.appendChild(n); n = next; }
     });
-    // links between notes switch tabs
-    doc.querySelectorAll('a[href]').forEach(function (a) {
+    // 「## 見出し」ごとに折りたためるまとまりにする
+    var secs = [], sec = null, body = null;
+    Array.prototype.slice.call(root.childNodes).forEach(function (n) {
+      if (n.nodeType === 1 && n.tagName === 'H2') {
+        sec = el('section', 'sec'); body = el('div', 'sec-body');
+        root.insertBefore(sec, n);
+        n.classList.add('sec-h'); n.tabIndex = 0; n.setAttribute('role', 'button'); n.setAttribute('aria-expanded', 'true');
+        sec.appendChild(n); sec.appendChild(body); secs.push(sec);
+        (function (s) {
+          n.addEventListener('click', function () { toggleSec(s); });
+          n.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleSec(s); } });
+        })(sec);
+      } else if (body) body.appendChild(n);
+    });
+    if (secs.length >= 3) {
+      var tools = el('div', 'tools');
+      tools.appendChild(btn('pill', '見出しだけにする', function () { secs.forEach(function (s) { toggleSec(s, false); }); }));
+      tools.appendChild(btn('pill', 'すべて開く', function () { secs.forEach(function (s) { toggleSec(s, true); }); }));
+      root.insertBefore(tools, secs[0]);
+    }
+    root.querySelectorAll('a[href]').forEach(function (a) {
       var href = decodeURIComponent(a.getAttribute('href'));
       if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener'; return; }
-      var hit = sources.filter(function (s) { return href.indexOf(s.dataset.file) !== -1; })[0];
-      a.addEventListener('click', function (e) { e.preventDefault(); if (hit) show(hit.id.slice(3)); });
+      var hit = sources.filter(function (s) { return s.dataset.file && href.indexOf(s.dataset.file) !== -1; })[0];
+      a.addEventListener('click', function (e) { e.preventDefault(); if (hit) show(sid(hit)); });
       if (!hit) a.removeAttribute('href');
     });
-    // photos open full size in a new tab
-    doc.querySelectorAll('img').forEach(function (im) {
+    root.querySelectorAll('img').forEach(function (im) {
       im.loading = 'lazy';
-      im.addEventListener('click', function () { window.open(im.src, '_blank', 'noopener'); });
+      im.addEventListener('click', function () { lightbox(im.src, im.alt); });
     });
-    doc.querySelectorAll('input[type="checkbox"]').forEach(function (c, i) {
+    root.querySelectorAll('input[type="checkbox"]').forEach(function (c, i) {
       c.disabled = false; c.id = 'chk-' + id + '-' + i;
       try { c.checked = localStorage.getItem(c.id) === '1'; } catch (e) {}
       c.addEventListener('change', function () { try { localStorage.setItem(c.id, c.checked ? '1' : '0'); } catch (e) {} });
     });
-    if (src.dataset.note) noteBars(src);
-    markTab(tabId);
-    return id;
   }
-  function markTab(tabId) {
-    nav.querySelectorAll('button').forEach(function (b) {
-      var on = b.dataset.id === tabId;
-      b.setAttribute('aria-selected', on ? 'true' : 'false');
-      if (on && b.scrollIntoView) b.scrollIntoView({ block: 'nearest', inline: 'center' });
-    });
+  function lightbox(src, alt) {
+    var box = el('div', 'lightbox'), im = el('img');
+    im.src = src; im.alt = alt || '';
+    box.appendChild(im);
+    // 1回目のクリックで実寸に拡大、2回目で閉じる
+    box.addEventListener('click', function () { if (box.classList.contains('zoom')) close(); else box.classList.add('zoom'); });
+    function close() { box.remove(); document.removeEventListener('keydown', onKey); }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(box);
   }
-  function show(id) {
-    id = render(id);
-    window.scrollTo(0, 0);
-    try { localStorage.setItem(KEY, id); } catch (e) {}
-    try { history.replaceState(null, '', '#' + id); } catch (e) {}
+  function chips(s, box, isNew) {
+    if (isNew) box.appendChild(el('span', 'chip new', '最新'));
+    if (s.textContent.indexOf('⭐') !== -1) box.appendChild(el('span', 'chip key', '⭐ 大事'));
+    if (s.dataset.photos) box.appendChild(el('span', 'chip', '📷 写真 ' + s.dataset.photos + '枚'));
+  }
+  function renderDoc(src) {
+    var id = sid(src), md = src.textContent;
+    doc.innerHTML = window.marked ? marked.parse(md) : '<pre></pre>';
+    if (!window.marked) doc.firstChild.textContent = md;
+    decorate(doc, id);
+    if (src.dataset.note) {
+      var eb = el('div', 'eyebrow');
+      eb.appendChild(btn('', '復習ノート', function () { show('fukushu'); }));
+      chips(src, eb, src === dated[dated.length - 1]);
+      doc.insertBefore(eb, doc.firstChild);
+      var i = notes.indexOf(src), bar = el('div', 'note-bar');
+      [notes[i - 1], notes[i + 1]].forEach(function (s, k) {
+        if (!s) { bar.appendChild(el('span')); return; }
+        bar.appendChild(btn('pill', k === 0 ? '← ' + s.dataset.date + '｜' + s.dataset.title : s.dataset.date + '｜' + s.dataset.title + ' →', function () { show(sid(s)); }));
+      });
+      doc.appendChild(bar);
+    }
+  }
+  function noteCard(s, isNew) {
+    var b = btn('card', null, function () { show(sid(s)); });
+    var m = el('span', 'card-meta', s.dataset.date);
+    chips(s, m, isNew);
+    b.appendChild(m); b.appendChild(el('span', 'card-title', s.dataset.title));
+    return b;
+  }
+  function renderList() {
+    doc.innerHTML = '';
+    doc.appendChild(el('h1', null, '復習ノート'));
+    doc.appendChild(el('p', 'lead', '授業ごとのノートです。新しい順に並んでいます。'));
+    var ol = el('ol', 'cards');
+    dated.slice().reverse().forEach(function (s, i) { var li = el('li'); li.appendChild(noteCard(s, i === 0)); ol.appendChild(li); });
+    if (!dated.length) doc.appendChild(el('p', 'lead', 'まだノートはありません。'));
+    else doc.appendChild(ol);
   }
 
-  tabSources.forEach(function (s) {
-    var b = document.createElement('button');
-    b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.id = s.id.slice(3); b.textContent = s.dataset.label;
-    b.addEventListener('click', function () { show(b.dataset.id); });
-    nav.appendChild(b);
+  /* ---------- 単語帳: ノートの中の単語の表を1つに集める ---------- */
+  var vocab = null;
+  function collectVocab() {
+    if (vocab) return vocab;
+    vocab = [];
+    var seen = {};
+    readable.forEach(function (s) {
+      if (!window.marked) return;
+      var box = document.createElement('div');
+      box.innerHTML = marked.parse(s.textContent);
+      box.querySelectorAll('table').forEach(function (t) {
+        var heads = Array.prototype.map.call(t.querySelectorAll('thead th'), function (th) { return th.textContent; });
+        var mi = -1;
+        heads.forEach(function (h, i) { if (mi === -1 && i > 0 && /意味|日本語/.test(h)) mi = i; });
+        if (mi === -1) return;
+        t.querySelectorAll('tbody tr').forEach(function (tr) {
+          var c = tr.children;
+          if (!c[0] || !c[mi] || !c[0].querySelector('em')) return;
+          var es = c[0].textContent.trim(), ja = c[mi].textContent.trim();
+          if (!es || !ja || seen[es + '|' + ja]) return;
+          seen[es + '|' + ja] = 1;
+          var key = fold(es).replace(/^[^a-zñ]+/, '').replace(/^(el|la|los|las|un|una|el\/la)\s+/, '');
+          vocab.push({ es: c[0].innerHTML, ja: c[mi].innerHTML, key: key, text: fold(es + ' ' + ja), src: s });
+        });
+      });
+    });
+    vocab.sort(function (a, b) { return a.key.localeCompare(b.key, 'es'); });
+    return vocab;
+  }
+  function renderVocab() {
+    var all = collectVocab();
+    doc.innerHTML = '';
+    doc.appendChild(el('h1', null, '単語帳'));
+    doc.appendChild(el('p', 'lead', 'ノートに出てきた単語と表現を、アルファベット順に集めました（' + all.length + '語）。右の日付を押すと、その単語が出てきたノートが開きます。'));
+    var f = el('input', 'field'); f.type = 'search'; f.id = 'vocab-q'; f.placeholder = '単語をしぼりこむ（スペイン語でも日本語でも）';
+    f.setAttribute('aria-label', '単語をしぼりこむ');
+    doc.appendChild(f);
+    var wrap = el('div', 'table-wrap'), table = el('table'), tb = el('tbody');
+    table.innerHTML = '<thead><tr><th>スペイン語</th><th>意味</th><th>ノート</th></tr></thead>';
+    table.appendChild(tb); wrap.appendChild(table); doc.appendChild(wrap);
+    function draw() {
+      var terms = fold(f.value).split(/\s+/).filter(Boolean);
+      tb.innerHTML = '';
+      all.forEach(function (v) {
+        if (!terms.every(function (t) { return v.text.indexOf(t) !== -1; })) return;
+        var tr = el('tr'), a = el('td'), b = el('td'), c = el('td');
+        a.innerHTML = v.es; b.innerHTML = v.ja;
+        var label = v.src.dataset.note ? (v.src.dataset.date.match(/\d{4}-(\d{2})-(\d{2})/) || [0, '', '']).slice(1).join('/') || v.src.dataset.date : v.src.dataset.label;
+        c.appendChild(btn('src-btn', label, function () { show(sid(v.src), a.textContent.trim()); }));
+        tr.appendChild(a); tr.appendChild(b); tr.appendChild(c); tb.appendChild(tr);
+      });
+      if (!tb.children.length) { var tr = el('tr'), td = el('td', null, '見つかりませんでした。'); td.colSpan = 3; tr.appendChild(td); tb.appendChild(tr); }
+    }
+    f.addEventListener('input', draw);
+    draw();
+  }
+
+  /* ---------- search ---------- */
+  var index = null;
+  function buildIndex() {
+    if (index) return index;
+    index = [];
+    readable.forEach(function (s) {
+      var head = '', lines = [];
+      function push() {
+        var body = lines.join(' ');
+        if (head || body) index.push({ src: s, head: head, body: body, norm: fold(head + ' ' + body) });
+        lines = [];
+      }
+      s.textContent.split('\n').forEach(function (line) {
+        if (/^#{1,3}\s/.test(line)) { push(); head = plain(line); }
+        else { var p = plain(line); if (p) lines.push(p); }
+      });
+      push();
+    });
+    return index;
+  }
+  function snippet(c, terms) {
+    var text = c.body, norm = fold(text), at = -1;
+    terms.forEach(function (t) { var i = norm.indexOf(t); if (i !== -1 && (at === -1 || i < at)) at = i; });
+    var start = Math.max(0, at - 30), cut = text.slice(start, start + 130), ncut = norm.slice(start, start + 130);
+    var p = el('span', 'card-snip');
+    if (start > 0) p.appendChild(document.createTextNode('…'));
+    var i = 0;
+    while (i < cut.length) {
+      var hit = null;
+      terms.forEach(function (t) { if (!hit && ncut.substr(i, t.length) === t) hit = t; });
+      if (hit) { p.appendChild(el('mark', null, cut.substr(i, hit.length))); i += hit.length; }
+      else {
+        var j = i + 1;
+        while (j < cut.length && !terms.some(function (t) { return ncut.substr(j, t.length) === t; })) j++;
+        p.appendChild(document.createTextNode(cut.slice(i, j))); i = j;
+      }
+    }
+    if (start + 130 < text.length) p.appendChild(document.createTextNode('…'));
+    return p;
+  }
+  function renderSearch(query) {
+    var terms = fold(query).split(/\s+/).filter(Boolean);
+    var hits = buildIndex().filter(function (c) { return terms.every(function (t) { return c.norm.indexOf(t) !== -1; }); });
+    doc.innerHTML = ''; toc.innerHTML = ''; tocItems = [];
+    doc.appendChild(el('h1', null, '「' + query + '」の検索結果'));
+    doc.appendChild(el('p', 'lead', hits.length ? hits.length + 'か所で見つかりました。押すと、その場所が開きます。' : '見つかりませんでした。ちがう言葉でためしてください。アクセント記号（á, é など）はなくても見つかります。'));
+    var ol = el('ol', 'cards');
+    hits.slice(0, 60).forEach(function (c) {
+      var li = el('li'), b = btn('card', null, function () { q.value = ''; show(sid(c.src), c.head, terms[0]); });
+      var m = el('span', 'card-meta', (c.src.dataset.note ? c.src.dataset.date + '｜' : '') + nameOf(c.src));
+      b.appendChild(m); b.appendChild(el('span', 'card-title', c.head || nameOf(c.src))); b.appendChild(snippet(c, terms));
+      li.appendChild(b); ol.appendChild(li);
+    });
+    doc.appendChild(ol);
+    window.scrollTo(0, 0);
+  }
+  q.addEventListener('input', function () {
+    var v = q.value.trim();
+    if (v) renderSearch(v); else show(current);
+  });
+  q.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { q.value = ''; show(current); q.blur(); }
+    if (e.key === 'Enter') { var first = doc.querySelector('.cards .card'); if (first) first.click(); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); q.focus(); q.select(); }
+  });
+
+  /* ---------- routing ---------- */
+  // target: 見出し、または本文の中の言葉。見つかったらそこまで動く
+  function show(id, target, term) {
+    var src = document.getElementById('md-' + id);
+    if (id !== 'tango' && id !== 'fukushu' && (!src || src.dataset.list)) { src = pages[0]; id = sid(src); }
+    current = id;
+    if (id === 'tango') renderVocab();
+    else if (id === 'fukushu') renderList();
+    else renderDoc(src);
+    if (id === 'tango' || id === 'fukushu') { toc.innerHTML = ''; tocItems = []; } else buildToc();
+    markNav(id);
+    try { localStorage.setItem(KEY, id); } catch (e) {}
+    try { if (location.hash.slice(1) !== id) history.replaceState(null, '', '#' + id); } catch (e) {}
+    var goal = null;
+    if (target) {
+      var want = target.replace(/\s+/g, ' ').trim();
+      goal = Array.prototype.filter.call(doc.querySelectorAll('h1, h2, h3'), function (h) { return h.textContent.replace(/\s+/g, ' ').trim() === want; })[0];
+      var word = fold(term || target);
+      var cells = Array.prototype.filter.call((goal && goal.closest('.sec') || doc).querySelectorAll('td, li, p, blockquote'), function (n) { return fold(n.textContent).indexOf(word) !== -1; });
+      if (!goal || term) goal = cells[0] || goal;
+    }
+    if (goal) { openSec(goal); goal.scrollIntoView({ block: goal.tagName.charAt(0) === 'H' ? 'start' : 'center' }); }
+    else window.scrollTo(0, 0);
+    spy();
+  }
+  window.addEventListener('hashchange', function () {
+    var id = location.hash.slice(1);
+    if (id && id !== current) show(id);
   });
   var start = location.hash.slice(1);
   if (!start) { try { start = localStorage.getItem(KEY); } catch (e) {} }
-  render(start || '');
+  show(start || '');
 })();
 </script>
 
