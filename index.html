@@ -133,7 +133,7 @@ hr { border: 0; border-top: 1px solid var(--hairline); margin: 2em 0; }
 a { color: var(--es); text-underline-offset: 3px; }
 em { font-style: normal; color: var(--es); font-weight: 500; }
 strong { font-weight: 700; color: var(--ink); }
-em strong, strong em { color: var(--es); font-weight: 700; background: var(--es-mark); border-radius: 3px; padding: 0 2px; }
+em strong, strong em { color: var(--es); font-weight: 700; background: var(--es-mark); border-radius: 4px; padding: 0 2px; }
 del { color: var(--stone); }
 code { font-family: var(--mono); font-size: 14px; background: var(--surface); border: 1px solid var(--hairline); padding: 0.05em 0.4em; border-radius: 4px; word-break: break-all; }
 pre { background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; padding: 12px 14px; overflow-x: auto; line-height: 1.6; }
@@ -179,7 +179,7 @@ li:has(> input[type="checkbox"]) { list-style: none; margin-left: -1.2em; }
 /* 本文の途中に置いた写真（試験問題など）は、横はばいっぱいに大きく出す */
 .sec:not(.gallery) img { margin: 0.9em 0 0.3em; width: 100%; }
 p:has(img) em { display: block; font-size: 13px; color: var(--steel); font-weight: 400; margin-top: 6px; line-height: 1.5; }
-.lightbox { position: fixed; inset: 0; z-index: 40; background: rgba(0, 0, 0, 0.88); display: flex; align-items: center; justify-content: center; padding: 16px; cursor: zoom-out; overflow: auto; }
+.lightbox { position: fixed; inset: 0; z-index: 40; background: color-mix(in srgb, #0a0a0a 90%, transparent); display: flex; align-items: center; justify-content: center; padding: 16px; cursor: zoom-out; overflow: auto; }
 .lightbox img { max-width: 100%; max-height: 100%; border-radius: 8px; }
 .lightbox.zoom { align-items: flex-start; justify-content: flex-start; }
 .lightbox.zoom img { max-width: none; max-height: none; }
@@ -195,7 +195,7 @@ p:has(img) em { display: block; font-size: 13px; color: var(--steel); font-weigh
 .card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--steel); font-variant-numeric: tabular-nums; }
 .card-title { font-weight: 600; color: var(--ink); line-height: 1.5; }
 .card-snip { font-size: 14px; color: var(--steel); line-height: 1.6; }
-mark { background: var(--es-mark); color: var(--ink); border-radius: 3px; padding: 0 1px; }
+mark { background: var(--es-mark); color: var(--ink); border-radius: 4px; padding: 0 1px; }
 .chip { font-size: 12px; line-height: 1.7; padding: 0 8px; border-radius: 9999px; border: 1px solid var(--hairline); color: var(--steel); font-weight: 600; }
 .chip.new { background: var(--ink); border-color: var(--ink); color: var(--canvas); }
 .chip.key { border-color: var(--warn); color: var(--warn); }
