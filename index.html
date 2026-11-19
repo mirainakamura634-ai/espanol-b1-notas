@@ -173,9 +173,11 @@ li:has(> input[type="checkbox"]) { list-style: none; margin-left: -1.2em; }
 
 /* photos */
 .doc img { display: block; max-width: 100%; height: auto; border: 1px solid var(--hairline); border-radius: 8px; cursor: zoom-in; }
-.sec-body:has(img) { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-.sec-body:has(img) > p { margin: 0; }
-.sec-body:has(img) > p:not(:has(img)) { grid-column: 1 / -1; margin-top: 0.9em; }
+.sec.gallery .sec-body { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.sec.gallery .sec-body > p { margin: 0; }
+.sec.gallery .sec-body > p:not(:has(img)) { grid-column: 1 / -1; margin-top: 0.9em; }
+/* 本文の途中に置いた写真（試験問題など）は、横はばいっぱいに大きく出す */
+.sec:not(.gallery) img { margin: 0.9em 0 0.3em; width: 100%; }
 p:has(img) em { display: block; font-size: 13px; color: var(--steel); font-weight: 400; margin-top: 6px; line-height: 1.5; }
 .lightbox { position: fixed; inset: 0; z-index: 40; background: rgba(0, 0, 0, 0.88); display: flex; align-items: center; justify-content: center; padding: 16px; cursor: zoom-out; overflow: auto; }
 .lightbox img { max-width: 100%; max-height: 100%; border-radius: 8px; }
@@ -245,7 +247,7 @@ mark { background: var(--es-mark); color: var(--ink); border-radius: 3px; paddin
   <nav class="side" id="side" aria-label="ノートの一覧"></nav>
   <main>
     <article class="doc" id="doc"></article>
-    <p class="updated">最終更新：2026-11-15</p>
+    <p class="updated">最終更新：2026-11-19</p>
   </main>
   <aside class="toc" id="toc" aria-label="このページの目次"></aside>
 </div>
@@ -3400,6 +3402,307 @@ B. 恋人・仕事・友だちで、いちばん大事な長所と、いちば�
 > 📷 この日の教科書・練習帳の写真（6枚）は、非公開のClaudeのページで見られます。
 
 </script>
+<script type="text/markdown" id="md-n20261118-10" data-note="1" data-date="2026-11-18（水）" data-title="模擬試験：CTE（読解）タスク1" data-file="復習ノート/2026-11-18_模擬試験「CTE 読解 タスク1」.md" data-photos="8">
+# 2026-11-18（水）｜模擬試験：CTE（読解）タスク1
+
+> 📖 **資料**：スペインの実際のB1試験（*CTE ＝ Comprensión de Textos Escritos* ＝ 読解）。グアダラハラ市の観光ページから取った短い文章6つ。
+> 📝 **やること**：月曜日（11月23日）の *prueba* に向けて、もう一度解き直す。
+
+## まとめ
+
+- タスク1は、**短い文章（TEXTO 1〜5）に、合う見出し（A〜I）を選ぶ**問題。見出しは9個あって、**3つは使わない**（ひっかけ）。
+- ひっかけの見出しは「**テーマは同じだけど、細かいところがちがう**」ように作られている。
+  - 例：「無料」と「安い」、「多い」と「少ない」、「開業する」と「もうある」
+- 問題と本文では、**同じ意味を、ちがう言葉で言う**（言いかえ）。単語の数より、言いかえに気づけるかが大事。
+- 各 TEXTO の章に、写真・単語・質問と答えをまとめている。
+
+### 解き方の手順
+1. 先に**見出し**を全部読んで、1つ1つの大事な言葉に丸をつける。
+2. 文章を読んで、合いそうな見出しを選ぶ。
+3. 選んだあとに、「**ひっかけではないか**」をもう一度チェックする（無料？ 安い？／多い？ 少ない？／開業？ もうある？）。
+
+## 問題の指示文
+
+> 📷 この部分の写真は、非公開のClaudeのページで見られます。
+| スペイン語 | 意味 |
+|---|---|
+| *emparejar* | 組み合わせる、ペアにする |
+| *el epígrafe* | 見出し、タイトル |
+| *correspondiente* | 合う、対応する |
+| *hay tres epígrafes de más* | 見出しが3つ**余分に**ある |
+| *no corresponden a ningún texto* | どの文章にも合わない |
+| *se presenta emparejado* | ペアにした形で出してある（例として） |
+
+### 質問と答え
+
+#### ❓ [...] ってどういう意味？
+「**ここで文章の一部を省略しています**」という記号。日本語の「（中略）」と同じ。
+- 最初の [...]：この前にも文章があった／途中の [...]：ここにあった文を省略／最後の [...]：このあとも続く
+- [...] の部分は**読まなくて大丈夫**。答えに関係する内容は残してある。
+- 下の *Adaptado de...* は「〜から（少し変えて）とった」という出どころ。これも答えには関係ない。
+- かっこなしの *...* は「〜など」「…」と、文が続く感じを表す。
+
+#### ❓ *tabla*
+***la tabla*** ＝ **表**、**板**（女性名詞）。
+- *en la tabla de la página siguiente* ＝ 次のページの**表**に（答えを書く欄）
+- *la tabla de surf*（サーフボード）、*una tabla de quesos*（チーズの盛り合わせ）、*la tabla de multiplicar*（九九の表）
+
+#### ❓ *presenta*
+動詞 ***presentar***（示す、紹介する、出す）の *él / ella* の形。
+- *El texto 0 **se presenta** emparejado...* ＝ 文章0は、ペアにした形で**示されている**。
+- この ***se*** は「〜される」（受け身）：*Se habla español.*（スペイン語が話されている）
+- *presentarse a un examen* ＝ 試験を受ける：*El lunes me presento a la prueba.*（月曜日に試験を受けます）
+
+#### ❓ *emparejado*
+***emparejado*** ＝ **ペアになった、組み合わされた**（動詞 *emparejar* の過去分詞）。
+- *la pareja*（ペア）＋ *em- -ar* ＝ ペアにする
+- ***Empareje*** los textos... ＝ 文章を組み合わせてください（*usted* への命令形。試験の指示文はていねいな形）
+- 同じ意味の指示：*relacionar*（結びつける）、*unir*（つなぐ）、*asociar*（関連づける）
+
+## TEXTO 0（例）
+
+> 📷 この部分の写真は、非公開のClaudeのページで見られます。
+### 単語・表現
+
+| スペイン語 | 意味 |
+|---|---|
+| *te proponemos ＋ 原形* | 〜してみませんか（観光の文章でよく出る） |
+| *descubrir* | 見つける、知る |
+| *acompañado por* | 〜といっしょに |
+| *un guía turístico habilitado* | 公認の観光ガイド |
+| *el monumento* | 歴史的な建物 |
+| *emblemático* | 代表的な、シンボルの |
+| *el palacio / el torreón* | 宮殿／塔 |
+| *el convento / la capilla* | 修道院／礼拝堂 |
+| *la iglesia / la cripta* | 教会／地下の礼拝堂 |
+
+### 質問と答え
+
+#### ❓ *Infantado*
+***Palacio del Infantado***（インファンタード宮殿）という、グアダラハラでいちばん有名な建物の**名前の一部**。
+- *el infante / la infanta* ＝ 王子／王女 → *el infantado* ＝ 昔、王子が持っていた領地
+- 「インファンタード公爵」の家の宮殿だったので、この名前（推測をふくむ歴史の説明）。
+- 大文字で始まる建物の名前（固有名詞）は、意味が分からなくても答えに関係ない。「〜宮殿」「〜修道院」と分かれば十分。
+- なかま：*infantil*（子どもの）、*la infancia*（子どものころ）
+
+## TEXTO 1
+
+> 📷 この部分の写真は、非公開のClaudeのページで見られます。
+### 単語・表現
+
+| スペイン語 | 意味 |
+|---|---|
+| *el espacio* | 場所、空間 |
+| *recorrido* | めぐった（動詞 *recorrer* ＝ めぐる、回る） |
+| *la ruta de cine* | 映画のルート（撮影地めぐり） |
+| *dar paso a* | 〜に道をゆずる → 新しく〜が出てくる |
+| *la localización* | 撮影場所、ロケ地 |
+| *el zoo municipal* | 市の動物園 |
+| *servir de* | 〜として使われる（*sirvió de* ＝ 〜として使われた） |
+| *el plató* | 撮影セット、スタジオ |
+| *conocido/a* | 有名な |
+| *la serie* | ドラマ（テレビのシリーズ） |
+| *rodar* | 撮影する（*rodó* ＝ 撮影した） |
+| *la escena de acción* | アクションシーン |
+| *la estación de autobuses* | バスターミナル |
+| *valerse de* | 〜を使う、利用する（*valiéndose de* ＝ 〜を使って） |
+| *la última tecnología* | 最新の技術 |
+| *incorporar* | 取り入れる、加える |
+| *al fondo de* | 〜の奥に |
+| *el andén* | （駅やバスの）乗り場、ホーム |
+| *el espectador* | 見る人、観客 |
+| *ceutí* | セウタ（アフリカにあるスペインの町）の |
+
+### 質問と答え
+
+#### ❓ *municipal*
+***municipal*** ＝ **市の、町の、市立の**（男女同じ形。複数は *municipales*）。
+- *el Zoo **Municipal*** ＝ 市立動物園（TEXTO 3 の *Oficina de Gestión Turística **Municipal*** ＝ 市の観光案内所 にも出てくる）
+- もとの言葉：*el municipio* ＝ 市町村
+- よく見る言葉：*la piscina municipal*（市民プール）、*la biblioteca municipal*（市立図書館）、*el mercado municipal*（市場）
+- *el Ayuntamiento* ＝ 市役所、市（*Adaptado de © Ayuntamiento de Guadalajara* ＝ グアダラハラ市のページから）
+
+#### ❓ *plató*
+***el plató*** ＝ **撮影スタジオ、撮影セット**。
+- *sirvió de plató para la conocida serie...* ＝ 有名なドラマの**撮影場所として使われた**
+- なかま：*el rodaje*（撮影）、*la localización*（ロケ地）、*el escenario*（舞台、撮影場所）
+- ⚠ ***plató***（最後の *o* を強く）＝ スタジオ ／ ***plato***（最初の *a* を強く）＝ お皿、料理（TEXTO 2 の *platos castellanos*）
+
+#### ❓ *conocida*
+***conocida***（男性形 *conocido*）＝ **有名な、よく知られた**（動詞 *conocer* の過去分詞）。
+- *la **conocida** serie "Cuéntame"* ＝ 有名なドラマ「Cuéntame」
+- *conocido/a por* ＝ 〜で有名な：*Es conocida por su comida.*
+- 「有名な」：*conocido*（ふつう）、*famoso*、*célebre*（かたい）、*de renombre*（TEXTO 4）
+- 名詞では「知り合い」：*Es una conocida, no una amiga.*
+
+#### ❓ *transportándonos*
+***transport-***（*transportar* ＝ 運ぶ、連れていく）＋ ***-ando***（〜しながら）＋ ***nos***（私たちを）
+→ 「**私たちを（その場所に）連れていって**」
+- 文の意味：バスターミナルで撮影したのに、最新の技術で乗り場の奥に海を加えたので、見る人みんながセウタの町にいるように感じた。
+- *nos* は現在分詞のうしろにくっつく（*Cuéntaselo* と同じ）。くっついても強く読む場所が変わらないように、***á*** にアクセント記号。
+- 同じ文の *valiéndose*（*valerse de* ＝ 〜を使う）も同じ形。
+- *el transporte público* ＝ 公共交通機関
+
+## TEXTO 2
+
+> 📷 この部分の写真は、非公開のClaudeのページで見られます。
+### 単語・表現
+
+| スペイン語 | 意味 |
+|---|---|
+| *el recetario* | レシピ集 → ここでは「料理」のこと |
+| *guadalajareño/a* | グアダラハラの |
+| *el plato castellano* | カスティーリャ地方の料理 |
+| *tradicional / sencillo* | 伝統的な／シンプルな |
+| *reflejo de* | 〜をうつし出すもの、〜らしさ |
+| *estas tierras* | この地方（*tierra* ＝ 土地） |
+| *la especialidad gastronómica* | 名物料理 |
+| *la sopa de ajo* | にんにくのスープ |
+| *las migas / las gachas* | パンくず炒め／小麦粉のおかゆ（どちらも郷土料理） |
+| *las judías* | いんげん豆 |
+| *el asado de cordero y cabrito* | 子羊と子ヤギの焼き料理 |
+| *la caza menor* | うさぎや小鳥などの狩りの料理 |
+| *la trucha / las setas* | マス（魚）／きのこ |
+| *de postre* | デザートに |
+| *el producto estrella* | いちばんの名物、看板商品 |
+| *alcarreño/a* | アルカリア地方の |
+| *los bizcochos borrachos* | シロップにひたしたスポンジケーキ |
+| *la miel* | はちみつ |
+| *aportar* | 加える、あたえる（*aporta su sabor* ＝ 味を加える） |
+| *numeroso/a* | たくさんの |
+
+### 質問と答え
+
+#### ❓ *ofrece*
+動詞 ***ofrecer***（**提供する、出す、すすめる**）の *él / ella* の形（現在形）。
+- *El recetario guadalajareño **ofrece** platos castellanos...* ＝ グアダラハラの料理には、カスティーリャ料理が**ある**（料理が〜を**出している**）
+- TEXTO 3 にも2回出てくる：
+  - *Para **ofrecer** una estancia más cómoda...* ＝ もっと快適な滞在を**提供する**ために
+  - *...y **ofrece** más de 50 descuentos* ＝ 50以上の割引が**ある**（割引を**用意している**）
+- 観光の文章では「〜がある、〜を用意している」という意味でよく使う。
+- 活用：*ofrezco, ofreces, ofrece, ofrecemos, ofrecéis, ofrecen*（*yo* だけ ***-zco***、*conocer → conozco* と同じ）
+- *¿Te ofrezco un café?* ＝ コーヒーはいかが？
+- 関連：*la oferta* ＝ オファー、特売（スーパーの「*Oferta*」＝ お買い得品）
+
+## TEXTO 3
+
+> 📷 この部分の写真は、非公開のClaudeのページで見られます。
+### 単語・表現
+
+| スペイン語 | 意味 |
+|---|---|
+| *ofrecer* | 提供する |
+| *la estancia* | 滞在 |
+| *cómodo/a* | 快適な、便利な |
+| *económico/a* | 安い、お得な（「経済の」だけではない！） |
+| *el visitante* | 訪れる人、観光客 |
+| *se ha creado* | 作られた |
+| *permitir el acceso a* | 〜に入れるようにする |
+| *formar parte de* | 〜の一部である |
+| *el descuento* | 割引 |
+| *la bonificación* | 特典、割引 |
+| *el establecimiento* | お店、施設 |
+| *el imán* | マグネット（磁石） |
+| *guardar como recuerdo* | 記念にとっておく |
+| *costar* | （値段が）かかる（*cuesta 3 euros*） |
+| *adquirir* | 手に入れる、買う（*puede adquirirse* ＝ 買える） |
+| *en cualquiera de* | 〜のどれでも |
+| *incluido/a* | ふくまれている |
+| *la Oficina de Gestión Turística Municipal* | 市の観光案内所 |
+| *colaborador/a* | 協力している |
+
+## TEXTO 4
+
+> 📷 この部分の写真は、非公開のClaudeのページで見られます。
+### 単語・表現
+
+| スペイン語 | 意味 |
+|---|---|
+| *múltiple* | たくさんの、いろいろな |
+| *cada vez más* | ますます、どんどん |
+| *completo/a* | 設備がそろった、充実した |
+| *el complejo deportivo* | スポーツ施設（いくつもの設備がある場所） |
+| *encontrar lugar* | 場所がある、できる |
+| *practicar* | （スポーツを）する |
+| *la modalidad deportiva* | スポーツの種目 |
+| *mero/a* | ただの（*mero espectador* ＝ ただ見るだけの人） |
+| *gracias a* | 〜のおかげで |
+| *la cualidad* | 長所、よいところ |
+| *la federación* | 連盟、協会 |
+| *de renombre* | 有名な |
+| *escoger* | 選ぶ |
+| *la sede* | 開催地、本部 |
+| *la competición* | 試合、大会 |
+| *la concentración* | 合宿 |
+| *el entrenamiento* | 練習、トレーニング |
+
+## TEXTO 5
+
+> 📷 この部分の写真は、非公開のClaudeのページで見られます。
+### 単語・表現
+
+| スペイン語 | 意味 |
+|---|---|
+| *contar con* | 〜がある、〜を持っている（試験で超よく出る！） |
+| *el metro cuadrado* | 平方メートル（m²） |
+| *el espacio ajardinado* | 緑地、庭園のある場所（*jardín* ＝ 庭） |
+| *lo que la convierte en* | そのため、それを〜にしている |
+| *mayor número de* | より多くの〜 |
+| *la zona verde* | 緑地、公園 |
+| *por habitante* | 住民1人あたり |
+| *pasear / descansar / disfrutar* | 散歩する／休む／楽しむ |
+| *enriquecer* | 豊かにする |
+| *plenamente* | 十分に |
+| *la calidad de vida* | 生活の質 |
+| *el ciudadano* | 市民 |
+
+## 見出し（EPÍGRAFES）
+
+> 📷 この部分の写真は、非公開のClaudeのページで見られます。
+### 単語・表現
+
+| スペイン語 | 意味 |
+|---|---|
+| *el bono* | チケット、券 |
+| *gratuito/a* | 無料の（＝ *gratis*） |
+| *típico/a* | 典型的な、その土地らしい |
+| *el escenario* | 舞台、撮影場所 |
+| *la serie televisiva* | テレビドラマ |
+| *la inauguración* | 開業、オープン |
+| *el estadio* | スタジアム |
+| *las instalaciones* | 施設、設備 |
+| *en abundancia* | たくさん |
+| *la tarjeta* | カード |
+| *guiado/a* | ガイドつきの |
+| *ajardinado/a* | 庭（緑）のある |
+| *escaso/a* | 少ない、とぼしい |
+
+## ⭐ よく出る表現
+
+| 表現 | 意味 |
+|---|---|
+| *contar con* | 〜がある |
+| *cada vez más* | ますます |
+| *gracias a* | 〜のおかげで |
+| *lo que la convierte en* | そのため〜になっている |
+| *permitir ＋ 名詞／原形* | 〜できるようにする |
+| *servir de* | 〜として使われる |
+| *dar paso a* | 新しく〜が出てくる |
+| *de renombre* | 有名な |
+| *el producto estrella* | 看板商品 |
+| *económico* | 安い |
+| *el establecimiento* | お店、施設 |
+| *adquirir* | 手に入れる |
+
+## 先生に聞きたいこと
+
+- 
+
+## メモ（推測の点）
+
+- *Palacio del Infantado* の名前の由来は、推測をふくむ説明です。
+
+</script>
 <script type="text/markdown" id="md-howto" data-note="1" data-date="使い方" data-title="復習ノートの作り方" data-file="復習ノート/00_使い方.md">
 # 授業の復習ノートの使い方
 
@@ -3612,7 +3915,7 @@ B. 恋人・仕事・友だちで、いちばん大事な長所と、いちば�
     var secs = [], sec = null, body = null;
     Array.prototype.slice.call(root.childNodes).forEach(function (n) {
       if (n.nodeType === 1 && n.tagName === 'H2') {
-        sec = el('section', 'sec'); body = el('div', 'sec-body');
+        sec = el('section', n.textContent.indexOf('📷') === 0 ? 'sec gallery' : 'sec'); body = el('div', 'sec-body');
         root.insertBefore(sec, n);
         n.classList.add('sec-h'); n.tabIndex = 0; n.setAttribute('role', 'button'); n.setAttribute('aria-expanded', 'true');
         sec.appendChild(n); sec.appendChild(body); secs.push(sec);
