@@ -92,7 +92,7 @@ button, input { font: inherit; color: inherit; }
 .side { border-right: 1px solid var(--hairline); padding-right: 16px; }
 .nav-group { display: flex; flex-direction: column; gap: 2px; margin-bottom: 22px; }
 .nav-label { font-size: 12px; font-weight: 700; color: var(--ink); letter-spacing: 0.04em; padding: 0 10px 6px; }
-.nav-item {
+.nav-item { text-decoration: none;
   display: flex; flex-direction: column; gap: 0; text-align: left; width: 100%;
   background: none; border: 0; border-radius: 6px; padding: 6px 10px; cursor: pointer;
   font-size: 14px; line-height: 1.5; color: var(--steel);
@@ -4432,7 +4432,12 @@ B. 恋人・仕事・友だちで、いちばん大事な長所と、いちば�
     .map(function (s) { return navItem(sid(s), s.dataset.label); }));
   navGroup('文法・会話', pages.filter(function (s) { return guideIds.indexOf(sid(s)) === -1; })
     .map(function (s) { return navItem(sid(s), s.dataset.label); }));
-  navGroup('さがす', [navItem('tango', '単語帳'), navItem('fukushu', 'ノート一覧')]);
+  // 単語カードは別のページ（GitHub Pages の cards/）なので、新しいタブで開く
+  var cardsLink = el('a', 'nav-item');
+  cardsLink.href = 'https://mirainakamura634-ai.github.io/espanol-b1-notas/cards/';
+  cardsLink.target = '_blank'; cardsLink.rel = 'noopener';
+  cardsLink.appendChild(el('span', 'nav-main', '🃏 単語カード ↗'));
+  navGroup('さがす', [navItem('tango', '単語帳'), cardsLink, navItem('fukushu', 'ノート一覧')]);
   navGroup('復習ノート（新しい順）', dated.slice().reverse().map(function (s) { return navItem(sid(s), s.dataset.title, s.dataset.date); }));
   if (howto) navGroup('使い方', [navItem('howto', howto.dataset.title)]);
 
