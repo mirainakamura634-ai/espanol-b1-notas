@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>B1読解 単語カード</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+/* Layout: one centered study column (same look as the notes page, DESIGN.md = Mintlify): mode tabs, filters, then one big card. Spanish in green, Japanese in ink. */
+:root {
+  --canvas: #ffffff;
+  --surface: #f7f7f7;
+  --hairline: #e5e5e5;
+  --ink: #0a0a0a;
+  --text: #2a2a2c;
+  --steel: #5a5a5c;
+  --stone: #888888;
+  --green: #00b48a;
+  --es: #08755b;
+  --es-mark: #d5f6ec;
+  --ok: #1ba673;
+  --ok-bg: #e3f6ee;
+  --ng: #d45656;
+  --ng-bg: #fbeaea;
+  --shadow: rgba(10, 10, 10, 0.08);
+  --font: "Inter", "Noto Sans JP", "Yu Gothic UI", "Hiragino Sans", "Meiryo", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas: #0d0e0e; --surface: #1a1b1c; --hairline: #2b2c2e; --ink: #ffffff; --text: #dcdcde;
+    --steel: #b0b0b3; --stone: #8a8a8d; --green: #00d4a4; --es: #7cebcb; --es-mark: #12453a;
+    --ok: #4fd3a0; --ok-bg: #123a2c; --ng: #f08a8a; --ng-bg: #3d1d1d; --shadow: rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --canvas: #0d0e0e; --surface: #1a1b1c; --hairline: #2b2c2e; --ink: #ffffff; --text: #dcdcde;
+  --steel: #b0b0b3; --stone: #8a8a8d; --green: #00d4a4; --es: #7cebcb; --es-mark: #12453a;
+  --ok: #4fd3a0; --ok-bg: #123a2c; --ng: #f08a8a; --ng-bg: #3d1d1d; --shadow: rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--canvas); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.7; margin: 0; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.wrap {
+  max-width: 44rem; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 64px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+h1 { margin: 0; font-size: 28px; line-height: 1.3; color: var(--ink); font-weight: 700; display: flex; align-items: center; gap: 10px; text-wrap: balance; }
+h1::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--green); flex: none; }
+.sub { margin: 4px 0 0; color: var(--steel); font-size: 14px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tabs { display: flex; gap: 4px; padding: 4px; background: var(--surface); border: 1px solid var(--hairline); border-radius: 9999px; width: fit-content; max-width: 100%; }
+.tabs button { border: 0; background: none; padding: 7px 16px; border-radius: 9999px; cursor: pointer; font-size: 14px; color: var(--steel); }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--canvas); font-weight: 600; }
+.chip { border: 1px solid var(--hairline); background: var(--canvas); padding: 5px 12px; border-radius: 9999px; cursor: pointer; font-size: 13px; color: var(--steel); }
+.chip[aria-pressed="true"] { border-color: var(--es); color: var(--es); background: var(--es-mark); font-weight: 600; }
+.chip .n { font-variant-numeric: tabular-nums; opacity: 0.75; margin-left: 4px; }
+.progress { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--steel); }
+.bar { flex: 1; height: 6px; background: var(--surface); border: 1px solid var(--hairline); border-radius: 9999px; overflow: hidden; min-width: 80px; }
+.bar i { display: block; height: 100%; background: var(--green); width: 0; transition: width 0.3s; }
+.nums { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.link { background: none; border: 0; padding: 0; color: var(--steel); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font-size: 13px; white-space: nowrap; }
+.link.warn { color: var(--ng); }
+.pill { border: 1px solid var(--hairline); background: var(--canvas); padding: 9px 18px; border-radius: 9999px; cursor: pointer; font-size: 14px; color: var(--ink); }
+.pill:hover { background: var(--surface); }
+.pill.primary { background: var(--ink); border-color: var(--ink); color: var(--canvas); font-weight: 600; }
+.pill.ok { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); font-weight: 600; }
+.pill.ng { background: var(--ng-bg); border-color: var(--ng); color: var(--ng); font-weight: 600; }
+.pill:disabled { opacity: 0.4; cursor: default; }
+
+/* card */
+.card {
+  width: 100%; min-height: 300px; border: 1px solid var(--hairline); border-radius: 16px; background: var(--canvas);
+  box-shadow: 0 8px 28px var(--shadow); padding: 28px 24px; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.card:hover { border-color: var(--stone); }
+.meta { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--stone); font-weight: 600; letter-spacing: 0.04em; }
+.term { font-size: 32px; line-height: 1.3; font-weight: 700; color: var(--ink); text-wrap: balance; overflow-wrap: anywhere; }
+.term.es { color: var(--es); }
+.hint { margin-top: auto; font-size: 13px; color: var(--stone); }
+.answer { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--hairline); padding-top: 14px; }
+.ans-main { font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1.4; overflow-wrap: anywhere; }
+.ans-main.es { color: var(--es); }
+.rel { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; font-size: 14px; }
+.rel dt { color: var(--stone); font-weight: 600; }
+.rel dd { margin: 0; color: var(--es); min-width: 0; }
+.ex { background: var(--surface); border-radius: 8px; padding: 10px 12px; font-size: 14px; line-height: 1.6; }
+.ex .es { color: var(--es); font-weight: 500; display: block; }
+.ex .ja { color: var(--steel); display: block; }
+.controls { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.controls .row { gap: 8px; }
+.keys { font-size: 12px; color: var(--stone); }
+kbd { font-family: ui-monospace, Consolas, monospace; font-size: 11px; border: 1px solid var(--hairline); border-radius: 4px; padding: 0 5px; background: var(--surface); }
+.done { text-align: center; padding: 40px 16px; border: 1px dashed var(--hairline); border-radius: 16px; color: var(--steel); display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.done strong { font-size: 20px; color: var(--ink); }
+
+/* quiz */
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.choice { border: 1px solid var(--hairline); background: var(--canvas); border-radius: 12px; padding: 14px 16px; cursor: pointer; text-align: left; font-size: 16px; line-height: 1.5; min-width: 0; overflow-wrap: anywhere; }
+.choice:hover:not(:disabled) { border-color: var(--stone); background: var(--surface); }
+.choice.es { color: var(--es); font-weight: 500; }
+.choice.right { border-color: var(--ok); background: var(--ok-bg); color: var(--ok); font-weight: 700; }
+.choice.wrong { border-color: var(--ng); background: var(--ng-bg); color: var(--ng); }
+.choice:disabled { cursor: default; }
+.feedback { font-weight: 700; min-height: 1.7em; }
+.feedback.ok { color: var(--ok); }
+.feedback.ng { color: var(--ng); }
+
+/* list */
+.search { width: 100%; height: 40px; padding: 0 14px; border: 1px solid var(--hairline); border-radius: 8px; background: var(--surface); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--hairline); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; line-height: 1.55; }
+th, td { padding: 9px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--hairline); }
+th { background: var(--surface); color: var(--steel); font-size: 12px; font-weight: 600; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.es { color: var(--es); font-weight: 500; min-width: 9em; }
+td.rel2 { color: var(--steel); font-size: 13px; min-width: 9em; }
+td.st { white-space: nowrap; font-size: 12px; }
+.tag { display: inline-block; padding: 0 8px; border-radius: 9999px; font-weight: 600; font-size: 11.5px; line-height: 1.8; }
+.tag.k { background: var(--ok-bg); color: var(--ok); }
+.tag.a { background: var(--ng-bg); color: var(--ng); }
+.empty { color: var(--steel); padding: 16px; }
+
+@media (max-width: 560px) {
+  h1 { font-size: 22px; }
+  .term { font-size: 26px; }
+  .choices { grid-template-columns: 1fr; }
+  .keys { display: none; }
+  .card { padding: 22px 18px; min-height: 260px; }
+}
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>B1読解 単語カード</h1>
+    <p class="sub">模擬試験（CTE タスク1・2）に出てきた言葉から、ほかの試験にもよく出るものを集めました。</p>
+  </header>
+
+  <div class="row" style="justify-content: space-between;">
+    <div class="tabs" role="tablist" aria-label="モード">
+      <button type="button" role="tab" id="tab-card" data-mode="card" aria-selected="true">カード</button>
+      <button type="button" role="tab" id="tab-quiz" data-mode="quiz" aria-selected="false">4択クイズ</button>
+      <button type="button" role="tab" id="tab-list" data-mode="list" aria-selected="false">一覧</button>
+    </div>
+    <div class="tabs" aria-label="向き">
+      <button type="button" id="dir-es" data-dir="es" aria-selected="true">スペイン語 → 日本語</button>
+      <button type="button" id="dir-ja" data-dir="ja" aria-selected="false">日本語 → スペイン語</button>
+    </div>
+  </div>
+
+  <div class="row" id="filters" aria-label="しぼりこみ"></div>
+
+  <div class="progress">
+    <span class="nums" id="known-count"></span>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <button type="button" class="link" id="reset">覚えた記録をリセット</button>
+  </div>
+
+  <section id="v-card"></section>
+  <section id="v-quiz" hidden></section>
+  <section id="v-list" hidden>
+    <input class="search" id="list-q" type="search" placeholder="スペイン語でも日本語でもさがせます" aria-label="単語をさがす">
+    <div class="table-wrap" style="margin-top: 12px;">
+      <table>
+        <thead><tr><th>スペイン語</th><th>意味</th><th>類義語 ／ 反対語</th><th>状態</th></tr></thead>
+        <tbody id="list-body"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  // [分類, スペイン語, 意味, 類義語, 反対語, 例文, 例文の訳]
+  var CATS = { con: 'つなぎの言葉', verb: '動詞・熟語', adj: '形容詞・副詞', noun: '名詞', trap: '言い切る言葉（ひっかけ注意）' };
+  var D = [
+    ['con', 'sin embargo', 'しかし', 'pero, no obstante', '', 'Me gusta la playa. Sin embargo, hoy hace frío.', '海は好き。でも今日は寒い。'],
+    ['con', 'en este sentido', 'その点で、この意味で', '', '', 'En este sentido, la tecnología puede ayudar.', 'その点で、技術は役に立つ。'],
+    ['con', 'a continuación', 'このあとで、次に', 'después, luego', '', 'A continuación, vemos algunos ejemplos.', '次に、いくつかの例を見ます。'],
+    ['con', 'al menos', '少なくとも', 'por lo menos', '', 'Estudio al menos media hora al día.', '少なくとも1日30分は勉強する。'],
+    ['con', 'por lo que', 'だから、そのため', 'así que, por eso', '', 'Llovía, por lo que no salimos.', '雨だったので、出かけなかった。'],
+    ['con', 'y es que', 'というのも', 'porque, ya que', '', 'Me encanta Tenerife. Y es que hace buen tiempo todo el año.', 'テネリフェが大好き。というのも、一年中天気がいいから。'],
+    ['con', 'ya sea ... o ...', '〜であっても〜であっても', '', '', 'Ya sea solo o con amigos, la playa es divertida.', '一人でも友だちとでも、海は楽しい。'],
+    ['con', 'en cuanto a', '〜については', 'respecto a, sobre', '', 'En cuanto al precio, es muy barato.', '値段については、とても安い。'],
+    ['con', 'respecto a', '〜については', 'en cuanto a', '', 'Respecto al carácter, es muy tranquila.', '性格については、とてもおだやかだ。'],
+    ['con', 'debido a', '〜のせいで、〜が原因で', 'a causa de, por', 'gracias a', 'No salimos debido a la lluvia.', '雨のせいで出かけなかった。'],
+    ['con', 'gracias a', '〜のおかげで', '', 'debido a', 'Aprobé gracias a mi profesora.', '先生のおかげで合格した。'],
+    ['con', 'mediante', '〜を使って、〜によって', 'por medio de, a través de, con', '', 'Se paga mediante tarjeta.', 'カードで支払う。'],
+    ['con', 'además de', '〜に加えて', 'aparte de', '', 'Además de español, estudio inglés.', 'スペイン語に加えて英語も勉強している。'],
+    ['con', 'de la misma manera', '同じように', 'del mismo modo, igualmente', '', 'De la misma manera, esta app es gratuita.', '同じように、このアプリも無料だ。'],
+    ['con', 'cada vez más', 'ますます、どんどん', '', 'cada vez menos', 'Cada vez más turistas visitan la isla.', 'ますます多くの観光客が島を訪れる。'],
+    ['con', 'lo que la convierte en', 'そのため〜になっている', '', '', 'Tiene muchos parques, lo que la convierte en una ciudad verde.', '公園が多いので、緑の町になっている。'],
+    ['con', 'para ello', 'そのために', 'para eso', '', 'Quiero aprobar. Para ello, estudio cada día.', '合格したい。そのために毎日勉強する。'],
+    ['con', 'en el caso de', '〜の場合は', 'en cuanto a', '', 'En el caso del buceo, hay apps especiales.', 'ダイビングの場合は、専用のアプリがある。'],
+    ['con', 'incluso', '〜さえ、〜まで', 'hasta', '', 'Hay surf, buceo e incluso pesca.', 'サーフィン、ダイビング、釣りまである。'],
+
+    ['verb', 'contar con', '〜がある、〜をそなえている', 'tener, disponer de', 'carecer de', 'La ciudad cuenta con muchos parques.', '町には公園がたくさんある。'],
+    ['verb', 'disponer de', '〜を使える、〜がある', 'tener, contar con', '', 'El hotel dispone de piscina.', 'ホテルにはプールがある。'],
+    ['verb', 'ofrecer', '提供する、〜を用意している', 'dar, proporcionar', '', 'La tarjeta ofrece descuentos.', 'そのカードには割引がある。'],
+    ['verb', 'aportar', '加える、あたえる', 'ofrecer, dar', 'quitar', 'La miel aporta sabor.', 'はちみつが味を加える。'],
+    ['verb', 'permitir', '〜できるようにする、許す', 'dejar', 'prohibir, impedir', 'La app permite crear registros.', 'そのアプリで記録が作れる。'],
+    ['verb', 'adquirir', '手に入れる、買う（かたい）', 'comprar, conseguir, obtener', 'vender', 'Puede adquirirse en la oficina de turismo.', '観光案内所で買える。'],
+    ['verb', 'obtener', '得る', 'conseguir, recibir', 'perder', 'Obtengo información en internet.', 'ネットで情報を得る。'],
+    ['verb', 'aprovechar al máximo', '最大限に活用する', 'sacar partido a', 'desaprovechar', 'Quiero aprovechar al máximo las vacaciones.', '休みを最大限に楽しみたい。'],
+    ['verb', 'sacar partido a', '〜を活用する', 'aprovechar', 'desaprovechar', 'Hay que sacar partido a la tecnología.', '技術を活用するべきだ。'],
+    ['verb', 'servir de', '〜として使われる', 'funcionar como', '', 'El zoo sirvió de plató para una serie.', '動物園がドラマの撮影場所として使われた。'],
+    ['verb', 'dar paso a', '（新しく）〜が出てくる', '', '', 'Las viejas tiendas dan paso a nuevos locales.', '古い店が新しい店に変わっていく。'],
+    ['verb', 'estar al día', '最新のことを知っている', 'estar actualizado', 'estar desfasado', 'Hay que estar al día en tecnología.', '技術の最新情報を知っておく必要がある。'],
+    ['verb', 'no hay nada como', '〜がいちばん', 'lo mejor es', '', 'No hay nada como un café por la mañana.', '朝のコーヒーがいちばん。'],
+    ['verb', 'tan solo hay que + 原形', '〜しさえすればいい', 'basta con', '', 'Tan solo hay que descargar la app.', 'アプリをダウンロードするだけでいい。'],
+    ['verb', 'contribuir a', '〜に役立つ', 'ayudar a', '', 'El deporte contribuye a mejorar la salud.', 'スポーツは健康によい。'],
+    ['verb', 'localizar', '見つける、場所をさがす', 'encontrar, buscar', '', 'La app localiza los mejores bares.', 'アプリがいちばんいいバルを見つける。'],
+    ['verb', 'conservar', '保つ、とっておく', 'guardar, mantener', 'perder', 'Conservo las fotos del viaje.', '旅行の写真をとってある。'],
+    ['verb', 'guardar como recuerdo', '記念にとっておく', 'conservar', 'tirar', 'Guardo la entrada como recuerdo.', 'チケットを記念にとっておく。'],
+    ['verb', 'encontrar lugar', '場所がある、居場所が見つかる', '', '', 'Todo deporte encuentra lugar aquí.', 'ここではどんなスポーツもできる。'],
+    ['verb', 'ser sinónimo de', '〜と同じ意味だ、〜といえば〜だ', 'significar', '', 'Verano es sinónimo de playa.', '夏といえば海だ。'],
+    ['verb', 'desconectar de', '〜からはなれてリラックスする', 'relajarse, descansar', '', 'Necesito desconectar del trabajo.', '仕事からはなれてリラックスしたい。'],
+    ['verb', 'aliviar', 'やわらげる、軽くする', 'reducir, calmar', 'aumentar, empeorar', 'Pasear alivia el estrés.', '散歩はストレスをやわらげる。'],
+    ['verb', 'dificultar', 'むずかしくする、じゃまする', 'complicar, impedir', 'facilitar', 'La lluvia dificulta el viaje.', '雨が旅をむずかしくする。'],
+    ['verb', 'facilitar', 'かんたんにする、楽にする', 'ayudar', 'dificultar', 'La app facilita el viaje.', 'アプリで旅が楽になる。'],
+    ['verb', 'evolucionar', '進化する、変わっていく', 'cambiar, desarrollarse', '', 'El turismo está evolucionando.', '観光は変わってきている。'],
+    ['verb', 'aumentar', '増える、増やす', 'crecer', 'disminuir, reducir', 'Con el calor aumentan las ganas de ir a la playa.', '暑いと海に行きたくなる。'],
+    ['verb', 'invertir el tiempo', '時間を使う', 'dedicar el tiempo', 'perder el tiempo', 'Invierto el tiempo en estudiar.', '勉強に時間を使う。'],
+    ['verb', 'entretenerse', '楽しむ、時間をつぶす', 'divertirse, distraerse', 'aburrirse', 'Los niños se entretienen en la playa.', '子どもたちは海で楽しむ。'],
+    ['verb', 'formar parte de', '〜の一部である', 'pertenecer a', '', 'Este museo forma parte del programa.', 'この美術館はそのプログラムに入っている。'],
+
+    ['adj', 'idóneo/a', 'ぴったりの、最適な', 'ideal, adecuado, apropiado', 'inapropiado, inadecuado', 'Es un lugar idóneo para descansar.', '休むのにぴったりの場所だ。'],
+    ['adj', 'inapropiado/a', '向いていない、ふさわしくない', 'inadecuado', 'apropiado, idóneo', 'Es un sitio inapropiado para niños.', '子どもには向かない場所だ。'],
+    ['adj', 'sencillo/a', 'かんたんな、シンプルな', 'fácil', 'difícil, complicado', 'Es muy sencillo de usar.', '使い方がとてもかんたんだ。'],
+    ['adj', 'económico/a', '安い、お得な', 'barato', 'caro', 'Es una tarjeta muy económica.', 'とても安いカードだ。'],
+    ['adj', 'gratuito/a', '無料の', 'gratis', 'de pago', 'Hay zonas wifi gratuitas.', '無料のWi-Fiエリアがある。'],
+    ['adj', 'escaso/a', '少ない、とぼしい', 'poco', 'abundante', 'Las zonas verdes son escasas.', '緑地が少ない。'],
+    ['adj', 'en abundancia', 'たくさん', 'mucho, abundante', 'escaso', 'Hay parques en abundancia.', '公園がたくさんある。'],
+    ['adj', 'múltiple', 'たくさんの、いろいろな', 'numeroso, variado', 'único', 'Las alternativas son múltiples.', '選択肢はたくさんある。'],
+    ['adj', 'numeroso/a', 'たくさんの', 'muchos', 'escaso', 'La miel se usa en numerosas recetas.', 'はちみつはたくさんの料理に使われる。'],
+    ['adj', 'variado/a', 'いろいろな種類の', 'diverso, distinto', 'único', 'Se pueden practicar variados deportes.', 'いろいろなスポーツができる。'],
+    ['adj', 'distinto/a', 'いろいろな（名詞の前）、ちがう', 'diferente', 'igual, mismo', 'Hay descuentos en distintos establecimientos.', 'いろいろなお店で割引がある。'],
+    ['adj', 'de renombre', '有名な（評判の高い）', 'famoso, conocido, prestigioso', 'desconocido', 'Vienen clubes de renombre.', '有名なクラブが来る。'],
+    ['adj', 'conocido/a', '有名な、よく知られた', 'famoso, célebre', 'desconocido', 'Es una serie muy conocida.', 'とても有名なドラマだ。'],
+    ['adj', 'emblemático/a', '代表的な、シンボルの', 'representativo', '', 'Es el edificio más emblemático de la ciudad.', '町でいちばん代表的な建物だ。'],
+    ['adj', 'anticuado/a', '古い、時代おくれの', 'pasado de moda, cosa del pasado', 'moderno, actual', 'Este móvil está anticuado.', 'このスマホは古い。'],
+    ['adj', 'ser cosa del pasado', '昔のことだ、もう古い', 'estar anticuado', 'estar de moda', 'Los mapas de papel ya son cosa del pasado.', '紙の地図はもう昔のものだ。'],
+    ['adj', 'sosegado/a', '落ち着いた、おだやかな', 'tranquilo, relajado', 'agitado, movido', 'Prefiero actividades más sosegadas.', 'もっとおだやかな活動のほうが好き。'],
+    ['adj', 'atrevido/a', '大胆な、こわいもの知らずの', 'valiente', 'miedoso, prudente', 'Los más atrevidos hacen surf.', 'いちばん大胆な人はサーフィンをする。'],
+    ['adj', 'manejable', '扱いやすい', 'fácil de usar', 'complicado', 'Es una cámara pequeña y manejable.', '小さくて扱いやすいカメラだ。'],
+    ['adj', 'elevado/a', '高い', 'alto', 'bajo', 'Tiene una elevada resolución.', '解像度が高い。'],
+    ['adj', 'cercano/a', '近い', 'próximo', 'lejano', 'Busco la farmacia más cercana.', 'いちばん近い薬局をさがしている。'],
+    ['adj', 'típico/a', 'その土地らしい、典型的な', 'tradicional', 'moderno', 'Es un plato típico de Canarias.', 'カナリアの典型的な料理だ。'],
+    ['adj', 'municipal', '市の、市立の', 'del ayuntamiento', 'privado', 'Voy a la piscina municipal.', '市民プールに行く。'],
+    ['adj', 'costero/a', '海沿いの', 'marítimo, playero', 'del interior', 'Vivo en un pueblo costero.', '海沿いの村に住んでいる。'],
+    ['adj', 'plenamente', '十分に、完全に', 'completamente, totalmente', 'parcialmente', 'Estoy plenamente satisfecha.', '完全に満足している。'],
+    ['adj', 'bastante', 'かなり、けっこう', '', 'poco', 'Hablo bastante bien.', 'かなり上手に話せる。'],
+    ['adj', 'suficiente', '（必要な分は）足りている', '', 'insuficiente', 'Tengo suficiente dinero.', 'お金は足りている。'],
+
+    ['noun', 'el establecimiento', 'お店、施設', 'el local, la tienda', '', 'Hay descuentos en muchos establecimientos.', 'たくさんのお店で割引がある。'],
+    ['noun', 'el local', 'お店', 'el establecimiento', '', 'Es un local muy agradable.', 'とても感じのいいお店だ。'],
+    ['noun', 'el dispositivo', '機器、デバイス', 'el aparato, el gadget', '', 'Este dispositivo es muy útil.', 'この機器はとても便利だ。'],
+    ['noun', 'las instalaciones', '施設、設備', 'el complejo', '', 'Las instalaciones deportivas son modernas.', 'スポーツ施設は新しい。'],
+    ['noun', 'el complejo deportivo', 'スポーツ施設', 'las instalaciones deportivas', '', 'Hay un complejo deportivo cerca.', '近くにスポーツ施設がある。'],
+    ['noun', 'la estancia', '滞在', 'la visita', '', 'Para una estancia más cómoda...', 'もっと快適な滞在のために…'],
+    ['noun', 'el ocio', 'レジャー、余暇', 'el tiempo libre', 'el trabajo', 'Hay muchas opciones de ocio.', 'レジャーの選択肢がたくさんある。'],
+    ['noun', 'la alternativa', '選択肢、ほかの方法', 'la opción, la posibilidad', '', 'Hay muchas alternativas.', '選択肢がたくさんある。'],
+    ['noun', 'la calidad de vida', '生活の質', '', '', 'Los parques mejoran la calidad de vida.', '公園が生活の質を高める。'],
+    ['noun', 'la especialidad', '名物、得意料理', 'el plato típico', '', 'La especialidad de la casa es el pescado.', 'この店の名物は魚だ。'],
+    ['noun', 'el producto estrella', 'いちばんの名物、看板商品', '', '', 'El producto estrella es la miel.', 'いちばんの名物ははちみつだ。'],
+    ['noun', 'la sede', '開催地、本部', '', '', 'La ciudad es sede de la competición.', 'その町が大会の開催地だ。'],
+    ['noun', 'el descuento', '割引', 'la rebaja, la bonificación', 'el recargo', 'Tiene un descuento del 10 %.', '10％割引がある。'],
+    ['noun', 'la escapada', '小旅行', 'el viaje corto', '', 'Hacemos una escapada de fin de semana.', '週末に小旅行をする。'],
+    ['noun', 'la tensión', '緊張、ストレス', 'el estrés, la presión', 'la calma', 'Hay mucha tensión en el trabajo.', '仕事でストレスが多い。'],
+    ['noun', 'el recuerdo', '思い出、記念、おみやげ', 'la memoria', 'el olvido', 'Tengo buenos recuerdos de ese viaje.', 'その旅行にはいい思い出がある。'],
+    ['noun', 'la localización', 'ロケ地、撮影場所', 'el escenario', '', 'La playa fue una localización de la serie.', 'その浜はドラマのロケ地だった。'],
+    ['noun', 'los espacios ajardinados', '緑地', 'las zonas verdes, los parques', '', 'Hay muchos espacios ajardinados.', '緑地がたくさんある。'],
+    ['noun', 'la llegada', '来ること、到来', '', 'la salida, la partida', 'Con la llegada del verano...', '夏が来ると…'],
+    ['noun', 'el visitante', '訪れる人、観光客', 'el turista', 'el residente', 'La tarjeta es para los visitantes.', 'そのカードは観光客向けだ。'],
+    ['noun', 'el entrenamiento', '練習、トレーニング', 'la práctica, el ejercicio', '', 'Tengo entrenamiento los martes.', '火曜日に練習がある。'],
+
+    ['trap', 'siempre', 'いつも', '', 'nunca, a veces', 'Siempre es fácil. → 本文が「no siempre」なら F', 'いつもかんたんだ。'],
+    ['trap', 'no siempre', 'いつも〜とは限らない（ときどき〜）', 'a veces no', '', 'No siempre es fácil saber qué hacer.', '何をすればいいか、いつも分かるとは限らない。'],
+    ['trap', 'nunca', '一度も〜ない', 'jamás', 'siempre', 'Nunca voy a la playa en invierno.', '冬は海に行かない。'],
+    ['trap', 'todo el mundo', 'みんな', 'todos', 'nadie, algunos, muchos', 'Todo el mundo lo sabe.', 'みんな知っている。'],
+    ['trap', 'imposible', '無理な、できない', '', 'posible', 'Es imposible leer aquí. → 本文が「permite leer」なら F', 'ここで読むのは無理だ。'],
+    ['trap', 'solo / únicamente', '〜だけ', 'tan solo', 'también, además', 'Solo hay una opción.', '選択肢は1つだけだ。'],
+    ['trap', 'muy', 'とても', '', 'poco', 'Es muy sencillo. → 本文が「no es fácil」なら F', 'とてもかんたんだ。'],
+    ['trap', 'ninguno/a', '1つも〜ない', '', 'todos', 'No corresponde a ningún texto.', 'どの文章にも合わない。']
+  ];
+  var cards = D.map(function (r, i) {
+    return { id: r[1], cat: r[0], es: r[1], ja: r[2], syn: r[3], ant: r[4], ex: r[5], exja: r[6] };
+  });
+
+  var KEY = 'b1-cards-v1';
+  var known = {};
+  try { known = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { known = {}; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(known)); } catch (e) {} }
+
+  var state = { mode: 'card', dir: 'es', filter: 'all', deck: [], pos: 0, flipped: false, quiz: null, score: { ok: 0, all: 0 } };
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function pool() {
+    return cards.filter(function (c) {
+      if (state.filter === 'all') return true;
+      if (state.filter === 'again') return known[c.id] !== 'k';
+      return c.cat === state.filter;
+    });
+  }
+  // まだ覚えていないカードを先に、その中はシャッフル
+  function buildDeck() {
+    var p = pool();
+    var notYet = shuffle(p.filter(function (c) { return known[c.id] !== 'k'; }));
+    var done = shuffle(p.filter(function (c) { return known[c.id] === 'k'; }));
+    state.deck = notYet.concat(done); state.pos = 0; state.flipped = false;
+  }
+
+  /* ---------- filters & progress ---------- */
+  function renderFilters() {
+    var box = $('filters'); box.innerHTML = '';
+    var opts = [['all', 'すべて']].concat(Object.keys(CATS).map(function (k) { return [k, CATS[k]]; })).concat([['again', 'まだ覚えていない']]);
+    opts.forEach(function (o) {
+      var n = cards.filter(function (c) { return o[0] === 'all' || (o[0] === 'again' ? known[c.id] !== 'k' : c.cat === o[0]); }).length;
+      var b = el('button', 'chip', o[1]); b.type = 'button'; b.id = 'f-' + o[0];
+      b.setAttribute('aria-pressed', state.filter === o[0] ? 'true' : 'false');
+      b.appendChild(el('span', 'n', n));
+      b.addEventListener('click', function () { state.filter = o[0]; buildDeck(); renderAll(); });
+      box.appendChild(b);
+    });
+  }
+  function renderProgress() {
+    var k = cards.filter(function (c) { return known[c.id] === 'k'; }).length;
+    $('known-count').textContent = '覚えた ' + k + ' / ' + cards.length + '語';
+    $('bar').style.width = (k / cards.length * 100) + '%';
+  }
+  var resetArmed = false;
+  $('reset').addEventListener('click', function () {
+    var b = $('reset');
+    if (!resetArmed) { resetArmed = true; b.textContent = 'もう一度押すと、記録を全部消します'; b.classList.add('warn'); setTimeout(function () { resetArmed = false; b.textContent = '覚えた記録をリセット'; b.classList.remove('warn'); }, 4000); return; }
+    known = {}; save(); resetArmed = false; b.textContent = '覚えた記録をリセット'; b.classList.remove('warn');
+    buildDeck(); renderAll();
+  });
+
+  /* ---------- card mode ---------- */
+  function front(c) { return state.dir === 'es' ? c.es : c.ja; }
+  function back(c) { return state.dir === 'es' ? c.ja : c.es; }
+  function renderCard() {
+    var v = $('v-card'); v.innerHTML = '';
+    if (!state.deck.length) { v.appendChild(doneBox('このしぼりこみには、カードがありません。', false)); return; }
+    if (state.pos >= state.deck.length) { v.appendChild(doneBox('ひと回り終わりました！', true)); return; }
+    var c = state.deck[state.pos];
+    var card = el('button', 'card'); card.type = 'button'; card.id = 'the-card';
+    card.setAttribute('aria-label', state.flipped ? 'カード（答えを表示中）' : 'カード。押すと答えが出ます');
+    var meta = el('div', 'meta');
+    meta.appendChild(el('span', null, CATS[c.cat]));
+    meta.appendChild(el('span', null, (state.pos + 1) + ' / ' + state.deck.length + (known[c.id] === 'k' ? '　✓ 覚えた' : '')));
+    card.appendChild(meta);
+    card.appendChild(el('div', 'term' + (state.dir === 'es' ? ' es' : ''), front(c)));
+    if (state.flipped) {
+      var a = el('div', 'answer');
+      a.appendChild(el('div', 'ans-main' + (state.dir === 'ja' ? ' es' : ''), back(c)));
+      if (c.syn || c.ant) {
+        var dl = el('dl', 'rel'); dl.style.margin = '0';
+        if (c.syn) { dl.appendChild(el('dt', null, '類義語')); dl.appendChild(el('dd', null, c.syn)); }
+        if (c.ant) { dl.appendChild(el('dt', null, '反対語')); dl.appendChild(el('dd', null, c.ant)); }
+        a.appendChild(dl);
+      }
+      if (c.ex) { var ex = el('div', 'ex'); ex.appendChild(el('span', 'es', c.ex)); ex.appendChild(el('span', 'ja', c.exja)); a.appendChild(ex); }
+      card.appendChild(a);
+    } else {
+      card.appendChild(el('div', 'hint', '押すと答えが出ます'));
+    }
+    card.addEventListener('click', function () { state.flipped = !state.flipped; renderCard(); var n = $('the-card'); if (n) n.focus(); });
+    v.appendChild(card);
+
+    var ctr = el('div', 'controls'); ctr.style.marginTop = '14px';
+    var left = el('div', 'row');
+    var prev = el('button', 'pill', '← 前'); prev.type = 'button'; prev.disabled = state.pos === 0;
+    prev.addEventListener('click', function () { move(-1); });
+    left.appendChild(prev);
+    var right = el('div', 'row');
+    var again = el('button', 'pill ng', 'まだ'); again.type = 'button'; again.id = 'btn-again';
+    again.addEventListener('click', function () { mark('a'); });
+    var ok = el('button', 'pill ok', '覚えた'); ok.type = 'button'; ok.id = 'btn-ok';
+    ok.addEventListener('click', function () { mark('k'); });
+    right.appendChild(again); right.appendChild(ok);
+    ctr.appendChild(left);
+    var keys = el('span', 'keys'); keys.innerHTML = '<kbd>Space</kbd> 答え　<kbd>1</kbd> まだ　<kbd>2</kbd> 覚えた　<kbd>←</kbd><kbd>→</kbd> 移動';
+    ctr.appendChild(keys);
+    ctr.appendChild(right);
+    v.appendChild(ctr);
+  }
+  function doneBox(msg, again) {
+    var d = el('div', 'done'); d.appendChild(el('strong', null, msg));
+    var k = state.deck.filter(function (c) { return known[c.id] === 'k'; }).length;
+    if (state.deck.length) d.appendChild(el('span', null, 'このしぼりこみで覚えたのは ' + k + ' / ' + state.deck.length + '語です。'));
+    if (again) {
+      var row = el('div', 'row'); row.style.justifyContent = 'center';
+      var b1 = el('button', 'pill primary', '「まだ」のカードだけもう一度'); b1.type = 'button';
+      b1.addEventListener('click', function () { state.filter = 'again'; buildDeck(); renderAll(); });
+      var b2 = el('button', 'pill', '最初からもう一度'); b2.type = 'button';
+      b2.addEventListener('click', function () { buildDeck(); renderAll(); });
+      row.appendChild(b1); row.appendChild(b2); d.appendChild(row);
+    }
+    return d;
+  }
+  function move(n) { state.pos = Math.max(0, Math.min(state.deck.length, state.pos + n)); state.flipped = false; renderCard(); }
+  function mark(v) {
+    var c = state.deck[state.pos]; if (!c) return;
+    known[c.id] = v; save(); renderProgress(); renderFilters();
+    move(1);
+  }
+
+  /* ---------- quiz mode ---------- */
+  function newQuestion() {
+    var p = pool(); if (!p.length) { state.quiz = null; return; }
+    var weighted = p.filter(function (c) { return known[c.id] !== 'k'; });
+    var src = weighted.length && Math.random() < 0.75 ? weighted : p;
+    var q = src[Math.floor(Math.random() * src.length)];
+    var same = cards.filter(function (c) { return c.cat === q.cat && c !== q && back(c) !== back(q); });
+    var others = shuffle(same.length >= 3 ? same : cards.filter(function (c) { return c !== q && back(c) !== back(q); })).slice(0, 3);
+    state.quiz = { q: q, choices: shuffle([q].concat(others)), answered: null };
+  }
+  function renderQuiz() {
+    var v = $('v-quiz'); v.innerHTML = '';
+    if (!state.quiz) newQuestion();
+    if (!state.quiz) { v.appendChild(doneBox('このしぼりこみには、問題がありません。', false)); return; }
+    var z = state.quiz, q = z.q;
+    var card = el('div', 'card'); card.style.cursor = 'default';
+    var meta = el('div', 'meta');
+    meta.appendChild(el('span', null, CATS[q.cat]));
+    meta.appendChild(el('span', null, '正解 ' + state.score.ok + ' / ' + state.score.all));
+    card.appendChild(meta);
+    card.appendChild(el('div', 'term' + (state.dir === 'es' ? ' es' : ''), front(q)));
+    card.appendChild(el('div', 'sub', state.dir === 'es' ? '意味はどれ？' : 'スペイン語はどれ？'));
+    var grid = el('div', 'choices');
+    z.choices.forEach(function (c, i) {
+      var b = el('button', 'choice' + (state.dir === 'ja' ? ' es' : ''), (i + 1) + '. ' + back(c)); b.type = 'button'; b.id = 'choice-' + i;
+      if (z.answered) {
+        b.disabled = true;
+        if (c === q) b.classList.add('right');
+        else if (c === z.answered) b.classList.add('wrong');
+      }
+      b.addEventListener('click', function () { answer(c); });
+      grid.appendChild(b);
+    });
+    card.appendChild(grid);
+    var fb = el('div', 'feedback');
+    if (z.answered) {
+      var right = z.answered === q;
+      fb.classList.add(right ? 'ok' : 'ng');
+      fb.textContent = right ? '正解！' : 'ざんねん。正しい答えは「' + back(q) + '」';
+      card.appendChild(fb);
+      var ex = el('div', 'ex');
+      ex.appendChild(el('span', 'es', q.es + (q.syn ? '　（類：' + q.syn + '）' : '') + (q.ant ? '　（反：' + q.ant + '）' : '')));
+      if (q.ex) { ex.appendChild(el('span', 'es', q.ex)); ex.appendChild(el('span', 'ja', q.exja)); }
+      card.appendChild(ex);
+      var next = el('button', 'pill primary', '次の問題 →'); next.type = 'button'; next.id = 'quiz-next';
+      next.style.alignSelf = 'flex-end';
+      next.addEventListener('click', function () { state.quiz = null; renderQuiz(); var n = $('choice-0'); if (n) n.focus(); });
+      card.appendChild(next);
+    } else {
+      card.appendChild(fb);
+    }
+    v.appendChild(card);
+  }
+  function answer(c) {
+    var z = state.quiz; if (!z || z.answered) return;
+    z.answered = c; state.score.all++;
+    if (c === z.q) state.score.ok++;
+    else { known[z.q.id] = 'a'; save(); renderProgress(); renderFilters(); }
+    renderQuiz();
+    var n = $('quiz-next'); if (n) n.focus();
+  }
+
+  /* ---------- list mode ---------- */
+  function fold(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+  function renderList() {
+    var terms = fold($('list-q').value).split(/\s+/).filter(Boolean);
+    var tb = $('list-body'); tb.innerHTML = '';
+    var rows = pool().slice().sort(function (a, b) { return fold(a.es.replace(/^(el|la|los|las) /, '')).localeCompare(fold(b.es.replace(/^(el|la|los|las) /, '')), 'es'); });
+    rows.forEach(function (c) {
+      var hay = fold([c.es, c.ja, c.syn, c.ant].join(' '));
+      if (!terms.every(function (t) { return hay.indexOf(t) !== -1; })) return;
+      var tr = el('tr');
+      tr.appendChild(el('td', 'es', c.es));
+      tr.appendChild(el('td', null, c.ja));
+      tr.appendChild(el('td', 'rel2', [c.syn ? '類 ' + c.syn : '', c.ant ? '反 ' + c.ant : ''].filter(Boolean).join('　') || '—'));
+      var st = el('td', 'st');
+      if (known[c.id] === 'k') st.appendChild(el('span', 'tag k', '覚えた'));
+      else if (known[c.id] === 'a') st.appendChild(el('span', 'tag a', 'まだ'));
+      else st.textContent = '—';
+      tr.appendChild(st); tb.appendChild(tr);
+    });
+    if (!tb.children.length) { var tr = el('tr'), td = el('td', 'empty', '見つかりませんでした。'); td.colSpan = 4; tr.appendChild(td); tb.appendChild(tr); }
+  }
+  $('list-q').addEventListener('input', renderList);
+
+  /* ---------- tabs ---------- */
+  document.querySelectorAll('[data-mode]').forEach(function (b) {
+    b.addEventListener('click', function () { state.mode = b.dataset.mode; renderAll(); });
+  });
+  document.querySelectorAll('[data-dir]').forEach(function (b) {
+    b.addEventListener('click', function () { state.dir = b.dataset.dir; state.flipped = false; state.quiz = null; renderAll(); });
+  });
+  function renderAll() {
+    document.querySelectorAll('[data-mode]').forEach(function (b) { b.setAttribute('aria-selected', b.dataset.mode === state.mode ? 'true' : 'false'); });
+    document.querySelectorAll('[data-dir]').forEach(function (b) { b.setAttribute('aria-selected', b.dataset.dir === state.dir ? 'true' : 'false'); });
+    $('v-card').hidden = state.mode !== 'card';
+    $('v-quiz').hidden = state.mode !== 'quiz';
+    $('v-list').hidden = state.mode !== 'list';
+    renderFilters(); renderProgress();
+    if (state.mode === 'card') renderCard();
+    else if (state.mode === 'quiz') { state.quiz = null; renderQuiz(); }
+    else renderList();
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.target && e.target.tagName === 'INPUT') return;
+    if (state.mode === 'card') {
+      if (e.key === ' ' || e.key === 'Enter') { if (document.activeElement && document.activeElement.tagName === 'BUTTON' && document.activeElement.id !== 'the-card') return; e.preventDefault(); state.flipped = !state.flipped; renderCard(); }
+      else if (e.key === 'ArrowRight') move(1);
+      else if (e.key === 'ArrowLeft') move(-1);
+      else if (e.key === '1') mark('a');
+      else if (e.key === '2') mark('k');
+    } else if (state.mode === 'quiz' && state.quiz && !state.quiz.answered && /^[1-4]$/.test(e.key)) {
+      answer(state.quiz.choices[Number(e.key) - 1]);
+    }
+  });
+
+  buildDeck();
+  renderAll();
+})();
+</script>
+
+</body>
+</html>
