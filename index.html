@@ -7,6 +7,7 @@
 </head>
 <body>
 <title>スペイン語B1 学習ノート</title>
+<meta name="b1-build" content="1795174037540">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
 <style>
@@ -213,6 +214,14 @@ mark { background: var(--es-mark); color: var(--ink); border-radius: 4px; paddin
 .note-bar .pill { max-width: 100%; text-align: left; }
 .updated { color: var(--stone); font-size: 13px; margin-top: 3em; }
 .backdrop { display: none; }
+.update-bar {
+  position: fixed; z-index: 35; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px;
+  padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: var(--ink); color: var(--canvas); font-size: 14px; font-weight: 600;
+}
+.update-bar button { border: 0; border-radius: 9999px; padding: 7px 16px; background: var(--green); color: var(--ink); font-weight: 700; cursor: pointer; }
+.update-bar .later { background: none; color: var(--canvas); font-weight: 500; text-decoration: underline; padding: 7px 4px; }
 
 @media (max-width: 1180px) {
   .shell { grid-template-columns: 256px minmax(0, 1fr); gap: 0 32px; }
@@ -4448,6 +4457,34 @@ B. 恋人・仕事・友だちで、いちばん大事な長所と、いちば�
   navGroup('さがす', [navItem('tango', '単語帳'), cardsLink, navItem('fukushu', 'ノート一覧')]);
   navGroup('復習ノート（新しい順）', dated.slice().reverse().map(function (s) { return navItem(sid(s), s.dataset.title, s.dataset.date); }));
   if (howto) navGroup('使い方', [navItem('howto', howto.dataset.title)]);
+
+  /* ---------- 最新版に更新（GitHub Pages のときだけ） ---------- */
+  // スマホやホーム画面のアイコンは、古いページを覚えていることがある。
+  // URL に ?v=時刻 をつけて開き直すと、いつも最新のページが届く。
+  function reloadFresh() { location.replace(location.pathname + '?v=' + Date.now() + location.hash); }
+  if (/github\.io$/.test(location.hostname)) {
+    navGroup('ページ', [btn('nav-item', null, reloadFresh)]);
+    var upd = side.querySelector('.nav-group:last-child .nav-item');
+    upd.appendChild(el('span', 'nav-main', '🔄 最新版に更新'));
+    upd.appendChild(el('span', 'nav-sub', '最終更新：' + (document.querySelector('.updated') || { textContent: '' }).textContent.replace('最終更新：', '')));
+    // ひらいたときに新しい版があるか調べて、あれば下にお知らせを出す
+    var mine = (document.querySelector('meta[name="b1-build"]') || {}).content;
+    if (window.fetch && mine) {
+      fetch(location.pathname + '?check=' + Date.now(), { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.text() : ''; })
+        .then(function (t) {
+          var m = t.match(/name="b1-build" content="(\d+)"/);
+          if (!m || m[1] === mine) return;
+          var bar = el('div', 'update-bar');
+          bar.setAttribute('role', 'status');
+          bar.appendChild(el('span', null, 'ノートの新しい版があります'));
+          bar.appendChild(btn('', '更新する', reloadFresh));
+          bar.appendChild(btn('later', 'あとで', function () { bar.remove(); }));
+          document.body.appendChild(bar);
+        })
+        .catch(function () {});
+    }
+  }
 
   function markNav(id) {
     side.querySelectorAll('.nav-item').forEach(function (b) {
