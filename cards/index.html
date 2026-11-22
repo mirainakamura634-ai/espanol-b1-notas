@@ -188,7 +188,7 @@ td.st { white-space: nowrap; font-size: 12px; }
 <script>
 (function () {
   // [分類, スペイン語, 意味, 類義語, 反対語, 例文, 例文の訳]
-  var CATS = { con: 'つなぎの言葉', verb: '動詞・熟語', adj: '形容詞・副詞', noun: '名詞', trap: '言い切る言葉（ひっかけ注意）', inst: '試験の指示文' };
+  var CATS = { con: 'つなぎの言葉', verb: '動詞・熟語', adj: '形容詞・副詞', noun: '名詞', trap: '言い切る言葉（ひっかけ注意）', inst: '試験の指示文', listen: 'リスニングのひっかけ・数字' };
   var D = [
     ['con', 'sin embargo', 'しかし', 'pero, no obstante', '', 'Me gusta la playa. Sin embargo, hoy hace frío.', '海は好き。でも今日は寒い。'],
     ['con', 'en este sentido', 'その点で、この意味で', '', '', 'En este sentido, la tecnología puede ayudar.', 'その点で、技術は役に立つ。'],
@@ -348,7 +348,25 @@ td.st { white-space: nowrap; font-size: 12px; }
     ['inst', 'la opción correcta', '正しい選択肢', 'la respuesta correcta', 'la opción incorrecta', 'Marque la opción correcta.', '正しい選択肢に印をつけてください。'],
     ['inst', 'según el texto', '本文によると', 'de acuerdo con el texto', '', 'Según el texto, ¿qué es verdad?', '本文によると、何が正しいですか。'],
     ['inst', 'justifique su respuesta', '答えの根拠を示してください', 'explique', '', 'Justifique su respuesta con las líneas del texto.', '本文の行で、答えの根拠を示してください。'],
-    ['inst', 'de más', '余分に、余って', 'que sobran', '', 'Hay tres epígrafes de más.', '見出しが3つ余分にある。']
+    ['inst', 'de más', '余分に、余って', 'que sobran', '', 'Hay tres epígrafes de más.', '見出しが3つ余分にある。'],
+
+    ["listen", "al final", "結局、最後には（このあとに答え）", "finalmente, por fin", "al principio", "Iba a ir en tren, pero al final fui en coche.", "電車で行くつもりだったけど、結局車で行った。"],
+    ["listen", "al principio", "最初は（あとで変わることが多い）", "primero", "al final", "Al principio no me gustaba, pero ahora sí.", "最初は好きじゃなかったけど、今は好き。"],
+    ["listen", "en realidad", "本当は、実は", "la verdad es que", "", "En realidad, prefiero el té.", "本当は、紅茶のほうが好き。"],
+    ["listen", "la verdad es que", "本当のことを言うと", "en realidad", "", "La verdad es que no me apetece salir.", "正直、出かける気分じゃない。"],
+    ["listen", "mejor ...", "〜のほうがいい（言い直しの合図）", "", "", "El martes... no, mejor el jueves.", "火曜日…いや、木曜日のほうがいい。"],
+    ["listen", "no, espera", "いや、待って（言い直しの合図）", "perdón, quiero decir", "", "Son las cinco... no, espera, las seis.", "5時…いや待って、6時だ。"],
+    ["listen", "quiero decir", "つまり、いや（言い直し）", "es decir, perdón", "", "El lunes, quiero decir, el martes.", "月曜日、いや、火曜日。"],
+    ["listen", "iba a ... pero", "〜するつもりだったけど（予定が変わった）", "", "", "Iba a llamarte, pero se me olvidó.", "電話するつもりだったけど、忘れた。"],
+    ["listen", "cambiar de idea", "気が変わる", "cambiar de opinión", "", "Al final cambié de idea.", "結局、気が変わった。"],
+    ["listen", "en vez de", "〜のかわりに", "en lugar de", "", "Tomé un taxi en vez del autobús.", "バスのかわりにタクシーに乗った。"],
+    ["listen", "no es que no ...", "〜ではないわけではない（＝〜だ）", "", "", "No es que no me guste, es que no tengo tiempo.", "好きじゃないわけじゃない、時間がないだけ。"],
+    ["listen", "seis / siete", "6 ／ 7（聞きまちがえやすい）", "", "", "Vivo en el número siete, no en el seis.", "6番地じゃなくて7番地に住んでいる。"],
+    ["listen", "trece / treinta", "13 ／ 30（聞きまちがえやすい）", "", "", "Cuesta treinta euros, no trece.", "13ユーロじゃなくて30ユーロ。"],
+    ["listen", "quince / cincuenta", "15 ／ 50（聞きまちがえやすい）", "", "", "Son quince minutos andando.", "歩いて15分。"],
+    ["listen", "las nueve menos cuarto", "8時45分（9時の15分前）", "", "", "Quedamos a las nueve menos cuarto.", "8時45分に待ち合わせ。"],
+    ["listen", "y media / y cuarto", "〜時半 ／ 〜時15分", "", "", "Empieza a las ocho y media.", "8時半に始まる。"],
+    ["listen", "tres euros con cincuenta", "3ユーロ50セント", "", "", "Son tres euros con cincuenta, por favor.", "3ユーロ50セントです。"]
   ];
   var cards = D.map(function (r, i) {
     return { id: r[1], cat: r[0], es: r[1], ja: r[2], syn: r[3], ant: r[4], ex: r[5], exja: r[6] };
