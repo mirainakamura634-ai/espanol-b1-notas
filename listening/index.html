@@ -315,6 +315,7 @@ details[open] > summary { border-bottom: 1px solid var(--hairline); }
       stopAll();
       if (!holder.unlimited) playsLeft[key]--;
       b.classList.add('playing'); b.textContent = '■ 止める';
+      if (!holder.unlimited) info.textContent = 'あと ' + playsLeft[key] + ' 回';
       speak(lines, function () { b.classList.remove('playing'); label(); });
     });
     holder.refresh = label;
