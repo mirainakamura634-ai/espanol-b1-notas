@@ -149,7 +149,7 @@ td.st { white-space: nowrap; font-size: 12px; }
   <header>
     <a class="back" href="https://mirainakamura634-ai.github.io/espanol-b1-notas/">← ノートにもどる</a>
     <h1>B1読解 単語カード</h1>
-    <p class="sub">模擬試験（CTE タスク1・2）に出てきた言葉から、ほかの試験にもよく出るものを集めました。</p>
+    <p class="sub">模擬試験（CTE タスク1・2）に出てきた言葉と、ほかの試験にもよく出る言葉を集めました。</p>
   </header>
 
   <div class="row" style="justify-content: space-between;">
@@ -188,7 +188,7 @@ td.st { white-space: nowrap; font-size: 12px; }
 <script>
 (function () {
   // [分類, スペイン語, 意味, 類義語, 反対語, 例文, 例文の訳]
-  var CATS = { con: 'つなぎの言葉', verb: '動詞・熟語', adj: '形容詞・副詞', noun: '名詞', trap: '言い切る言葉（ひっかけ注意）' };
+  var CATS = { con: 'つなぎの言葉', verb: '動詞・熟語', adj: '形容詞・副詞', noun: '名詞', trap: '言い切る言葉（ひっかけ注意）', inst: '試験の指示文' };
   var D = [
     ['con', 'sin embargo', 'しかし', 'pero, no obstante', '', 'Me gusta la playa. Sin embargo, hoy hace frío.', '海は好き。でも今日は寒い。'],
     ['con', 'en este sentido', 'その点で、この意味で', '', '', 'En este sentido, la tecnología puede ayudar.', 'その点で、技術は役に立つ。'],
@@ -297,7 +297,58 @@ td.st { white-space: nowrap; font-size: 12px; }
     ['trap', 'imposible', '無理な、できない', '', 'posible', 'Es imposible leer aquí. → 本文が「permite leer」なら F', 'ここで読むのは無理だ。'],
     ['trap', 'solo / únicamente', '〜だけ', 'tan solo', 'también, además', 'Solo hay una opción.', '選択肢は1つだけだ。'],
     ['trap', 'muy', 'とても', '', 'poco', 'Es muy sencillo. → 本文が「no es fácil」なら F', 'とてもかんたんだ。'],
-    ['trap', 'ninguno/a', '1つも〜ない', '', 'todos', 'No corresponde a ningún texto.', 'どの文章にも合わない。']
+    ['trap', 'ninguno/a', '1つも〜ない', '', 'todos', 'No corresponde a ningún texto.', 'どの文章にも合わない。'],
+
+    ['con', 'no obstante', 'しかし（かたい）', 'sin embargo, pero', '', 'Es caro. No obstante, merece la pena.', '高い。しかし、その価値はある。'],
+    ['con', 'por lo tanto', 'だから、したがって', 'por eso, así que', '', 'Llueve; por lo tanto, nos quedamos en casa.', '雨だ。だから家にいる。'],
+    ['con', 'así que', 'だから', 'por eso, por lo tanto', '', 'Estaba cansada, así que me acosté pronto.', '疲れていたので、早く寝た。'],
+    ['con', 'ya que', '〜なので', 'porque, puesto que', '', 'Ya que estás aquí, ayúdame.', 'せっかくここにいるんだから、手伝って。'],
+    ['con', 'a pesar de', '〜にもかかわらず', 'aunque', 'gracias a', 'Salimos a pesar de la lluvia.', '雨にもかかわらず出かけた。'],
+    ['con', 'aunque', '〜だけれども', 'a pesar de que', '', 'Aunque es difícil, me gusta.', 'むずかしいけれど、好きだ。'],
+    ['con', 'es decir', 'つまり', 'o sea', '', 'Vivo en Tenerife, es decir, en Canarias.', 'テネリフェ、つまりカナリア諸島に住んでいる。'],
+    ['con', 'sin duda', 'まちがいなく', 'sin lugar a dudas, seguramente', 'quizás', 'Es, sin duda, la mejor playa.', 'まちがいなく、いちばんいい浜だ。'],
+    ['con', 'por un lado ... por otro (lado)', '一方では…、他方では…', '', '', 'Por un lado es barato; por otro, está lejos.', '安い一方で、遠い。'],
+    ['con', 'en cambio', 'それに対して', 'sin embargo, por el contrario', '', 'Yo prefiero el mar; mi hermana, en cambio, la montaña.', '私は海が好き。それに対して妹は山が好き。'],
+    ['con', 'de hecho', '実際に、じつは', 'en realidad', '', 'Me encanta Japón; de hecho, voy cada año.', '日本が大好き。実際、毎年行く。'],
+    ['con', 'en primer lugar', 'まず、第一に', 'primero', 'por último', 'En primer lugar, lea el texto.', 'まず、本文を読んでください。'],
+    ['con', 'por último', '最後に', 'finalmente', 'en primer lugar', 'Por último, escriba su respuesta.', '最後に、答えを書いてください。'],
+    ['con', 'en general', '一般に、ふつうは', 'por lo general, normalmente', 'en particular', 'En general, los españoles cenan tarde.', 'ふつう、スペイン人は夕食がおそい。'],
+    ['con', 'a la vez', '同時に', 'al mismo tiempo', '', 'No puedo leer y escuchar a la vez.', '読みながら聞くことはできない。'],
+    ['verb', 'realizar', '行う、実行する（かたい）', 'hacer, llevar a cabo', '', 'Realizamos una encuesta.', 'アンケートを行った。'],
+    ['verb', 'llevar a cabo', '実行する', 'realizar, hacer', '', 'El proyecto se llevó a cabo en 2025.', 'その計画は2025年に実行された。'],
+    ['verb', 'solicitar', '申しこむ、求める（かたい）', 'pedir', '', 'Puede solicitar información en la oficina.', '事務所で情報をたのめます。'],
+    ['verb', 'destacar', '目立つ、強調する', 'resaltar, subrayar', '', 'Destaca por su belleza.', 'その美しさで目立っている。'],
+    ['verb', 'lograr', 'なしとげる、〜できる', 'conseguir, alcanzar', 'fracasar', 'Logró aprobar el examen.', '試験に合格できた。'],
+    ['verb', 'conseguir', '手に入れる、〜できる', 'lograr, obtener', 'perder', 'Conseguí entradas para el concierto.', 'コンサートのチケットを手に入れた。'],
+    ['verb', 'proporcionar', '提供する、あたえる', 'dar, ofrecer, aportar', '', 'La web proporciona información útil.', 'そのサイトは役に立つ情報をくれる。'],
+    ['verb', 'utilizar', '使う', 'usar, emplear', '', 'Utilizo el móvil para estudiar.', '勉強にスマホを使う。'],
+    ['verb', 'elegir / escoger', '選ぶ', 'seleccionar', '', 'Elija la opción correcta.', '正しい答えを選んでください。'],
+    ['verb', 'mantener', '保つ、続ける', 'conservar', 'perder, cambiar', 'Es importante mantener la calma.', '落ち着いているのが大事だ。'],
+    ['verb', 'reducir', '減らす', 'disminuir', 'aumentar, incrementar', 'Hay que reducir el uso del coche.', '車を使うのを減らすべきだ。'],
+    ['verb', 'disminuir', '減る、減らす', 'reducir, bajar', 'aumentar', 'El número de turistas ha disminuido.', '観光客の数が減った。'],
+    ['verb', 'incrementar', '増やす（かたい）', 'aumentar', 'reducir, disminuir', 'Quieren incrementar las ventas.', '売り上げを増やしたい。'],
+    ['verb', 'evitar', '避ける', 'impedir', 'buscar', 'Evito salir cuando hace mucho calor.', 'とても暑いときは出かけないようにしている。'],
+    ['verb', 'impedir', 'できなくする、じゃまする', 'dificultar', 'permitir', 'La lluvia nos impidió salir.', '雨で出かけられなかった。'],
+    ['verb', 'favorecer', '有利にする、役立つ', 'ayudar, facilitar, beneficiar', 'perjudicar', 'El ejercicio favorece el descanso.', '運動はよく眠るのに役立つ。'],
+    ['verb', 'perjudicar', '害をあたえる、悪くする', 'dañar', 'favorecer, beneficiar', 'Fumar perjudica la salud.', 'たばこは健康に悪い。'],
+    ['verb', 'suponer', '意味する、思う', 'significar, imaginar', '', 'Esto supone un gran cambio.', 'これは大きな変化を意味する。'],
+    ['verb', 'tratarse de', '〜のことだ、〜である', 'ser', '', 'Se trata de un libro muy útil.', 'それはとても役に立つ本だ。'],
+    ['verb', 'tener lugar', '行われる、起こる', 'celebrarse, ocurrir', '', 'El concierto tiene lugar el sábado.', 'コンサートは土曜日に行われる。'],
+    ['adj', 'imprescindible', '欠かせない、絶対に必要な', 'necesario, esencial', 'innecesario', 'El pasaporte es imprescindible.', 'パスポートは欠かせない。'],
+    ['adj', 'habitual', 'いつもの、よくある', 'frecuente, normal', 'raro, excepcional', 'Es habitual cenar a las diez.', '10時に夕食を食べるのはふつうだ。'],
+    ['adj', 'actualmente', '今は、現在（「実際に」ではない！）', 'hoy en día, ahora', 'antes', 'Actualmente vivo en Tenerife.', '今はテネリフェに住んでいる。'],
+    ['adj', 'apenas', 'ほとんど〜ない', 'casi no', 'mucho', 'Apenas tengo tiempo libre.', 'ひまな時間がほとんどない。'],
+    ['adj', 'a menudo', 'よく、しばしば', 'con frecuencia, frecuentemente', 'rara vez, casi nunca', 'Voy a la playa a menudo.', 'よく海に行く。'],
+    ['inst', 'señale', '示してください、選んでください（señalar）', 'indique, marque', '', 'Señale la opción correcta.', '正しい答えを選んでください。'],
+    ['inst', 'relacione', '結びつけてください（relacionar）', 'empareje, una', '', 'Relacione cada texto con un título.', 'それぞれの文章を見出しと結びつけてください。'],
+    ['inst', 'elija', '選んでください（elegir）', 'seleccione, escoja', '', 'Elija la respuesta adecuada.', 'ふさわしい答えを選んでください。'],
+    ['inst', 'complete', '完成させてください、うめてください', 'rellene', '', 'Complete los huecos del texto.', '本文の空欄をうめてください。'],
+    ['inst', 'el apartado', '（問題の）項目、セクション', 'la sección, la parte', '', 'Lea el apartado B.', 'Bの項目を読んでください。'],
+    ['inst', 'el enunciado', '問題の文', 'la afirmación, la frase', '', 'Lea cada enunciado.', 'それぞれの問題文を読んでください。'],
+    ['inst', 'la opción correcta', '正しい選択肢', 'la respuesta correcta', 'la opción incorrecta', 'Marque la opción correcta.', '正しい選択肢に印をつけてください。'],
+    ['inst', 'según el texto', '本文によると', 'de acuerdo con el texto', '', 'Según el texto, ¿qué es verdad?', '本文によると、何が正しいですか。'],
+    ['inst', 'justifique su respuesta', '答えの根拠を示してください', 'explique', '', 'Justifique su respuesta con las líneas del texto.', '本文の行で、答えの根拠を示してください。'],
+    ['inst', 'de más', '余分に、余って', 'que sobran', '', 'Hay tres epígrafes de más.', '見出しが3つ余分にある。']
   ];
   var cards = D.map(function (r, i) {
     return { id: r[1], cat: r[0], es: r[1], ja: r[2], syn: r[3], ant: r[4], ex: r[5], exja: r[6] };
