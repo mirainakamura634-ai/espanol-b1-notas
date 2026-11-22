@@ -131,6 +131,9 @@ td.st { white-space: nowrap; font-size: 12px; }
 .tag.k { background: var(--ok-bg); color: var(--ok); }
 .tag.a { background: var(--ng-bg); color: var(--ng); }
 .empty { color: var(--steel); padding: 16px; }
+.star { border: 1px solid var(--hairline); background: var(--canvas); border-radius: 9999px; padding: 9px 14px; cursor: pointer; font-size: 14px; color: var(--steel); white-space: nowrap; }
+.star[aria-pressed="true"] { border-color: #c37d0d; color: #c37d0d; background: color-mix(in srgb, #c37d0d 12%, var(--canvas)); font-weight: 600; }
+.star.small { padding: 2px 8px; font-size: 13px; }
 
 @media (max-width: 560px) {
   h1 { font-size: 22px; }
@@ -175,7 +178,7 @@ td.st { white-space: nowrap; font-size: 12px; }
     <input class="search" id="list-q" type="search" placeholder="スペイン語でも日本語でもさがせます" aria-label="単語をさがす">
     <div class="table-wrap" style="margin-top: 12px;">
       <table>
-        <thead><tr><th>スペイン語</th><th>意味</th><th>類義語 ／ 反対語</th><th>状態</th></tr></thead>
+        <thead><tr><th>スペイン語</th><th>意味</th><th>類義語 ／ 反対語</th><th>状態</th><th>★</th></tr></thead>
         <tbody id="list-body"></tbody>
       </table>
     </div>
@@ -304,6 +307,20 @@ td.st { white-space: nowrap; font-size: 12px; }
   var known = {};
   try { known = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { known = {}; }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(known)); } catch (e) {} }
+  // ブックマーク（自分で大事だと思った言葉）
+  var BKEY = 'b1-cards-bm-v1';
+  var bm = {};
+  try { bm = JSON.parse(localStorage.getItem(BKEY) || '{}') || {}; } catch (e) { bm = {}; }
+  function toggleBm(c) { if (bm[c.id]) delete bm[c.id]; else bm[c.id] = 1; try { localStorage.setItem(BKEY, JSON.stringify(bm)); } catch (e) {} renderFilters(); }
+  function starBtn(c, small, after) {
+    var b = el('button', 'star' + (small ? ' small' : ''), bm[c.id] ? '★ ブックマーク中' : '☆ ブックマーク'); b.type = 'button';
+    if (small) b.textContent = bm[c.id] ? '★' : '☆';
+    b.setAttribute('aria-pressed', bm[c.id] ? 'true' : 'false');
+    b.setAttribute('aria-label', bm[c.id] ? 'ブックマークを外す' : 'ブックマークする');
+    b.addEventListener('click', function (e) { e.stopPropagation(); toggleBm(c); if (after) after(); });
+    return b;
+  }
+  function matches(c, f) { return f === 'all' || (f === 'again' ? known[c.id] !== 'k' : f === 'bm' ? !!bm[c.id] : c.cat === f); }
 
   var state = { mode: 'card', dir: 'es', filter: 'all', deck: [], pos: 0, flipped: false, quiz: null, score: { ok: 0, all: 0 } };
   var $ = function (id) { return document.getElementById(id); };
@@ -311,9 +328,7 @@ td.st { white-space: nowrap; font-size: 12px; }
   function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
   function pool() {
     return cards.filter(function (c) {
-      if (state.filter === 'all') return true;
-      if (state.filter === 'again') return known[c.id] !== 'k';
-      return c.cat === state.filter;
+      return matches(c, state.filter);
     });
   }
   // まだ覚えていないカードを先に、その中はシャッフル
@@ -327,9 +342,9 @@ td.st { white-space: nowrap; font-size: 12px; }
   /* ---------- filters & progress ---------- */
   function renderFilters() {
     var box = $('filters'); box.innerHTML = '';
-    var opts = [['all', 'すべて']].concat(Object.keys(CATS).map(function (k) { return [k, CATS[k]]; })).concat([['again', 'まだ覚えていない']]);
+    var opts = [['all', 'すべて']].concat(Object.keys(CATS).map(function (k) { return [k, CATS[k]]; })).concat([['again', 'まだ覚えていない'], ['bm', '★ ブックマーク']]);
     opts.forEach(function (o) {
-      var n = cards.filter(function (c) { return o[0] === 'all' || (o[0] === 'again' ? known[c.id] !== 'k' : c.cat === o[0]); }).length;
+      var n = cards.filter(function (c) { return matches(c, o[0]); }).length;
       var b = el('button', 'chip', o[1]); b.type = 'button'; b.id = 'f-' + o[0];
       b.setAttribute('aria-pressed', state.filter === o[0] ? 'true' : 'false');
       b.appendChild(el('span', 'n', n));
@@ -355,14 +370,14 @@ td.st { white-space: nowrap; font-size: 12px; }
   function back(c) { return state.dir === 'es' ? c.ja : c.es; }
   function renderCard() {
     var v = $('v-card'); v.innerHTML = '';
-    if (!state.deck.length) { v.appendChild(doneBox('このしぼりこみには、カードがありません。', false)); return; }
+    if (!state.deck.length) { v.appendChild(doneBox(state.filter === 'bm' ? 'まだブックマークした言葉はありません。カードの「☆ ブックマーク」を押すと、ここに集まります。' : 'このしぼりこみには、カードがありません。', false)); return; }
     if (state.pos >= state.deck.length) { v.appendChild(doneBox('ひと回り終わりました！', true)); return; }
     var c = state.deck[state.pos];
     var card = el('button', 'card'); card.type = 'button'; card.id = 'the-card';
     card.setAttribute('aria-label', state.flipped ? 'カード（答えを表示中）' : 'カード。押すと答えが出ます');
     var meta = el('div', 'meta');
     meta.appendChild(el('span', null, CATS[c.cat]));
-    meta.appendChild(el('span', null, (state.pos + 1) + ' / ' + state.deck.length + (known[c.id] === 'k' ? '　✓ 覚えた' : '')));
+    meta.appendChild(el('span', null, (bm[c.id] ? '★ ' : '') + (state.pos + 1) + ' / ' + state.deck.length + (known[c.id] === 'k' ? '　✓ 覚えた' : '')));
     card.appendChild(meta);
     card.appendChild(el('div', 'term' + (state.dir === 'es' ? ' es' : ''), front(c)));
     if (state.flipped) {
@@ -387,6 +402,7 @@ td.st { white-space: nowrap; font-size: 12px; }
     var prev = el('button', 'pill', '← 前'); prev.type = 'button'; prev.disabled = state.pos === 0;
     prev.addEventListener('click', function () { move(-1); });
     left.appendChild(prev);
+    left.appendChild(starBtn(c, false, renderCard));
     var right = el('div', 'row');
     var again = el('button', 'pill ng', 'まだ'); again.type = 'button'; again.id = 'btn-again';
     again.addEventListener('click', function () { mark('a'); });
@@ -466,7 +482,9 @@ td.st { white-space: nowrap; font-size: 12px; }
       card.appendChild(ex);
       var next = el('button', 'pill primary', '次の問題 →'); next.type = 'button'; next.id = 'quiz-next';
       next.style.alignSelf = 'flex-end';
-      next.addEventListener('click', function () { state.quiz = null; renderQuiz(); var n = $('choice-0'); if (n) n.focus(); });
+      var nextBtn = next; var qrow = el('div', 'row'); qrow.style.justifyContent = 'space-between';
+      qrow.appendChild(starBtn(q, false, renderQuiz)); qrow.appendChild(next); next = qrow;
+      nextBtn.addEventListener('click', function () { state.quiz = null; renderQuiz(); var n = $('choice-0'); if (n) n.focus(); });
       card.appendChild(next);
     } else {
       card.appendChild(fb);
@@ -499,9 +517,11 @@ td.st { white-space: nowrap; font-size: 12px; }
       if (known[c.id] === 'k') st.appendChild(el('span', 'tag k', '覚えた'));
       else if (known[c.id] === 'a') st.appendChild(el('span', 'tag a', 'まだ'));
       else st.textContent = '—';
-      tr.appendChild(st); tb.appendChild(tr);
+      tr.appendChild(st);
+      var stc = el('td', 'st'); stc.appendChild(starBtn(c, true, renderList)); tr.appendChild(stc);
+      tb.appendChild(tr);
     });
-    if (!tb.children.length) { var tr = el('tr'), td = el('td', 'empty', '見つかりませんでした。'); td.colSpan = 4; tr.appendChild(td); tb.appendChild(tr); }
+    if (!tb.children.length) { var tr = el('tr'), td = el('td', 'empty', '見つかりませんでした。'); td.colSpan = 5; tr.appendChild(td); tb.appendChild(tr); }
   }
   $('list-q').addEventListener('input', renderList);
 
