@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>B1 リスニング練習</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+/* Layout: one study column like the notes and cards (DESIGN.md = Mintlify). Each audio is a block: play button with "2回まで" counter, then the questions; answers and script open after checking. */
+:root {
+  --canvas: #ffffff;
+  --surface: #f7f7f7;
+  --hairline: #e5e5e5;
+  --ink: #0a0a0a;
+  --text: #2a2a2c;
+  --steel: #5a5a5c;
+  --stone: #888888;
+  --green: #00b48a;
+  --es: #08755b;
+  --es-mark: #d5f6ec;
+  --ok: #1ba673;
+  --ok-bg: #e3f6ee;
+  --ng: #d45656;
+  --ng-bg: #fbeaea;
+  --warn: #c37d0d;
+  --warn-bg: #fdf4e1;
+  --font: "Inter", "Noto Sans JP", "Yu Gothic UI", "Hiragino Sans", "Meiryo", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas: #0d0e0e; --surface: #1a1b1c; --hairline: #2b2c2e; --ink: #ffffff; --text: #dcdcde;
+    --steel: #b0b0b3; --stone: #8a8a8d; --green: #00d4a4; --es: #7cebcb; --es-mark: #12453a;
+    --ok: #4fd3a0; --ok-bg: #123a2c; --ng: #f08a8a; --ng-bg: #3d1d1d; --warn: #e5a53a; --warn-bg: #33270f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --canvas: #0d0e0e; --surface: #1a1b1c; --hairline: #2b2c2e; --ink: #ffffff; --text: #dcdcde;
+  --steel: #b0b0b3; --stone: #8a8a8d; --green: #00d4a4; --es: #7cebcb; --es-mark: #12453a;
+  --ok: #4fd3a0; --ok-bg: #123a2c; --ng: #f08a8a; --ng-bg: #3d1d1d; --warn: #e5a53a; --warn-bg: #33270f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--canvas); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.7; margin: 0; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.wrap {
+  max-width: 44rem; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 64px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.back { display: inline-block; margin-bottom: 12px; padding: 6px 14px; border: 1px solid var(--hairline); border-radius: 9999px; color: var(--ink); text-decoration: none; font-size: 14px; }
+.back:hover { background: var(--surface); }
+h1 { margin: 0; font-size: 28px; line-height: 1.3; color: var(--ink); font-weight: 700; display: flex; align-items: center; gap: 10px; text-wrap: balance; }
+h1::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--green); flex: none; }
+h2 { margin: 0; font-size: 20px; color: var(--ink); text-wrap: balance; }
+.sub { margin: 4px 0 0; color: var(--steel); font-size: 14px; }
+.note { background: var(--warn-bg); border: 1px solid var(--warn); border-radius: 12px; padding: 12px 16px; font-size: 14px; }
+.note[hidden] { display: none; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tabs { display: flex; gap: 4px; padding: 4px; background: var(--surface); border: 1px solid var(--hairline); border-radius: 9999px; width: fit-content; max-width: 100%; }
+.tabs button { border: 0; background: none; padding: 6px 14px; border-radius: 9999px; cursor: pointer; font-size: 13px; color: var(--steel); }
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--canvas); font-weight: 600; }
+.task { border-top: 1px solid var(--hairline); padding-top: 22px; display: flex; flex-direction: column; gap: 16px; }
+.task-desc { margin: 0; color: var(--steel); font-size: 14px; }
+.item { border: 1px solid var(--hairline); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.item-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.num { font-size: 12px; font-weight: 700; color: var(--stone); letter-spacing: 0.04em; }
+.play { display: inline-flex; align-items: center; gap: 8px; border: 0; border-radius: 9999px; padding: 9px 18px; background: var(--ink); color: var(--canvas); font-weight: 600; cursor: pointer; font-size: 14px; }
+.play:disabled { opacity: 0.35; cursor: default; }
+.play.playing { background: var(--green); color: var(--ink); }
+.left { font-size: 12px; color: var(--steel); font-variant-numeric: tabular-nums; }
+.q { font-weight: 600; color: var(--ink); }
+.q .es { color: var(--es); display: block; }
+.q .ja { color: var(--steel); font-size: 13px; font-weight: 400; display: block; }
+.opts { display: flex; flex-direction: column; gap: 8px; }
+.opts.vf { flex-direction: row; }
+.opt { text-align: left; border: 1px solid var(--hairline); background: var(--canvas); border-radius: 10px; padding: 10px 14px; cursor: pointer; font-size: 15px; color: var(--es); min-width: 0; overflow-wrap: anywhere; }
+.opts.vf .opt { flex: 1; text-align: center; font-weight: 700; }
+.opt:hover:not(:disabled) { background: var(--surface); }
+.opt[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); font-weight: 600; }
+.opt.right { border-color: var(--ok); background: var(--ok-bg); color: var(--ok); font-weight: 700; box-shadow: none; }
+.opt.wrong { border-color: var(--ng); background: var(--ng-bg); color: var(--ng); box-shadow: none; }
+.opt:disabled { cursor: default; }
+.stmt { display: flex; flex-direction: column; gap: 8px; padding: 12px 0; border-top: 1px solid var(--hairline); }
+.stmt:first-of-type { border-top: 0; }
+.why { font-size: 14px; background: var(--surface); border-radius: 8px; padding: 10px 12px; }
+.why b { color: var(--ink); }
+.why .key { color: var(--es); font-weight: 600; }
+.mark { font-weight: 700; }
+.mark.ok { color: var(--ok); }
+.mark.ng { color: var(--ng); }
+details { border: 1px solid var(--hairline); border-radius: 12px; padding: 0 14px; }
+summary { cursor: pointer; font-weight: 600; padding: 10px 0; color: var(--ink); font-size: 14px; }
+details[open] > summary { border-bottom: 1px solid var(--hairline); }
+.script { display: flex; flex-direction: column; gap: 10px; padding: 12px 0; font-size: 14px; }
+.script p { margin: 0; }
+.script .sp { font-weight: 700; color: var(--stone); margin-right: 6px; }
+.script .es { color: var(--es); display: block; }
+.script .ja { color: var(--steel); display: block; }
+.check { align-self: flex-start; border: 0; border-radius: 9999px; padding: 10px 22px; background: var(--ink); color: var(--canvas); font-weight: 700; cursor: pointer; }
+.check:disabled { opacity: 0.4; cursor: default; }
+.result { font-weight: 700; font-size: 18px; color: var(--ink); }
+.again { border: 1px solid var(--hairline); background: var(--canvas); border-radius: 9999px; padding: 8px 18px; cursor: pointer; font-size: 14px; }
+@media (max-width: 560px) { h1 { font-size: 22px; } .item { padding: 14px; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <a class="back" href="https://mirainakamura634-ai.github.io/espanol-b1-notas/">← ノートにもどる</a>
+    <h1>B1 リスニング練習</h1>
+    <p class="sub">試験と同じく、音声は<b>2回まで</b>聞けます。答えを選んでから「答え合わせ」を押してください。</p>
+  </header>
+
+  <div class="note" id="no-voice" hidden>
+    このブラウザでは、スペイン語の読み上げ音声が見つかりませんでした。iPhone や Android のブラウザ（Safari、Chrome）で開くと聞けることが多いです。音声がなくても、答え合わせのあとでスクリプト（台本）を読めます。
+  </div>
+
+  <div class="row" style="justify-content: space-between;">
+    <div class="row">
+      <span class="sub" style="margin: 0;">はやさ</span>
+      <div class="tabs" aria-label="読み上げのはやさ">
+        <button type="button" id="rate-normal" data-rate="0.95" aria-pressed="true">ふつう</button>
+        <button type="button" id="rate-slow" data-rate="0.75" aria-pressed="false">ゆっくり</button>
+      </div>
+    </div>
+    <span class="sub" style="margin: 0;">音声は機械の読み上げです。本番の声とはちがいます。</span>
+  </div>
+
+  <div id="tasks"></div>
+</div>
+
+<script>
+(function () {
+  // 話す人：A と B で声を変える。lines の中は [話す人, スペイン語, 日本語訳]
+  var TASKS = [
+    {
+      id: 't1', title: 'タスク1：短い会話', desc: '6つの短い会話を聞いて、質問の答えを a・b・c から1つ選んでください。',
+      items: [
+        {
+          id: 'd1', lines: [
+            ['A', '¿Quedamos el martes para tomar un café?', '火曜日にお茶しない？'],
+            ['B', 'El martes no puedo, tengo clase de español. ¿Qué tal el miércoles?', '火曜日はだめ、スペイン語の授業があるの。水曜日はどう？'],
+            ['A', 'El miércoles trabajo hasta tarde. ¿Y el jueves?', '水曜日はおそくまで仕事なんだ。木曜日は？'],
+            ['B', 'Vale, el jueves, perfecto.', 'いいよ、木曜日でばっちり。']
+          ],
+          q: '¿Qué día van a quedar?', qja: '何曜日に会いますか？',
+          opts: ['El martes.', 'El miércoles.', 'El jueves.'], ans: 2,
+          why: '火曜日・水曜日も聞こえますが、どちらも「だめ」でした。最後に決まったのは木曜日です。', key: 'Vale, el jueves, perfecto.'
+        },
+        {
+          id: 'd2', lines: [
+            ['A', 'Perdone, ¿cuánto cuesta el bono de guagua de diez viajes?', 'すみません、10回券のバスの回数券はいくらですか？'],
+            ['B', 'Cuesta trece euros. No, perdone, quince euros. Lo subieron este mes.', '13ユーロです。いえ、すみません、15ユーロです。今月値上がりしました。']
+          ],
+          q: '¿Cuánto cuesta el bono?', qja: '回数券はいくらですか？',
+          opts: ['Diez euros.', 'Trece euros.', 'Quince euros.'], ans: 2,
+          why: '「言い直し」のひっかけです。最初に trece（13）と言いましたが、No, perdone（いえ、すみません）のあとで quince（15）に言い直しています。diez（10）は回数です。', key: 'No, perdone, quince euros.'
+        },
+        {
+          id: 'd3', lines: [
+            ['A', '¿Cómo fuiste al Teide al final?', '結局、テイデ山へはどうやって行ったの？'],
+            ['B', 'Iba a ir en guagua, pero salía muy temprano, así que al final fui en coche con mi vecina.', 'バスで行くつもりだったけど、出発がとても早かったから、結局となりの人と車で行ったよ。']
+          ],
+          q: '¿Cómo fue al Teide?', qja: 'テイデ山へどうやって行きましたか？',
+          opts: ['En guagua.', 'En coche.', 'En taxi.'], ans: 1,
+          why: '「予定の変更」のひっかけです。Iba a ir en guagua（バスで行くつもりだった）は予定。pero ... al final（でも結局）のあとが本当の答えです。', key: 'al final fui en coche'
+        },
+        {
+          id: 'd4', lines: [
+            ['A', '¿A qué hora empieza el examen el lunes?', '月曜日の試験は何時に始まるの？'],
+            ['B', 'A las nueve menos cuarto. Pero tenemos que estar allí un cuarto de hora antes.', '9時15分前（8時45分）だよ。でも、15分前にはそこにいないといけないの。']
+          ],
+          q: '¿A qué hora tienen que llegar?', qja: '何時に着かないといけませんか？',
+          opts: ['A las ocho y media.', 'A las nueve menos cuarto.', 'A las nueve.'], ans: 0,
+          why: '試験が始まるのは nueve menos cuarto（8時45分）。でも質問は「何時に着くか」です。un cuarto de hora antes（15分前）なので、8時30分（ocho y media）です。質問の言葉をよく読みましょう。', key: 'un cuarto de hora antes'
+        },
+        {
+          id: 'd5', lines: [
+            ['A', '¿Qué tal el restaurante del sábado?', '土曜日のレストランはどうだった？'],
+            ['B', 'Mi marido dice que era muy caro, pero yo creo que valía la pena. Las papas arrugadas estaban buenísimas.', '夫はとても高かったと言うけど、私は行く価値があったと思う。パパス・アルガダスがすごくおいしかったの。']
+          ],
+          q: '¿Qué opina la mujer?', qja: '女の人はどう思っていますか？',
+          opts: ['Que era caro y no le gustó.', 'Que valió la pena.', 'Que la comida era normal.'], ans: 1,
+          why: '「ほかの人の意見」のひっかけです。muy caro は夫の意見。pero yo creo que（でも私は〜と思う）のあとが女の人の意見です。', key: 'pero yo creo que valía la pena'
+        },
+        {
+          id: 'd6', lines: [
+            ['A', 'Perdone, ¿la farmacia está en esta calle?', 'すみません、薬局はこの通りにありますか？'],
+            ['B', 'No, está en la calle de al lado, enfrente del banco. Pero hoy es domingo y está cerrada. La farmacia de guardia está al lado del mercado.', 'いいえ、となりの通りの、銀行の向かいです。でも今日は日曜日で閉まっています。当番の薬局は市場のとなりです。']
+          ],
+          q: '¿Adónde tiene que ir hoy?', qja: '今日はどこへ行かないといけませんか？',
+          opts: ['A la farmacia que está enfrente del banco.', 'A la farmacia que está al lado del mercado.', 'Al banco.'], ans: 1,
+          why: '銀行の向かいの薬局は、今日（日曜日）は cerrada（閉まっている）。pero のあとに大事な情報があります。開いているのは当番の薬局（farmacia de guardia）で、市場のとなりです。', key: 'La farmacia de guardia está al lado del mercado.'
+        }
+      ]
+    },
+    {
+      id: 't2', title: 'タスク2：お知らせ', shared: true,
+      desc: 'ラジオのお知らせを聞いて、1〜6の文が正しい（V）か、まちがい（F）かを選んでください。',
+      lines: [
+        ['A', 'Hola, buenas tardes. Les habla Marta, de la Oficina de Turismo de La Laguna.', 'こんにちは。ラ・ラグーナ観光案内所のマルタです。'],
+        ['A', 'Este fin de semana celebramos la Feria del Libro en la plaza del Adelantado.', '今週末、アデランタード広場で本のフェアを開きます。'],
+        ['A', 'La feria empieza el viernes a las cinco de la tarde y termina el domingo por la noche.', 'フェアは金曜日の午後5時に始まり、日曜日の夜に終わります。'],
+        ['A', 'La entrada es gratuita para todos.', '入場はどなたも無料です。'],
+        ['A', 'Habrá más de treinta puestos de libros y también actividades para niños por las mañanas.', '30以上の本の屋台があり、午前中には子ども向けの活動もあります。'],
+        ['A', 'El sábado a las siete, la escritora canaria Ana Pérez presentará su nueva novela.', '土曜日の7時に、カナリアの作家アナ・ペレスさんが新しい小説を紹介します。'],
+        ['A', 'Al principio, la presentación iba a ser en la biblioteca, pero al final será en la misma plaza, porque esperamos mucho público.', '最初は図書館で行う予定でしたが、たくさんの人が来ると思われるので、結局、同じ広場で行います。'],
+        ['A', 'Si llueve, las actividades se harán en el Teatro Leal.', '雨の場合は、レアル劇場で行います。'],
+        ['A', 'Les recomendamos venir en tranvía, porque es muy difícil aparcar en el centro.', '中心部は駐車がとてもむずかしいので、路面電車で来ることをおすすめします。'],
+        ['A', 'Más información en nuestra página web. ¡Los esperamos!', 'くわしくはホームページで。お待ちしています！']
+      ],
+      items: [
+        { id: 's1', q: 'La feria dura tres días.', qja: 'フェアは3日間ある。', ans: true, why: '金曜日（viernes）に始まって、日曜日（domingo）に終わるので、金・土・日の3日間です。', key: 'empieza el viernes ... y termina el domingo' },
+        { id: 's2', q: 'Hay que pagar para entrar.', qja: '入るのにお金をはらう必要がある。', ans: false, why: 'gratuita ＝ 無料。読解の gratuito / gratis と同じ言葉です。', key: 'La entrada es gratuita para todos.' },
+        { id: 's3', q: 'Las actividades para niños son por la tarde.', qja: '子ども向けの活動は午後にある。', ans: false, why: 'por las mañanas（午前中に）と言っています。午後5時（cinco de la tarde）はフェアが始まる時間です。', key: 'actividades para niños por las mañanas' },
+        { id: 's4', q: 'La presentación de la novela será en la biblioteca.', qja: '小説の紹介は図書館で行われる。', ans: false, why: '「予定の変更」のひっかけ。Al principio（最初は）図書館の予定でしたが、pero al final（でも結局）広場になりました。', key: 'pero al final será en la misma plaza' },
+        { id: 's5', q: 'Si hace mal tiempo, las actividades se harán en otro lugar.', qja: '天気が悪いときは、活動はほかの場所で行われる。', ans: true, why: 'Si llueve（雨なら）劇場で行います。mal tiempo（悪い天気）は llueve の言いかえです。', key: 'Si llueve, las actividades se harán en el Teatro Leal.' },
+        { id: 's6', q: 'Es fácil aparcar en el centro.', qja: '中心部では駐車しやすい。', ans: false, why: 'muy difícil（とてもむずかしい）と言っています。fácil ↔ difícil の反対の言葉です。', key: 'es muy difícil aparcar en el centro' }
+      ]
+    }
+  ];
+
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function btn(cls, text, fn) { var b = el('button', cls, text); b.type = 'button'; b.addEventListener('click', fn); return b; }
+
+  /* ---------- 読み上げ ---------- */
+  var synth = window.speechSynthesis;
+  var voices = [];
+  var rate = 0.95;
+  function loadVoices() {
+    if (!synth) return;
+    var all = synth.getVoices() || [];
+    var es = all.filter(function (v) { return /^es/i.test(v.lang); });
+    // スペインの声を先に
+    es.sort(function (a, b) { return (/es[-_]ES/i.test(b.lang) ? 1 : 0) - (/es[-_]ES/i.test(a.lang) ? 1 : 0); });
+    voices = es;
+    $('no-voice').hidden = !!voices.length || !all.length && !!synth;
+  }
+  if (synth) {
+    loadVoices();
+    if ('onvoiceschanged' in synth) synth.onvoiceschanged = loadVoices;
+    setTimeout(function () { loadVoices(); if (!voices.length) $('no-voice').hidden = false; }, 1500);
+  } else {
+    $('no-voice').hidden = false;
+  }
+  var playing = null;
+  function stopAll() { if (synth) synth.cancel(); if (playing) { playing.done(); playing = null; } }
+  // 文ごとに分けて読む（長い文がとちゅうで切れないように）
+  function speak(lines, onDone) {
+    var parts = [];
+    lines.forEach(function (l) {
+      (l[1].match(/[^.!?¿¡]*[¿¡]?[^.!?]*[.!?]+|\S[^.!?]*$/g) || [l[1]]).forEach(function (s) { if (s.trim()) parts.push([l[0], s.trim()]); });
+    });
+    var i = 0, cancelled = false;
+    var me = { done: function () { cancelled = true; onDone(); } };
+    playing = me;
+    function next() {
+      if (cancelled) return;
+      if (i >= parts.length) { playing = null; onDone(); return; }
+      var p = parts[i++];
+      var u = new SpeechSynthesisUtterance(p[1]);
+      u.lang = 'es-ES';
+      var v = voices.length ? voices[p[0] === 'B' && voices.length > 1 ? 1 : 0] : null;
+      if (v) { u.voice = v; u.lang = v.lang; }
+      if (p[0] === 'B' && voices.length < 2) u.pitch = 1.35;
+      u.rate = rate;
+      u.onend = function () { setTimeout(next, p[1].length > 0 ? 250 : 0); };
+      u.onerror = function () { setTimeout(next, 0); };
+      synth.speak(u);
+    }
+    next();
+  }
+
+  document.querySelectorAll('[data-rate]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      rate = Number(b.dataset.rate);
+      document.querySelectorAll('[data-rate]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    });
+  });
+
+  /* ---------- 画面 ---------- */
+  var answers = {};    // item.id -> 選んだ答え
+  var checked = {};    // task.id -> 答え合わせ済み
+  var playsLeft = {};  // 音声ごとの、あと何回聞けるか（画面をかき直しても残す）
+  // 答えを選んだときは、画面全体をかき直さない（音声が止まったり、回数がもどったりしないように）
+  function choose(group, itId, val, task) {
+    answers[itId] = val;
+    group.querySelectorAll('.opt').forEach(function (x) { x.setAttribute('aria-pressed', x.dataset.v === String(val) ? 'true' : 'false'); });
+    var c = $('check-' + task.id);
+    if (c) { var all = task.items.every(function (it) { return answers[it.id] !== undefined; }); c.disabled = !all; c.textContent = all ? '答え合わせ' : '全部答えると、答え合わせできます'; }
+  }
+
+  function playButton(key, lines, holder) {
+    if (playsLeft[key] === undefined) playsLeft[key] = 2;
+    var wrap = el('div', 'row');
+    var b = el('button', 'play'); b.type = 'button'; b.id = 'play-' + key;
+    var info = el('span', 'left');
+    function label() {
+      var unlimited = holder.unlimited;
+      b.textContent = '▶ 聞く';
+      info.textContent = unlimited ? '（答え合わせのあとは何回でも聞けます）' : 'あと ' + playsLeft[key] + ' 回';
+      b.disabled = !unlimited && playsLeft[key] <= 0;
+    }
+    b.addEventListener('click', function () {
+      if (!synth) { $('no-voice').hidden = false; return; }
+      if (b.classList.contains('playing')) { stopAll(); return; }
+      if (!holder.unlimited && playsLeft[key] <= 0) return;
+      stopAll();
+      if (!holder.unlimited) playsLeft[key]--;
+      b.classList.add('playing'); b.textContent = '■ 止める';
+      speak(lines, function () { b.classList.remove('playing'); label(); });
+    });
+    holder.refresh = label;
+    label();
+    wrap.appendChild(b); wrap.appendChild(info);
+    return wrap;
+  }
+  function scriptBox(lines) {
+    var d = el('details'); d.appendChild(el('summary', null, 'スクリプト（台本）と日本語訳'));
+    var s = el('div', 'script');
+    lines.forEach(function (l) {
+      var p = el('p');
+      var es = el('span', 'es'); es.appendChild(el('span', 'sp', l[0] + ':')); es.appendChild(document.createTextNode(l[1]));
+      p.appendChild(es); p.appendChild(el('span', 'ja', l[2]));
+      s.appendChild(p);
+    });
+    d.appendChild(s);
+    return d;
+  }
+  function whyBox(it, right) {
+    var w = el('div', 'why');
+    var m = el('div', 'mark ' + (right ? 'ok' : 'ng'), right ? '⭕ 正解' : '❌ ざんねん');
+    w.appendChild(m);
+    w.appendChild(el('div', null, it.why));
+    var k = el('div'); k.appendChild(el('b', null, '決め手：')); k.appendChild(el('span', 'key', it.key));
+    w.appendChild(k);
+    return w;
+  }
+
+  function render() {
+    var box = $('tasks'); box.innerHTML = '';
+    TASKS.forEach(function (task) {
+      var sec = el('section', 'task'); sec.id = 'task-' + task.id;
+      sec.appendChild(el('h2', null, task.title));
+      sec.appendChild(el('p', 'task-desc', task.desc));
+      var done = !!checked[task.id];
+      var holders = [];
+
+      if (task.shared) {
+        // お知らせ1つに、問題が6つ
+        var card = el('div', 'item');
+        var h = { unlimited: done }; holders.push(h);
+        var head = el('div', 'item-head'); head.appendChild(el('span', 'num', 'お知らせ')); head.appendChild(playButton(task.id, task.lines, h));
+        card.appendChild(head);
+        task.items.forEach(function (it, i) {
+          var st = el('div', 'stmt');
+          var q = el('div', 'q'); q.appendChild(el('span', 'es', (i + 1) + '. ' + it.q)); if (done) q.appendChild(el('span', 'ja', it.qja));
+          st.appendChild(q);
+          var opts = el('div', 'opts vf');
+          [true, false].forEach(function (val) {
+            var o = btn('opt', val ? 'V（正しい）' : 'F（まちがい）', function () { choose(opts, it.id, val, task); });
+            o.dataset.v = String(val);
+            o.id = 'opt-' + it.id + '-' + (val ? 'v' : 'f');
+            o.setAttribute('aria-pressed', answers[it.id] === val ? 'true' : 'false');
+            if (done) { o.disabled = true; if (val === it.ans) o.classList.add('right'); else if (answers[it.id] === val) o.classList.add('wrong'); }
+            opts.appendChild(o);
+          });
+          st.appendChild(opts);
+          if (done) st.appendChild(whyBox(it, answers[it.id] === it.ans));
+          card.appendChild(st);
+        });
+        if (done) card.appendChild(scriptBox(task.lines));
+        sec.appendChild(card);
+      } else {
+        task.items.forEach(function (it, i) {
+          var card = el('div', 'item');
+          var h = { unlimited: done }; holders.push(h);
+          var head = el('div', 'item-head'); head.appendChild(el('span', 'num', '会話 ' + (i + 1))); head.appendChild(playButton(it.id, it.lines, h));
+          card.appendChild(head);
+          var q = el('div', 'q'); q.appendChild(el('span', 'es', it.q)); if (done) q.appendChild(el('span', 'ja', it.qja));
+          card.appendChild(q);
+          var opts = el('div', 'opts');
+          it.opts.forEach(function (text, k) {
+            var o = btn('opt', 'abc'[k] + ') ' + text, function () { choose(opts, it.id, k, task); });
+            o.dataset.v = String(k);
+            o.id = 'opt-' + it.id + '-' + k;
+            o.setAttribute('aria-pressed', answers[it.id] === k ? 'true' : 'false');
+            if (done) { o.disabled = true; if (k === it.ans) o.classList.add('right'); else if (answers[it.id] === k) o.classList.add('wrong'); }
+            opts.appendChild(o);
+          });
+          card.appendChild(opts);
+          if (done) { card.appendChild(whyBox(it, answers[it.id] === it.ans)); card.appendChild(scriptBox(it.lines)); }
+          sec.appendChild(card);
+        });
+      }
+
+      var all = task.items.every(function (it) { return answers[it.id] !== undefined; });
+      if (!done) {
+        var c = btn('check', all ? '答え合わせ' : '全部答えると、答え合わせできます', function () { stopAll(); checked[task.id] = true; render(); var r = $('result-' + task.id); if (r) r.scrollIntoView({ block: 'center' }); });
+        c.id = 'check-' + task.id; c.disabled = !all;
+        sec.appendChild(c);
+      } else {
+        var ok = task.items.filter(function (it) { return answers[it.id] === it.ans; }).length;
+        var res = el('div', 'row');
+        var r = el('div', 'result', '結果：' + ok + ' / ' + task.items.length + ' 問正解'); r.id = 'result-' + task.id;
+        res.appendChild(r);
+        res.appendChild(btn('again', 'もう一度ちょうせん', function () {
+          stopAll(); task.items.forEach(function (it) { delete answers[it.id]; delete playsLeft[it.id]; }); delete playsLeft[task.id]; delete checked[task.id]; render();
+          var s = $('task-' + task.id); if (s) s.scrollIntoView({ block: 'start' });
+        }));
+        sec.appendChild(res);
+      }
+      box.appendChild(sec);
+    });
+  }
+
+  render();
+})();
+</script>
+
+</body>
+</html>

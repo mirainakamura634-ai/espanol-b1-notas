@@ -7,7 +7,7 @@
 </head>
 <body>
 <title>スペイン語B1 学習ノート</title>
-<meta name="b1-build" content="1795355928974">
+<meta name="b1-build" content="1795356244594">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
 <style>
@@ -4485,7 +4485,10 @@ B. 恋人・仕事・友だちで、いちばん大事な長所と、いちば�
   cardsLink.href = 'https://mirainakamura634-ai.github.io/espanol-b1-notas/cards/';
   
   cardsLink.appendChild(el('span', 'nav-main', '🃏 単語カード'));
-  navGroup('さがす', [navItem('tango', '単語帳'), cardsLink, navItem('fukushu', 'ノート一覧')]);
+  var listenLink = el('a', 'nav-item');
+  listenLink.href = 'https://mirainakamura634-ai.github.io/espanol-b1-notas/listening/';
+  listenLink.appendChild(el('span', 'nav-main', '🎧 リスニング練習'));
+  navGroup('さがす', [navItem('tango', '単語帳'), cardsLink, listenLink, navItem('fukushu', 'ノート一覧')]);
   navGroup('復習ノート（新しい順）', dated.slice().reverse().map(function (s) { return navItem(sid(s), s.dataset.title, s.dataset.date); }));
   if (howto) navGroup('使い方', [navItem('howto', howto.dataset.title)]);
 
